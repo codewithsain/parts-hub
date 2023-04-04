@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Register</title>
+</head>
+
+<body>
+
+    <body>
+        <form action="/auth/register" method="POST" class="formRegister">
+            <div class="center">
+                <h2 class="form-title" id="login">Register</h2>
+                <input type="text" class="input" placeholder="User" name="user" />
+                <input type="text" class="input" placeholder="Name" name="name" />
+                <input type="text" class="input" placeholder="Last Name" name="lastName" />
+                <input type="text" class="input" placeholder="Position" name="position" />
+                <input type="email" class="inputEmail" placeholder="Email" name="email" />
+                {{#if emailMessage}}
+                <h4 class="errorMessageRegister">{{emailMessage}}</h4>
+                {{/if}}
+                <input type="password" class="input" placeholder="Password" name="password" />
+                <input type="password" class="inputConfirmPassword" placeholder="Confirm your password"
+                    name="passwordConfirm" />
+                {{#if passwordMessage}}
+                <h4 class="errorMessageRegister">{{passwordMessage}}</h4>
+                {{/if}}
+                <button type="submit" class="registerBtn">Register</button>
+                {{#if userRegisteredMessage}}
+                <h4 class="succRegisMessage">{{userRegisteredMessage}}</h4>
+                {{/if}}
+            </div>
+        </form>
+        </div>
+    </body>
+</body>
+
+</html>

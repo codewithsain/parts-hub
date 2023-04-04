@@ -6,19 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
-    <div class="form">
-        <div class="center">
+    <form class="formLogIn" action="/auth/index" method="POST">
+        <div class="divLogin">
             <h2 class="form-title" id="login">Log in</h2>
-                <input type="email" class="inputEmail" placeholder="Email" />
-                <input type="password" class="inputPassword" placeholder="Password" />
-            <button class="loginBtn">Log in</button>
-            <a href="www.google.com" class="link" target="_blank">Register here</a>
+            <input type="email" class="input" placeholder="Email" name="email" />
+            <input type="password" class="inputPassword" placeholder="Password" name="password" />
+            <button type="submit" class="loginBtn">Log in</button>
+            <a href="/register" class="link" target="_blank">Register here</a>
+            {{#if noCredMessage}}
+            <h4 class="errorMessageRegister">{{noCredMessage}}</h4>
+            {{/if}}
+            {{#if wrongCredMessage}}
+            <h4 class="errorMessageRegister">{{wrongCredMessage}}</h4>
+            {{/if}}
         </div>
-    </div>
+    </form>
     </div>
 </body>
 
