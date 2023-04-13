@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style_landingPage.css">
+    <title>Landing Page</title>
+</head>
+<body>
+    <header>
+        <div class="divTitle">
+            <h2 class="hTitle">Parts Hub</h2>
+        </div>
+         <div class="divOptions">
+             <span class="vertical-line"></span>
+             <a href="https://jdsn-contact-us.deere.com/" target="_blank"><button class="faqBtn"></button></a>
+            <span class="vertical-line"></span>
+            <div class="dropdown ">
+                <button class="userBtn">
+                <img src="/images/usuario.png" alt="Image" width="24px" height="24px" />
+                {{name}}
+                </button>
+            <div class="dropdown-content">
+                <div class="userData">
+                <p class="dropdownName">{{name}} {{lastName}}</p>
+                <sub class="dropdownPos">Software Engineer</sub>
+                </div>
+                {{#if role}}
+                <a href="/landingPage/admin">Admin</a>
+                {{/if}}
+                <a href="/auth/logout">
+                    <img src="/images/logout.png"  width="24px" height="24px" />
+                    Sign Out    
+                </a>
+            </div>
+            </div>
+            
+             <span class="vertical-line"></span>
+        </div>
+    </header>
+
+    <main>
+        <div>
+            <h2 class="allParts">All Parts(0)</h2>
+            <div class="controlBar">
+
+                    <input type="text" placeholder="Search part by User ID" class="partSearch" value="{{userID}}">
+                
+                    <button class="addPartBtn">Add Part</button>
+                 
+            </div>
+        </div>
+        
+        
+    </main>
+
+
+    <footer>
+        <div class="footerContainer">
+            <div class="footerLinks">
+                <a href="https://jdsn.deere.com/" target="_blank" class="aFooter">Home</a>
+                <a href="https://investor.deere.com/governance/default.aspx?cid=VURL_suppliercode" target="_blank" class="aFooter">Supplier Code Of Conduct</a>
+                <a href="https://www.deere.com/en/privacy-and-data/privacy-statements/" target="_blank" class="aFooter">Privacy &amp; Data</a>
+                <a href="https://www.deere.com/en/privacy-and-data/terms/" target="_blank" class="aFooter">Terms of Use</a>
+                <p>Copyright &copy; All Rights Reserved </p>
+            </div>
+        </div>
+
+
+    </footer>
+
+</body>
+
+</html>
