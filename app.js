@@ -25,8 +25,8 @@ dbConn.connect(async (error) => {
     } else {
       console.log("MySQL Connected....");
     }
-  } finally {
-    dbConn.end()
+  } catch(error) {
+    console.log(error)
   }
   
 });
