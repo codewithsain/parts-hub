@@ -18,12 +18,17 @@ app.set("view engine", "hbs");
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
 
-dbConn.connect((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("MySQL Connected....");
+dbConn.connect(async (error) => {
+  try {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("MySQL Connected....");
+    }
+  } finally {
+    dbConn.end()
   }
+  
 });
 
 app.listen(process.env.PORT || 3000, () => {
