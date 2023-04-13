@@ -1,0 +1,337 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+header,
+footer {
+    position: absolute;
+    width: 100%;
+    color: white;
+}
+
+header {
+    height: 10vh;
+    background-color: white;
+    top: 0;
+    border: 1px solid;
+    display: flex;
+}
+
+
+.divTitle {
+    background-color: #ccc;
+    width: 20%;
+}
+
+.divOptions {
+    background-color: #ccc;
+    width: 80%;
+    align-items: right;
+    display: flex;
+    justify-content: right;
+
+}
+
+.faqBtn {
+    background: url(./images/faq.png) no-repeat;
+    width: 30px;
+    height: 30px;
+    margin-right: 2px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: #ccc;
+    cursor: pointer;
+    background-position: center;
+    border: none;
+}
+
+.faqBtn:hover {
+    background-color: #666;
+}
+
+.faqBtn:active {
+    background-color: #666666;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.vertical-line {
+    display: inline-block;
+    border-left: 1px solid #666666;
+    margin: 0 10px;
+    height: 30px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.userBtn {
+    width: 70px;
+    height: 30px;
+    margin-right: 4px;
+    background-color: #ccc;
+    cursor: pointer;
+    background-position: center;
+    border: none;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.userBtn:hover {
+    background-color: #666;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 25px;
+    background-color: white;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a:hover {
+    background-color: #666;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    background-color: white;
+    border-bottom: 1px solid #666666;
+}
+
+.dropdownName{
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    line-height: 2px;
+}
+
+.dropdownPos{
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    border-bottom: 1px solid #666666;
+    line-height: 2px;
+}
+
+.dropdownBtn{
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    min-width: 120px;
+}
+
+.dropdownBtn:hover{
+    background-color: #666;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.headerOptions {
+    color: black
+}
+
+.hTitle {
+    margin-left: 16px;
+    color: #367c2b
+}
+
+main {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    background-color: #ededed;
+    top: 10vh;
+    bottom: 15vh;
+    color: black;
+    overflow: scroll;
+}
+
+
+footer {
+    bottom: 0;
+    height: 15vh;
+    background-color: #ccc;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+.footerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.footerLinks {
+    color: #666666;
+    position: absolute;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.aFooter {
+    padding-left: 10px;
+    color: #666666;
+}
+
+a:hover {
+    color: black;
+}
+
+p {
+    text-align: center;
+}
+
+.allParts{
+    margin-left: 16px;
+}
+
+.addPartBtn {
+    background-color: #ffd621;
+    color: black;
+    border: 0;
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 80px;
+    height: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    margin-right:  16px;
+    -webkit-transition: all .3s ease;
+
+}
+
+.addPartBtn:hover {
+    transition: all .3s ease;
+    background-color: #e4c022;
+}
+
+.addPartBtn:active {
+    background-color: #666666;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.controlBar{
+    display: flex;
+    margin-left: 16px;
+}
+
+.partSearch{
+    height: 30px;
+}
+
+.adminContainer{
+    padding: 20px;
+    display: block;
+}
+
+.card{
+    padding:10px;
+    box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+    border-radius: 5px;
+    margin: 10px;
+    max-width: 50%;
+}
+
+
+
+table, th, td {
+    border: 1px solid black;
+  }
+
+.adminBtn{
+    background-color: #ffd621;
+    color: black;
+    border: 0;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    top: 16px;
+    left: 0px;
+    width: 80px;
+    height: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    margin-right:  16px;
+    -webkit-transition: all .3s ease;
+}
+
+.adminBtn:hover {
+    transition: all .3s ease;
+    background-color: #e4c022;
+}
+
+.cardTitleContainer{
+    min-width: 100%;
+    display: flex;
+}
+
+.cardTitleText{
+    display: flex;
+    width: 50%;
+
+}
+
+.cardTitleButton{
+    display: flex;
+    width: 50%;
+    justify-content: right;
+    align-items: right;
+}
+
+.adminBtn:active {
+    background-color: #666666;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
