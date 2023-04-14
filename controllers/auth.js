@@ -68,8 +68,7 @@ exports.index = async (req, res) => {
 
         if (!email || !password) {
             return res.status(400).render('index', {
-                noCredMessage: 'Please provide an email and password',
-                mCaptcha: captcha
+                noCredMessage: 'Please provide an email and password'
             })
         }
 
@@ -83,29 +82,34 @@ exports.index = async (req, res) => {
         dbConn.query('SELECT * FROM user WHERE email = ?', [email], async (error, results) => {
             console.log(email)
             console.log(results)
-            if (!results || !(await bcrypt.compare(password, results[0].password))) {
-                res.status(401).render('index', {
-                    wrongCredMessage: 'Email or password is incorrect',
-                    mCaptcha: captcha
-                })
-            } else {
-                const id = results[0].id;
-                const token = jwt.sign({ id }, process.env.JWT_SECRET, {
-                    expiresIn: process.env.JWT_EXPIRES_IN
-                })
-
-                console.log(token);
-
-                const cookieOptions = {
-                    expires: new Date(
-                        Date.now() + process.env.JWT_COOKIE_IN * 24 * 60 * 60 * 1000
-                    ),
-                    httpOnly: true
+            try {
+                if (!results || !(await bcrypt.compare(password, results[0].password))) {
+                    res.status(401).render('index', {
+                        wrongCredMessage: 'Email or password is incorrect',
+                        mCaptcha: captcha
+                    })
+                } else {
+                    const id = results[0].id;
+                    const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+                        expiresIn: process.env.JWT_EXPIRES_IN
+                    })
+    
+                    console.log(token);
+    
+                    const cookieOptions = {
+                        expires: new Date(
+                            Date.now() + process.env.JWT_COOKIE_IN * 24 * 60 * 60 * 1000
+                        ),
+                        httpOnly: true
+                    }
+    
+                    res.cookie('jwt', token, cookieOptions)
+                    res.status(200).redirect('/landingPage')
                 }
-
-                res.cookie('jwt', token, cookieOptions)
-                res.status(200).redirect('/landingPage')
+            } catch (error) {
+                console.log(error);
             }
+            
         })
     } catch (error) {
         console.log(error)
