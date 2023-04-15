@@ -33,7 +33,7 @@ app.use("/auth", require("./routes/auth"));
 // });
 
 function handleDisconnect(){
-  dbConn.connect(function(err){
+  dbConn.getConnection(function(err){
     try {
       if(err){
         console.log('error when connecting to db: ', err);
