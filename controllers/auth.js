@@ -152,7 +152,7 @@ exports.logout = async (req, res) => {
         httpOnly: true
     });
 
-    res.status(200).render('index')
+    res.status(200).redirect('/');
 }
 
 
