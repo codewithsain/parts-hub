@@ -44,19 +44,7 @@ router.get("/landingPage", authController.isLoggedIn, (req, res) => {
 
 })
 
-router.get('/landingPage/admin', authController.isLoggedIn, (req, res) => {
-    if (req.user && req.user.role === 'admin') {
-        res.render('admin', {
-            name: req.user.name,
-            lastName: req.user.lastName,
-            position: req.user.position,
-            role: req.user.role,
-            userID: req.user.user
-        });
-    } else {
-        res.redirect('/landingPage')
-    }
-})
+
 
 
 module.exports = router;

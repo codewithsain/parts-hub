@@ -17,20 +17,21 @@
             <input type="password" class="inputPassword" placeholder="Password" name="password" />
             <div class="captcha">
                 <input readonly="readonly"  onselectstart="return false" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" type="text" class="captchaImage" name="captchaText" value="{{mCaptcha}}" />
-                <input type="text" class="inputCaptcha" placeholder="Captcha" name="captchaInput" />
+                <input  type="text" class="inputCaptcha" placeholder="Captcha" name="captchaInput" id="captchaInput"/>
                 {{#if invalidCaptcha}}
                 <h4 class="errorMessageRegister">{{invalidCaptcha}}</h4>
                 {{/if}}
             </div>
-            <button type="submit" class="loginBtn">Log in</button>
+            <button type="submit"  class="loginBtn">Log in</button>
             <a href="/register" class="link" target="_blank">Register here</a>
             {{#if noCredMessage}}
             <h4 class="errorMessageRegister">{{noCredMessage}}</h4>
             {{/if}}
             {{#if wrongCredMessage}}
             <h4 class="errorMessageRegister">{{wrongCredMessage}}</h4>
-            {{/if}}
-
+            {{/if}} 
+            
+            
         </div>
     </form>
     </div>
