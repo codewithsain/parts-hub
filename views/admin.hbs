@@ -47,7 +47,10 @@
                         <h3 class="cardTitle">Users</h3>
                     </div>
                     <div class="cardTitleButton">
-                        <button id="getUsers" class="adminBtn">Add User</button>
+                        <form action="/admin/addUser" method="GET">
+                            <button id="getUsers" class="adminBtn">Add User</button>
+                        </form>
+
                     </div>
                 </div>
                 <table>
@@ -77,7 +80,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -87,12 +90,34 @@
                         <h3 class="cardTitle">Features Flags</h3>
                     </div>
                     <div class="cardTitleButton">
-                        <button class="adminBtn">Add Feature</button>
+                        <form action="/admin/addFeature" method="GET">
+                            <button id="getUsers" class="adminBtn">Add Feature</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        {{#if showModalUser}}
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <form action="/admin" method="GET">
+                    <button class="close">&times;</button>
+                </form>
+                <p>Some text in the Modal..</p> 
+            </div>
+        </div>
+        {{/if}}
 
+        {{#if showModalFeature}}
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <form action="/admin" method="GET">
+                    <button class="close">&times;</button>
+                </form>
+                <p>Some text in the Modal..</p>
+            </div>
+        </div>
+        {{/if}}
 
     </main>
 

@@ -18,19 +18,7 @@ app.set("view engine", "hbs");
 
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
-
-// dbConn.connect(async (error) => {
-//   try {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log("MySQL Connected....");
-//     }
-//   } catch(error) {
-//     console.log(error)
-//   }
-  
-// });
+app.use("/admin", require("./routes/users"));
 
 function handleDisconnect(){
   dbConn.getConnection(function(err){
