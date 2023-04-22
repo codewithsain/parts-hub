@@ -103,7 +103,7 @@ exports.index = async (req, res) => {
                     }
     
                     res.cookie('jwt', token, cookieOptions)
-                    res.status(200).redirect('/landingPage')
+                    res.status(200).redirect("/landingPage")
                 }
             } catch (error) {
                 console.log(error);
@@ -143,32 +143,6 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 
 }
-
-
-exports.isAdmin = async (req, res, next) => {
-    
-    try {
-        const decoded = await util.promisify(jwt.verify)(req.cookies.jwt,
-            process.env.JWT_SECRET
-        );
-
-        dbConn.query('SELECT * FROM user WHERE id = ?', [decoded.id], (error, results) => {
-
-            req.user = results[0];
-
-            console.log(req.user.role);
-            if(req.user.role != 'admin'){
-                res.status(401).redirect("/landingPage")
-            }else{
-                res.status(200).render("admin")
-                return next();
-            }
-        })
-    } catch (error) {
-        console.log(error);
-    }
-}
-
 
 exports.logout = async (req, res) => {
     res.cookie('jwt', 'logout', {

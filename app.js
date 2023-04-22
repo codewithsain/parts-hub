@@ -18,7 +18,7 @@ app.set("view engine", "hbs");
 
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
-app.use("/admin", require("./routes/users"));
+// app.use("/landingPage/admin", require("./routes/users"));
 
 function handleDisconnect(){
   dbConn.getConnection(function(err){
