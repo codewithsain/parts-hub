@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style_landingPage.css">
+    <title>Landing Page</title>
+</head>
+
+<body>
+    <header>
+        <div class="divTitle">
+            <div class="logo">
+                <img src="/images/john-deere-logo-1.png" alt="" width="150" height="25" class="jdLogo">
+            </div>
+            <div class="ht">
+                <h2 class="hTitle">Parts Hub</h2>
+            </div>
+        </div>
+        <div class="divOptions">
+            <span class="vertical-line"></span>
+            <a href="https://jdsn-contact-us.deere.com/" target="_blank"><button class="faqBtn"></button></a>
+            <span class="vertical-line"></span>
+            <div class="dropdown ">
+                <button class="userBtn">
+                    <img src="/images/usuario.png" alt="Image" width="24px" height="24px" />
+                    {{name}}
+                </button>
+                <div class="dropdown-content">
+                    <div class="userData">
+                        <p class="dropdownName">{{name}} {{lastName}}</p>
+                        <sub class="dropdownPos">{{position}}</sub>
+                    </div>
+                    {{#if role}}
+                    <a href="/admin">Admin</a>
+                    {{/if}}
+                    <a href="/auth/logout">
+                        <img src="/images/logout.png" width="24px" height="24px" />
+                        Sign Out
+                    </a>
+                </div>
+            </div>
+            <span class="vertical-line"></span>
+        </div>
+    </header>
+    <main>
+        <ul class="breadcrumb">
+            <li><a href="/landingPage">Home</a></li>
+            <li>Part Details</li>
+        </ul>
+        <div class="container">
+            <div class="cardPartOverview">
+                <div class="partOverviewContainer">
+                    <div class="image">
+                        <img src="/images/seatBack.jpg" alt="" width="250" height="250">
+                    </div>
+                    <div class="partInfo">
+                        <div class="partNameDesc">
+                            <h2>TA1234BGK</h2>
+                            <p>Seat Back</p>
+                        </div>
+                        <div class="unit">
+                            <label>Unit</label>
+                            <p>RX01</p>
+                        </div>
+                        <div class="geau">
+                            <label>Global Est Usage</label>
+                            <p>1835</p>
+                        </div>
+                        <div class="geometryFiles">
+                            <label>Sets</label>
+                            <p>No files available</p>
+                        </div>
+                        <div class="termCode">
+                            <label>Term Code</label>
+                            <p>12938</p>
+                        </div>
+                        <div class="mgc">
+                            <label>MGC</label>
+                            <p>D03030200</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="taskDrawer">
+                <div class="cardTitleContainer">
+                    <div class="cardTitleText">
+                        <h3 class="cardTitle">Task Drawer</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="infoModule">
+                <div class="cardTitleContainer">
+                    <div class="cardTitleText">
+                        <h3 class="cardTitle">Info Module</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="whereUsed">
+                <div class="cardTitleContainer">
+                    <div class="cardTitleText">
+                        <h3 class="cardTitle">Where Used</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="compareParts">
+                <div class="cardTitleContainer">
+                    <div class="cardTitleText">
+                        <h3 class="cardTitle">Compare Parts</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="tooling">
+                <div class="cardTitleContainer">
+                    <div class="cardTitleText">
+                        <h3 class="cardTitle">Tooling</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="cost">
+                <div class="cardTitleContainer">
+                    <div class="cardTitleText">
+                        <h3 class="cardTitle">Cost</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+    <footer>
+        <div class="footerContainer">
+            <div class="footerLinks">
+                <a href="https://jdsn.deere.com/" target="_blank" class="aFooter">Home</a>
+                <a href="https://investor.deere.com/governance/default.aspx?cid=VURL_suppliercode" target="_blank"
+                    class="aFooter">Supplier Code Of Conduct</a>
+                <a href="https://www.deere.com/en/privacy-and-data/privacy-statements/" target="_blank"
+                    class="aFooter">Privacy &amp; Data</a>
+                <a href="https://www.deere.com/en/privacy-and-data/terms/" target="_blank" class="aFooter">Terms of
+                    Use</a>
+                <p>Copyright &copy; All Rights Reserved </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
