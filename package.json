@@ -8,7 +8,9 @@
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.22"
+    "node-localstorage": "^2.2.1",
+    "nodemon": "^2.0.22",
+    "store2": "^2.14.2"
   },
   "name": "parts-hub",
   "description": "",
