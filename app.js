@@ -5,6 +5,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const db = require("./dbConnection");
 
+const hbs = require('hbs');
+
 const publicDirectory = path.join(__dirname, "./public");
 app.use(express.static(publicDirectory));
 
@@ -14,7 +16,7 @@ app.use(cookieParser());
 
 
 app.set("view engine", "hbs");
-
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
