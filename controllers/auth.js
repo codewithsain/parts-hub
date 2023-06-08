@@ -135,9 +135,14 @@ exports.createCaptcha = (req, res, next) => {
   res.render("index", {
     mCaptcha: captcha,
   });
-  console.log(captcha);
+
+
+
+  // console.log(captcha);
 
   next();
+
+ 
 };
 
 exports.index = async (req, res) => {
@@ -160,6 +165,7 @@ exports.index = async (req, res) => {
     if (captchaInput != captchaText) {
       return res.status(400).render("index", {
         invalidCaptcha: "Captcha Is invalid",
+        mCaptcha: captcha
       });
     }
 
@@ -169,14 +175,19 @@ exports.index = async (req, res) => {
       async (error, results) => {
         // console.log(email)
         // console.log(results)
+        
         try {
-          if (
-            !results ||
+          if(results.length < 1 ){
+            return res.status(401).render("index", {
+              wrongCredMessage: "Email or password is incorrect",
+              mCaptcha: captcha
+            });
+          } else if (
             !(await bcrypt.compare(password, results[0].password))
           ) {
             res.status(401).render("index", {
               wrongCredMessage: "Email or password is incorrect",
-              mCaptcha: captcha,
+              mCaptcha: captcha
             });
           } else {
             const id = results[0].id;
@@ -184,7 +195,7 @@ exports.index = async (req, res) => {
               expiresIn: process.env.JWT_EXPIRES_IN,
             });
 
-            // console.log(token);
+            
 
             const cookieOptions = {
               expires: new Date(

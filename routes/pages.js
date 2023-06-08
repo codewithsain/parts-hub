@@ -5,7 +5,7 @@ const userController = require('../controllers/userController')
 const featureController = require('../controllers/featureController')
 const partController = require('../controllers/partController')
 
-router.get("/", authController.isLoggedIn, authController.createCaptcha, (req, res) => {
+router.get("/", authController.isLoggedIn, authController.createCaptcha,  async(req, res) => {
     if (req.user) {
         res.redirect('/landingPage')
     } else {
