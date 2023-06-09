@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,129 +13,144 @@
     {{>_header}}
 
     <main>
+        <ul class="breadcrumb">
+            <li><a href="/landingPage">Home</a></li>
+            <li>Admin Console</li>
+        </ul>
         <div class="adminContainer">
-            <div class="card">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Users</h3>
-                        {{#if userIsAdmin}}
-                        <h3 class="errorMessageRegister">{{userIsAdmin}}</h3>
-                        {{/if}}
-                    </div>
-                    <div class="cardTitleButton">
-                        <form action="/admin/addUsers" method="GET">
-                            <button id="getUsers" class="adminBtn">Add</button>
-                        </form>
 
+            <div class="container">
+                <div class="cardUsers">
+
+                    <div class="cardTitleContainer">
+                        <div class="cardTitleText">
+                            <h3 class="cardTitle">Users</h3>
+                            {{#if userIsAdmin}}
+                            <h3 class="errorMessageRegister">{{userIsAdmin}}</h3>
+                            {{/if}}
+                        </div>
+                        <div class="cardTitleButton">
+                            <form action="/admin/addUsers" method="GET">
+                                <button id="getUsers" class="adminBtn">Add</button>
+                            </form>
+                        </div>
                     </div>
+                    <table id="users">
+                        <thead>
+                            <tr class="headerTable">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    User ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Last Name
+                                </th>
+                                <th>
+                                    Position
+                                </th>
+                                <th>
+                                    Role
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each users}}
+                            <tr class="trHover">
+                                <td>{{id}}</td>
+                                <td>{{user}}</td>
+                                <td>{{name}}</td>
+                                <td>{{lastName}}</td>
+                                <td>{{position}}</td>
+                                <td>{{role}}</td>
+                                <td>{{email}}</td>
+                                <td>
+                                    <form action="/admin/deleteUsers" method="POST">
+                                        <input type="hidden" value="{{user}}" name="userDelete">
+                                        <button class="actionBtn">Delete</button>
+                                    </form>
+                                    <form action="/admin/updateUsers" method="POST">
+                                        <input type="hidden" value="{{id}}" name="userUpdate">
+                                        <button class="actionBtn">Update</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
                 </div>
-                <table id="users">
-                    <thead>
-                        <tr class="headerTable">
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                User ID
-                            </th>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Last Name
-                            </th>
-                            <th>
-                                Position
-                            </th>
-                            <th>
-                                Role
-                            </th>
-                            <th>
-                                Email
-                            </th>
-                             <th>
-                                Actions
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each users}}
-                        <tr class="trHover">
-                            <td>{{id}}</td>
-                            <td>{{user}}</td>
-                            <td>{{name}}</td>
-                            <td>{{lastName}}</td>
-                            <td>{{position}}</td>
-                            <td>{{role}}</td>
-                            <td>{{email}}</td>
-                            <td>
-                                <form action="/admin/deleteUsers" method="POST">
-                                <input type="hidden" value="{{user}}" name="userDelete">
-                                <button class="actionBtn">Delete</button>
-                                </form>
-                                <form action="/admin/updateUsers" method="POST">
-                                <input type="hidden" value="{{id}}" name="userUpdate">
-                                <button class="actionBtn">Update</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-            </div>
-            <div class="card">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Features Flags</h3>
+                <div class="cardFeatures">
+
+                    <div class="cardTitleContainer">
+                        <div class="cardTitleText">
+                            <h3 class="cardTitle">Features Flags</h3>
+                        </div>
+                        <div class="cardTitleButton">
+                            <form action="/admin/addFeatures" method="GET">
+                                <button id="getUsers" class="adminBtn">Add</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="cardTitleButton">
-                        <form action="/admin/addFeatures" method="GET">
-                            <button id="getUsers" class="adminBtn">Add</button>
-                        </form>
-                    </div>
+                    <table id="users">
+                        <thead>
+                            <tr class="headerTable">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Cookie
+                                </th>
+                                <th>
+                                    Value
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each features}}
+                            <tr class="trHover">
+                                <td>{{id}}</td>
+                                <td>{{name}}</td>
+                                <td>{{cookie}}</td>
+                                <td>{{value}}</td>
+                                <td>
+                                    <form action="/admin/deleteFeatures" method="POST">
+                                        <input type="hidden" value="{{id}}" name="featureDelete">
+                                        <button class="actionBtn">Delete</button>
+                                    </form>
+                                    <form action="/admin/updateFeatures" method="POST">
+                                        <input type="hidden" value="{{id}}" name="featureUpdate">
+                                        <button class="actionBtn">Update</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
                 </div>
-                <table id="users">
-                    <thead>
-                        <tr class="headerTable">
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Cookie
-                            </th>
-                            <th>
-                                Value
-                            </th>
-                             <th>
-                                Actions
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each features}}
-                        <tr class="trHover">
-                            <td>{{id}}</td>
-                            <td>{{name}}</td>
-                            <td>{{cookie}}</td>
-                            <td>{{value}}</td>
-                            <td>
-                                <form action="/admin/deleteFeatures" method="POST">
-                                <input type="hidden" value="{{id}}" name="featureDelete">
-                                <button class="actionBtn">Delete</button>
-                                </form>
-                                <form action="/admin/updateFeatures" method="POST">
-                                <input type="hidden" value="{{id}}" name="featureUpdate">
-                                <button class="actionBtn">Update</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+                <div class="blank">
+                    <h1></h1>
+                </div>
             </div>
+
+
         </div>
         {{#if showModalUser}}
         <div id="myModal" class="modal">
@@ -143,41 +159,47 @@
                     <button class="close">&times;</button>
                 </form>
                 <form action="/admin/addUsers/save" method="POST">
-                <input type="text" class="input" placeholder="User" name="user" value="{{userLS}}" minlength="7" maxlength="7"/>
-                <input type="text" class="input" placeholder="Name" name="name" value="{{nameLS}}"  minlength="2" maxlength="25"/>
-                <input type="text" class="input" placeholder="Last Name" name="lastName" value="{{lastNameLS}}"  minlength="2" maxlength="25" />
-                <input type="text" class="input" placeholder="Position" name="position" value="{{positionLS}}"  minlength="5" maxlength="50"/>
-                <select name="role" class="selectInput">
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                </select>
-                <input type="email" class="input" placeholder="Email" name="email" value="{{emailLS}}"  maxlength="100" />
-                <input type="password" class="input" placeholder="Password" name="password" value="{{passwordLS}}"  minlength="12" maxlength="50"/>
-                <input type="password" class="input" placeholder="Confirm your password"
-                    name="passwordConfirm"  value="{{passwordConfirmLS}}"  minlength="12" maxlength="50"/>
-                <button type="submit" class="registerBtn">Save</button>
-                {{#if userRegisteredMessage}}
-                <h4 class="succRegisMessage">{{userRegisteredMessage}}</h4>
-                {{/if}}
-                 {{#if userTaken}}
-                <h4 class="errorMessageRegister">{{userTaken}}</h4>
-                {{/if}}
-                 {{#if userLength}}
-                <h4 class="errorMessageRegister">{{userLength}}</h4>
-                {{/if}}
-                {{#if emailMessage}}
-                <h4 class="errorMessageRegister">{{emailMessage}}</h4>
-                {{/if}}
-                 {{#if passwordMessage}}
-                <h4 class="errorMessageRegister">{{passwordMessage}}</h4>
-                {{/if}}
-                {{#if specialC}}
-                <h4 class="errorMessageRegister">{{specialC}}</h4>
-                {{/if}}
+                    <input type="text" class="input" placeholder="User" name="user" value="{{userLS}}" minlength="7"
+                        maxlength="7" />
+                    <input type="text" class="input" placeholder="Name" name="name" value="{{nameLS}}" minlength="2"
+                        maxlength="25" />
+                    <input type="text" class="input" placeholder="Last Name" name="lastName" value="{{lastNameLS}}"
+                        minlength="2" maxlength="25" />
+                    <input type="text" class="input" placeholder="Position" name="position" value="{{positionLS}}"
+                        minlength="5" maxlength="50" />
+                    <select name="role" class="selectInput">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <input type="email" class="input" placeholder="Email" name="email" value="{{emailLS}}"
+                        maxlength="100" />
+                    <input type="password" class="input" placeholder="Password" name="password" value="{{passwordLS}}"
+                        minlength="12" maxlength="50" />
+                    <input type="password" class="input" placeholder="Confirm your password" name="passwordConfirm"
+                        value="{{passwordConfirmLS}}" minlength="12" maxlength="50" />
+                    <button type="submit" class="registerBtn">Save</button>
+                    {{#if userRegisteredMessage}}
+                    <h4 class="succRegisMessage">{{userRegisteredMessage}}</h4>
+                    {{/if}}
+                    {{#if userTaken}}
+                    <h4 class="errorMessageRegister">{{userTaken}}</h4>
+                    {{/if}}
+                    {{#if userLength}}
+                    <h4 class="errorMessageRegister">{{userLength}}</h4>
+                    {{/if}}
+                    {{#if emailMessage}}
+                    <h4 class="errorMessageRegister">{{emailMessage}}</h4>
+                    {{/if}}
+                    {{#if passwordMessage}}
+                    <h4 class="errorMessageRegister">{{passwordMessage}}</h4>
+                    {{/if}}
+                    {{#if specialC}}
+                    <h4 class="errorMessageRegister">{{specialC}}</h4>
+                    {{/if}}
                 </form>
                 </form>
             </div>
-            </div>
+        </div>
         </div>
         {{/if}}
 
@@ -188,23 +210,26 @@
                     <button class="close">&times;</button>
                 </form>
                 <form action="/admin/updateUsers/save" method="POST">
-                <input type="hidden" value="{{idLS}}" name="id">
-                <input type="text" class="input" placeholder="Name" name="name" value="{{nameLS}}"  minlength="2" maxlength="25"/>
-                <input type="text" class="input" placeholder="Last Name" name="lastName" value="{{lastNameLS}}"  minlength="2" maxlength="25" />
-                <input type="text" class="input" placeholder="Position" name="position" value="{{positionLS}}"  minlength="5" maxlength="50"/>
-                <select name="role" class="selectInput">
-                    <option value="{{roleLS}}" selected disabled hidden>Choose here</option>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                </select>
-                <button type="submit" class="registerBtn">Edit</button>
-                {{#if specialC}}
-                <h4 class="errorMessageRegister">{{specialC}}</h4>
-                {{/if}}
+                    <input type="hidden" value="{{idLS}}" name="id">
+                    <input type="text" class="input" placeholder="Name" name="name" value="{{nameLS}}" minlength="2"
+                        maxlength="25" />
+                    <input type="text" class="input" placeholder="Last Name" name="lastName" value="{{lastNameLS}}"
+                        minlength="2" maxlength="25" />
+                    <input type="text" class="input" placeholder="Position" name="position" value="{{positionLS}}"
+                        minlength="5" maxlength="50" />
+                    <select name="role" class="selectInput">
+                        <option value="{{roleLS}}" selected disabled hidden>Choose here</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <button type="submit" class="registerBtn">Edit</button>
+                    {{#if specialC}}
+                    <h4 class="errorMessageRegister">{{specialC}}</h4>
+                    {{/if}}
                 </form>
                 </form>
             </div>
-            </div>
+        </div>
         </div>
         {{/if}}
 
@@ -216,21 +241,23 @@
                 </form>
                 </form>
                 <form action="/admin/addFeatures/save" method="POST">
-                <input type="hidden" value="{{idFF}}" name="idFF">
-                <input type="text" class="input" placeholder="Name" name="nameFF" value="{{nameFF}}"  minlength="2" maxlength="50"/>
-                <input type="text" class="input" placeholder="Cookie" name="cookieFF" value="{{cookieFF}}"  minlength="2" maxlength="50" />
-                <select name="valueFF" class="selectInput">
-                    <option value="{{valueFF}}" selected disabled hidden>Choose here</option>
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <button type="submit" class="registerBtn">Save</button>
-                {{#if specialC}}
-                <h4 class="errorMessageRegister">{{specialC}}</h4>
-                {{/if}}
-                {{#if featureRegisteredMessage}}
-                <h4 class="succRegisMessage">{{featureRegisteredMessage}}</h4>
-                {{/if}}
+                    <input type="hidden" value="{{idFF}}" name="idFF">
+                    <input type="text" class="input" placeholder="Name" name="nameFF" value="{{nameFF}}" minlength="2"
+                        maxlength="50" />
+                    <input type="text" class="input" placeholder="Cookie" name="cookieFF" value="{{cookieFF}}"
+                        minlength="2" maxlength="50" />
+                    <select name="valueFF" class="selectInput">
+                        <option value="{{valueFF}}" selected disabled hidden>Choose here</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                    <button type="submit" class="registerBtn">Save</button>
+                    {{#if specialC}}
+                    <h4 class="errorMessageRegister">{{specialC}}</h4>
+                    {{/if}}
+                    {{#if featureRegisteredMessage}}
+                    <h4 class="succRegisMessage">{{featureRegisteredMessage}}</h4>
+                    {{/if}}
                 </form>
             </div>
         </div>
@@ -244,30 +271,32 @@
                 </form>
                 </form>
                 <form action="/admin/updateFeatures/save" method="POST">
-                <input type="hidden" value="{{idFF}}" name="id">
-                <input type="text" class="input" placeholder="Name" name="name" value="{{nameFF}}"  minlength="2" maxlength="50"/>
-                <input type="text" class="input" placeholder="Cookie" name="cookie" value="{{cookieFF}}"  minlength="2" maxlength="50" />
-                <select name="value" class="selectInput">
-                    <option value="{{valueFF}}" selected disabled hidden>Choose here</option>
-                    <option value="true">True</option>
-                    <option value="false">False</option>
-                </select>
-                <button type="submit" class="registerBtn">Edit</button>
-                {{#if specialC}}
-                <h4 class="errorMessageRegister">{{specialC}}</h4>
-                {{/if}}
-                {{#if featureRegisteredMessage}}
-                <h4 class="succRegisMessage">{{featureRegisteredMessage}}</h4>
-                {{/if}}
+                    <input type="hidden" value="{{idFF}}" name="id">
+                    <input type="text" class="input" placeholder="Name" name="name" value="{{nameFF}}" minlength="2"
+                        maxlength="50" />
+                    <input type="text" class="input" placeholder="Cookie" name="cookie" value="{{cookieFF}}"
+                        minlength="2" maxlength="50" />
+                    <select name="value" class="selectInput">
+                        <option value="{{valueFF}}" selected disabled hidden>Choose here</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                    <button type="submit" class="registerBtn">Edit</button>
+                    {{#if specialC}}
+                    <h4 class="errorMessageRegister">{{specialC}}</h4>
+                    {{/if}}
+                    {{#if featureRegisteredMessage}}
+                    <h4 class="succRegisMessage">{{featureRegisteredMessage}}</h4>
+                    {{/if}}
                 </form>
             </div>
         </div>
-        {{/if}}          
+        {{/if}}
 
     </main>
 
-    
-{{>_footer}}
+
+    {{>_footer}}
 </body>
 
 </html>
