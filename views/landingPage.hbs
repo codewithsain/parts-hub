@@ -10,132 +10,138 @@
 </head>
 
 <body>
- {{>_header}}
+    {{>_header}}
     <main>
-        <div>
+        <div class="landingPageContainer">
             <h2 class="allParts">All Parts({{numberOfParts}})</h2>
-            <div class="controlBar">
-                <form action="/landingPage/search" method="POST">
-                <input type="text" placeholder="Search part by User ID" class="partSearch" value="{{userID}}" name="userId">
+
+            <form action="/landingPage/search" method="POST" class="searchContainer">
+                <input type="text" placeholder="Search part by User ID" class="partSearch" value="{{userID}}"
+                    name="userId">
                 <button class="searchBtn">Search</button>
-                </form>
-                {{#if role}}
-                <form action="/landingPage/addParts" method="POST">
-                    <input type="hidden" value="{{id}}" name="partId">
-                    <button class="addPartBtn">Add Part</button>
-                </form>
-                {{/if}}
+            </form>
+
+            {{#if role}}
+            <form action="/landingPage/addParts" method="POST" class="addPartContainer">
+                <input type="hidden" value="{{id}}" name="partId">
+                <button class="addPartBtn">Add Part</button>
+            </form>
+            {{/if}}
+
+
+            <div class="cardLandingPage">
+                {{#if noPartsAvailable}}
+                <h2>No parts available</h2>
+                {{else}}
+                <table id="parts">
+
+                    <thead class="headerTableParts">
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Part
+                            </th>
+                            <th>
+                                Revision Description
+                            </th>
+                            <th>
+                                Local Task
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Task Current Duration
+                            </th>
+                            <th>
+                                Task Due Date
+                            </th>
+                            <th>
+                                Term Code
+                            </th>
+                            <th>
+                                Net Weight
+                            </th>
+                            <th>
+                                Gross Weight
+                            </th>
+                            {{#if role}}
+                            <th>
+                                Actions
+                            </th>
+                            {{/if}}
+                        </tr>
+                    </thead>
+                    {{#if role}}
+                    <tbody class="tbodyParts">
+                        <tr class="trHover">
+                            {{#each parts}}
+                            <td>{{id}}</td>
+                            <td><a href="/partDetails" class="link">{{partNumber}}</a></td>
+                            <td>{{revisionDesc}}</td>
+                            <td>{{localTask}}</td>
+                            <td>{{status}}</td>
+                            <td>
+                                <p>{{currentDuration}} Days</p>
+                            </td>
+                            <td>
+                                <p>{{dueDate}}</p>
+                            </td>
+                            <td>{{termCode}}</td>
+                            <td>
+                                <p>{{netWeigth}} kg</p>
+                            </td>
+                            <td>
+                                <p>{{grossWeigth}} kg</p>
+                            </td>
+                            <td>
+                                <form action="/landingPage/deleteParts" method="POST">
+                                    <input type="hidden" value="{{id}}" name="partDelete">
+                                    <button class="actionBtn">Delete</button>
+                                </form>
+                                <form action="/landingPage/updateParts" method="POST">
+                                    <input type="hidden" value="{{id}}" name="partUpdate">
+                                    <button class="actionBtn">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                    {{else}}
+                    <tbody class="tbodyParts">
+                        <tr class="trHover">
+                            {{#each parts}}
+                            <td>{{id}}</td>
+                            <td><a href="/partDetails" class="link">{{partNumber}}</a></td>
+                            <td>{{revisionDesc}}</td>
+                            <td>{{localTask}}</td>
+                            <td>{{status}}</td>
+                            <td>
+                                <p>{{currentDuration}} Days</p>
+                            </td>
+                            <td>
+                                <p>{{dueDate}}</p>
+                            </td>
+                            <td>{{termCode}}</td>
+                            <td>
+                                <p>{{netWeigth}} kg</p>
+                            </td>
+                            <td>
+                                <p>{{grossWeigth}} kg</p>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                    {{/if}}
+                </table>
+            </div>
+            {{/if}}
+            <div class="blankLP">
+                <h1></h1>
             </div>
         </div>
-        <div class="cardLandingPage">
-            {{#if noPartsAvailable}}
-                <h2>No parts available</h2>
-            {{else}}
-            <table id="parts">
-                
-                <thead class="headerTableParts">
-                    <tr>
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Part
-                        </th>
-                        <th>
-                            Revision Description
-                        </th>
-                        <th>
-                            Local Task
-                        </th>
-                        <th>
-                            Status
-                        </th>
-                        <th>
-                            Task Current Duration
-                        </th>
-                        <th>
-                            Task Due Date
-                        </th>
-                        <th>
-                            Term Code
-                        </th>
-                        <th>
-                            Net Weight
-                        </th>
-                        <th>
-                            Gross Weight
-                        </th>
-                        {{#if role}}
-                        <th>
-                            Actions
-                        </th>
-                        {{/if}}
-                    </tr>
-                </thead>
-                {{#if role}}
-                <tbody class="tbodyParts">
-                    <tr class="trHover">
-                        {{#each parts}}
-                        <td>{{id}}</td>
-                        <td><a href="/partDetails" class="link" target="_blank">{{partNumber}}</a></td>
-                        <td>{{revisionDesc}}</td>
-                        <td>{{localTask}}</td>
-                        <td>{{status}}</td>
-                        <td>
-                            <p>{{currentDuration}} Days</p>
-                        </td>
-                        <td>
-                            <p>{{dueDate}}</p>
-                        </td>
-                        <td>{{termCode}}</td>
-                        <td>
-                            <p>{{netWeigth}} kg</p>
-                        </td>
-                        <td>
-                            <p>{{grossWeigth}} kg</p>
-                        </td>
-                        <td>
-                            <form action="/landingPage/deleteParts" method="POST">
-                                <input type="hidden" value="{{id}}" name="partDelete">
-                                <button class="actionBtn">Delete</button>
-                            </form>
-                            <form action="/landingPage/updateParts" method="POST">
-                                <input type="hidden" value="{{id}}" name="partUpdate">
-                                <button class="actionBtn">Update</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-                {{else}}
-                <tbody class="tbodyParts">
-                    <tr class="trHover">
-                        {{#each parts}}
-                        <td>{{id}}</td>
-                        <td><a href="www.google.com" class="link" target="_blank">{{partNumber}}</a></td>
-                        <td>{{revisionDesc}}</td>
-                        <td>{{localTask}}</td>
-                        <td>{{status}}</td>
-                        <td>
-                            <p>{{currentDuration}} Days</p>
-                        </td>
-                        <td>
-                            <p>{{dueDate}}</p>
-                        </td>
-                        <td>{{termCode}}</td>
-                        <td>
-                            <p>{{netWeigth}} kg</p>
-                        </td>
-                        <td>
-                            <p>{{grossWeigth}} kg</p>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-                {{/if}}
-            </table>
-        </div>
-        {{/if}}
         {{#if showModalAddPart}}
         <div id="myModal" class="modal">
             <div class="modal-content">
@@ -174,7 +180,7 @@
                     {{#if partRegisteredMessage}}
                     <h4 class="succRegisMessage">{{partRegisteredMessage}}</h4>
                     {{/if}}
-                     {{#if userNotExists}}
+                    {{#if userNotExists}}
                     <h4 class="errorMessageRegister">{{userNotExists}}</h4>
                     {{/if}}
                 </form>
