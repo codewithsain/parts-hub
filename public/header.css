@@ -1,0 +1,251 @@
+header {
+  background-color: white;
+  border: 1px solid;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  border-color: #ccc;
+  grid-template-columns: 200px 200px 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas: "logo title options";
+  column-gap: 10px;
+  height: 75px;
+  display: grid;
+  margin: 0;
+  grid-area: header;
+  z-index: 1;
+}
+
+.logo{
+  margin-left: 16px;
+  margin-right: 16px;
+  grid-area: logo;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  height: 40px;
+}
+
+.vertical-line {
+    display: inline-block;
+    border-left: 1px solid #666666;
+    height: 30px;
+    grid-area: line;
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+
+
+.hTitle {
+  margin-left: 16px;
+  color: #367c2b;
+  grid-area: title;
+  margin-top: 24px;
+  height: 40px;
+}
+
+.headerOptions{
+  grid-area: options;
+  display: flex;
+  justify-content: end;
+  height: 60px;
+}
+
+.faqBtn{
+  border: none;
+  background-color: inherit;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  margin-left: 6px;
+  margin-right: 6px;
+   cursor: pointer;
+}
+
+.faqBtn:hover {
+  background-color: #666;
+}
+
+.faqBtn:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.userBtn {
+  width: 50px;
+  height: 30px;
+  background-color: inherit;
+  cursor: pointer;
+  background-position: center;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  margin-left: 6px;
+  margin-right: 6px;
+} 
+
+.userBtn img 
+{  
+	display: inline-block;
+    vertical-align: middle
+}
+
+.userBtn span{
+    width: 70px;
+    vertical-align:middle;
+    font-weight: bold;
+}
+
+.userBtn:hover {
+  background-color: #666;
+}
+
+.userBtn:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+ .dropdown-content {
+  display: block;
+  position: absolute;
+  right: 12px;
+  background-color: white;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.dropdown-content a:hover {
+  background-color: #666;
+} 
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  background-color: white;
+  border-bottom: 1px solid #666666;
+}
+
+.dropdownName {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  line-height: 2px;
+}
+
+.dropdownPos {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  border-bottom: 1px solid #666666;
+  line-height: 2px;
+}
+
+.dropdownBtn {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  min-width: 120px;
+}
+
+.dropdownBtn:hover {
+  background-color: #666;
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px){
+  header {
+    grid-template-areas: "logo title options"
+  }
+
+}
+
+@media screen and (max-width: 576px){
+  header {
+    height: 100px;
+    grid-template-areas: "logo options options"
+                          "title title title"
+  }
+
+  .logo{
+    margin-bottom: 0px;
+  }
+
+  .hTitle{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }  
+}
+
+@media screen and (max-width: 434px){
+  header {
+    height: 100px;
+    grid-template-areas: "logo options options"
+                          "title title title"
+  }
+
+  .logo{
+    margin-bottom: 0px;
+  }
+
+  .hTitle{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .headerOptions{
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 320px){
+  header {
+    height: 100px;
+    column-gap: 0px;
+    grid-template-areas: "logo options options"
+                          "title title title"
+  }
+
+  .logo{
+    margin-bottom: 0px;
+  }
+
+  .hTitle{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .headerOptions{
+    justify-content: start;
+  }
+
+  .hTitle{
+    margin-right: 16px;
+  }
+}

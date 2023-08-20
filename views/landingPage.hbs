@@ -8,33 +8,110 @@
     <link rel="stylesheet" href="/style_landingPage.css">
     <title>Landing Page</title>
 </head>
-
 <body>
-    {{>_header}}
+        {{>_header}}
     <main>
-        <div class="landingPageContainer">
-            <h2 class="allParts">All Parts({{numberOfParts}})</h2>
-
+            <h2 class="allParts" id="allParts">All Parts()</h2>
             <form action="/landingPage/search" method="POST" class="searchContainer">
                 <input type="text" placeholder="Search part by User ID" class="partSearch" value="{{userID}}"
                     name="userId">
                 <button class="searchBtn">Search</button>
             </form>
 
-            {{#if role}}
-            <form action="/landingPage/addParts" method="POST" class="addPartContainer">
-                <input type="hidden" value="{{id}}" name="partId">
+            
+            <div class="addPartContainer">
                 <button class="addPartBtn">Add Part</button>
-            </form>
-            {{/if}}
-
-
+            </div>
+                
             <div class="cardLandingPage">
-                {{#if noPartsAvailable}}
-                <h2>No parts available</h2>
-                {{else}}
-                <table id="parts">
 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Part
+                            </th>
+                              <th>
+                                Description
+                            </th>
+                            <th>
+                                Local Task
+                            </th>
+                             <th>
+                                Status
+                            </th>
+                            <th>
+                                Task Current Duration
+                            </th>
+                             <th>
+                                Task Due Date
+                            </th>
+                             <th>
+                              Term Code
+                            </th>
+                              <th>
+                              Net Weight
+                            </th>
+                            <th>
+                              Gross Weight
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                <a href="">TX0000</a>
+                            </td>
+                            <td>
+                                A
+                            </td>
+                            <td>
+                                Develop_7
+                            </td>
+                            <td>
+                                Completed
+                            </td>
+                            <td>
+                                10
+                            </td>
+                            <td>
+                                28/08/2023
+                            </td>
+                            <td>
+                                001
+                            </td>
+                            <td>
+                                10
+                            </td>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                 <form action="/landingPage/deleteParts" method="POST">
+                                    <input type="hidden" value="{{id}}" name="partDelete">
+                                    <button class="actionBtn">Delete</button>
+                                </form>
+                                <form action="/landingPage/updateParts" method="POST">
+                                    <input type="hidden" value="{{id}}" name="partUpdate">
+                                    <button class="actionBtn">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                {{!-- {{#if noPartsAvailable}}
+                <h2>No parts available</h2>
+                {{else}} --}}
+                {{!-- <table id="parts">
                     <thead class="headerTableParts">
                         <tr>
                             <th>
@@ -67,34 +144,34 @@
                             <th>
                                 Gross Weight
                             </th>
-                            {{#if role}}
+                            
                             <th>
                                 Actions
                             </th>
-                            {{/if}}
+                       
                         </tr>
                     </thead>
-                    {{#if role}}
+                
                     <tbody class="tbodyParts">
                         <tr class="trHover">
-                            {{#each parts}}
-                            <td>{{id}}</td>
-                            <td><a href="/partDetails" class="link">{{partNumber}}</a></td>
-                            <td>{{revisionDesc}}</td>
-                            <td>{{localTask}}</td>
-                            <td>{{status}}</td>
+                            
+                            <td></td>
+                            <td><a href="/partDetails" class="link"></a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
-                                <p>{{currentDuration}} Days</p>
+                                <p>Days</p>
                             </td>
                             <td>
-                                <p>{{dueDate}}</p>
+                                <p></p>
                             </td>
-                            <td>{{termCode}}</td>
+                            <td></td>
                             <td>
-                                <p>{{netWeigth}} kg</p>
+                                <p></p>
                             </td>
                             <td>
-                                <p>{{grossWeigth}} kg</p>
+                                <p></p>
                             </td>
                             <td>
                                 <form action="/landingPage/deleteParts" method="POST">
@@ -107,10 +184,9 @@
                                 </form>
                             </td>
                         </tr>
-                        {{/each}}
+                     
                     </tbody>
-                    {{else}}
-                    <tbody class="tbodyParts">
+                    {{!-- <tbody class="tbodyParts">
                         <tr class="trHover">
                             {{#each parts}}
                             <td>{{id}}</td>
@@ -132,17 +208,23 @@
                                 <p>{{grossWeigth}} kg</p>
                             </td>
                         </tr>
-                        {{/each}}
-                    </tbody>
-                    {{/if}}
-                </table>
+                    
+                    </tbody> --}}
+            
+                {{!-- </table> --}}
             </div>
-            {{/if}}
-            <div class="blankLP">
-                <h1></h1>
+           
+           <div class="addPartModal">
+
+            <div class="addPartModal-content">
+                <span class="close">&times;</span>
+                <p>Add part modal</p>
             </div>
-        </div>
-        {{#if showModalAddPart}}
+                
+           </div>
+           
+     
+        {{!-- {{#if showModalAddPart}}
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <form action="/landingPage" method="GET">
@@ -225,11 +307,17 @@
                     <h4 class="succRegisMessage">{{partUpdated}}</h4>
                     {{/if}}
                 </form>
-            </div>
-        </div>
-        {{/if}}
+            </div>  --}}
+        
+    
     </main>
-    {{>_footer}}
+      {{>_footer}}
+    </div>
+    <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+    <script src="/test.js" charset="UTF-8"></script>
 </body>
 
 </html>

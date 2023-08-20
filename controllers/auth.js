@@ -8,8 +8,7 @@ exports.register = (req, res) => {
   const { user, name, lastName, position, email, password, passwordConfirm } =
     req.body;
 
-  const qM = /["']/;
-  const characters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
 
   store.setAll({
     userR: user,
@@ -125,47 +124,32 @@ exports.register = (req, res) => {
   );
 };
 
-exports.createCaptcha = (req, res, next) => {
-  chars = "1234567890ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz";
-  captcha = chars[Math.floor(Math.random() * chars.length)];
-  for (var i = 0; i < 6; i++) {
-    captcha = captcha + chars[Math.floor(Math.random() * chars.length)];
-  }
 
-  res.render("index", {
-    mCaptcha: captcha,
-  });
+exports.logIn =  (req, res) => {
 
-
-
-  // console.log(captcha);
-
-  next();
-
- 
-};
-
-exports.index = async (req, res) => {
   try {
     const { email, password, captchaInput, captchaText } = req.body;
+  
     const qM = /["']/;
 
     if (!email || !password) {
       return res.status(400).render("index", {
+        errorMessage: true,
         noCredMessage: "Please provide an email and password",
       });
     }
 
     if (qM.test(password)) {
       return res.render("index", {
+        errorMessage: true,
         qMMessage: "Passwords can't contain quotation mark",
       });
     }
 
     if (captchaInput != captchaText) {
-      return res.status(400).render("index", {
-        invalidCaptcha: "Captcha Is invalid",
-        mCaptcha: captcha
+      return res.render('index', {
+        errorMessage: true,
+        captchaInvalid: 'Captcha is invalid. Try again'
       });
     }
 
@@ -173,29 +157,26 @@ exports.index = async (req, res) => {
       "SELECT * FROM user WHERE email = ?",
       [email],
       async (error, results) => {
-        // console.log(email)
-        // console.log(results)
+       
         
         try {
           if(results.length < 1 ){
-            return res.status(401).render("index", {
-              wrongCredMessage: "Email or password is incorrect",
-              mCaptcha: captcha
+            return res.render('index', {
+              errorMessage: true,
+              userNotRegistered: 'User is not registered'
             });
           } else if (
             !(await bcrypt.compare(password, results[0].password))
           ) {
-            res.status(401).render("index", {
-              wrongCredMessage: "Email or password is incorrect",
-              mCaptcha: captcha
-            });
+            return res.render('index',{
+              errorMessage: true,
+              incorrectPassword: 'Password is not correct'
+            })
           } else {
             const id = results[0].id;
             const token = jwt.sign({ id }, process.env.JWT_SECRET, {
               expiresIn: process.env.JWT_EXPIRES_IN,
             });
-
-            
 
             const cookieOptions = {
               expires: new Date(
@@ -226,7 +207,6 @@ exports.isLoggedIn = async (req, res, next) => {
         process.env.JWT_SECRET
       );
 
-      // console.log(decoded);
 
       dbConn.query(
         "SELECT * FROM user WHERE id = ?",
@@ -234,35 +214,33 @@ exports.isLoggedIn = async (req, res, next) => {
         (error, results) => {
           console.log(results);
           if (!results) {
-            return next();
+
+            return res.status(401).redirect("/");
           }
 
-          req.user = results[0];
+          const cookieOptions = {
+            expires: new Date(
+              Date.now() + process.env.JWT_COOKIE_IN * 24 * 60 * 60 * 1000
+            ),
+            httpOnly: true,
+          };
 
-          store.setAll({ 
-            sessionUser: results[0].user,
-            sessionName: results[0].name,
-            sessionLastName: results[0].lastName,
-            sessionPosition: results[0].position,
-            sessionRole: results[0].role
-          });
+          res.cookie("loggedIn", true, cookieOptions);
 
-          return next();
+          next();
+
         }
       );
     } catch (error) {
       return next();
     }
   } else {
-    next();
+    res.status(400).redirect("/");
   }
 };
 
 exports.logout = async (req, res) => {
-  res.cookie("jwt", "logout", {
-    expires: new Date(Date.now) * 2 * 1000,
-    httpOnly: true,
-  });
-
+  res.clearCookie("jwt");
+  res.clearCookie("loggedIn");
   res.status(200).redirect("/");
 };

@@ -5,39 +5,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/loginStyles.css">
     <title>Login</title>
 </head>
 
 <body>
-    <form class="formLogIn" action="/auth/index" method="POST">
-        <div class="divLogin">
-            <h2 class="form-title" id="login">Log in</h2>
-            <input type="email" class="input" placeholder="Email" name="email" />
-            <input type="password" class="inputPassword" placeholder="Password" name="password" />
+    <div class="divLogin">
+
+    <form class="formLogIn" id="formLogIn" action="/auth" method="POST" novalidate>
+            <h2 class="form-title" id="login">Log In</h2>
+             <Label class="emailLabel">Email</Label>
+            <input type="email" class="email" placeholder="example@email.com" name="email" id="email" />
+            <span class="errorEmail">Invalid Email</span>
+             <Label class="passwordLabel">Password</Label>
+             <input type="password" class="inputPassword" placeholder="password" name="password"  id="password"/>
+             <span class="errorPassword">Invalid Password</span>
             <div class="captcha">
-                <input readonly="readonly"  onselectstart="return false" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" type="text" class="captchaImage" name="captchaText" value="{{mCaptcha}}" />
+                <input readonly="readonly"  onselectstart="return false" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" type="text" class="captchaImage" name="captchaText" id="captchaText" />
                 <input  type="text" class="inputCaptcha" placeholder="Captcha" name="captchaInput" id="captchaInput"/>
-                {{#if invalidCaptcha}}
-                <h4 class="errorMessageRegister">{{invalidCaptcha}}</h4>
-                {{/if}}
+                 <span class="errorCaptcha">Invalid Captcha</span>
             </div>
-            <button type="submit"  class="loginBtn">Log in</button>
+            <button type="submit"  class="loginBtn" id="loginBtn">Log in</button>
             <a href="/register" class="link" target="_blank">Register here</a>
-            {{#if noCredMessage}}
-            <h4 class="errorMessageRegister">{{noCredMessage}}</h4>
-            {{/if}}
-            {{#if wrongCredMessage}}
-            <h4 class="errorMessageRegister">{{wrongCredMessage}}</h4>
-            {{/if}}
-            {{#if qMMessage}}
-            <h4 class="errorMessageRegister">{{qMMessage}}</h4>
-            {{/if}} 
-            
-            
-        </div>
     </form>
+
+     
+      {{#if errorMessage}}
+        <div class="message-container-error">
+          {{#if captchaInvalid}}
+            <p class="message">{{captchaInvalid}}</p>
+          {{/if}}
+           {{#if noCredMessage}}
+            <p class="message">{{noCredMessage}}</p>
+          {{/if}}
+           {{#if qMMessage}}
+            <p class="message">{{qMMessage}}</p>
+          {{/if}}
+          {{#if userNotRegistered}}
+            <p class="message">{{userNotRegistered}}</p>
+          {{/if}}
+          {{#if incorrectPassword}}
+            <p class="message">{{incorrectPassword}}</p>
+          {{/if}}
+        </div>
+      {{/if}}
+   
+
     </div>
+
+   
+    <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+    <script src="/captcha.js" charset="utf-8"></script>
+     <script src="/validateIndex.js" charset="utf-8"></script>
+     <script src="/test.js" charset="utf-8"></script>
 </body>
 
 </html>
