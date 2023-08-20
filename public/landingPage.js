@@ -24,4 +24,6 @@ $(document).ready(function (){
         $(".addPartModal").css("display", "none")
     })
 
+
+
 })
