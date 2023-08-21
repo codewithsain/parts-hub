@@ -108,124 +108,45 @@
                         </tr>
                     </tbody>
                 </table>
-                {{!-- {{#if noPartsAvailable}}
-                <h2>No parts available</h2>
-                {{else}} --}}
-                {{!-- <table id="parts">
-                    <thead class="headerTableParts">
-                        <tr>
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Part
-                            </th>
-                            <th>
-                                Revision Description
-                            </th>
-                            <th>
-                                Local Task
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Task Current Duration
-                            </th>
-                            <th>
-                                Task Due Date
-                            </th>
-                            <th>
-                                Term Code
-                            </th>
-                            <th>
-                                Net Weight
-                            </th>
-                            <th>
-                                Gross Weight
-                            </th>
-                            
-                            <th>
-                                Actions
-                            </th>
-                       
-                        </tr>
-                    </thead>
-                
-                    <tbody class="tbodyParts">
-                        <tr class="trHover">
-                            
-                            <td></td>
-                            <td><a href="/partDetails" class="link"></a></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <p>Days</p>
-                            </td>
-                            <td>
-                                <p></p>
-                            </td>
-                            <td></td>
-                            <td>
-                                <p></p>
-                            </td>
-                            <td>
-                                <p></p>
-                            </td>
-                            <td>
-                                <form action="/landingPage/deleteParts" method="POST">
-                                    <input type="hidden" value="{{id}}" name="partDelete">
-                                    <button class="actionBtn">Delete</button>
-                                </form>
-                                <form action="/landingPage/updateParts" method="POST">
-                                    <input type="hidden" value="{{id}}" name="partUpdate">
-                                    <button class="actionBtn">Update</button>
-                                </form>
-                            </td>
-                        </tr>
-                     
-                    </tbody>
-                    {{!-- <tbody class="tbodyParts">
-                        <tr class="trHover">
-                            {{#each parts}}
-                            <td>{{id}}</td>
-                            <td><a href="/partDetails" class="link">{{partNumber}}</a></td>
-                            <td>{{revisionDesc}}</td>
-                            <td>{{localTask}}</td>
-                            <td>{{status}}</td>
-                            <td>
-                                <p>{{currentDuration}} Days</p>
-                            </td>
-                            <td>
-                                <p>{{dueDate}}</p>
-                            </td>
-                            <td>{{termCode}}</td>
-                            <td>
-                                <p>{{netWeigth}} kg</p>
-                            </td>
-                            <td>
-                                <p>{{grossWeigth}} kg</p>
-                            </td>
-                        </tr>
-                    
-                    </tbody> --}}
-            
-                {{!-- </table> --}}
             </div>
            
            <div class="addPartModal">
-
             <div class="addPartModal-content">
                 <span class="close">&times;</span>
-                <h2>Add Part Modal</h2>
-                <label class="partNumberL">Part Number</label>
-                <br>
-                <input class="partNumberI" type="text" placeholder="X00000" maxlength="6" minlength="6">
-                <br>
-                <label class="descL">Description</label>
-                <br>
-                <input class="descI" type="text" placeholder="Add Description" maxlength="25" minlength="25">
+                <div class="firstColumn">
+                    <label class="partNumberL">Part Number</label>    
+                    <input class="partNumberI" type="text"  maxlength="6" minlength="6" style="text-transform:uppercase">
+                    <label class="descL">Description</label>
+                    <input class="descI" type="text" placeholder="Add Description" maxlength="25" minlength="25">
+                    <label class="similarPartL">Similar Part</label>
+                    <select  class="similarPartS">Choose a Part</select>
+                    <label class="containerL">Container</label>
+                    <select  class="containerS">Choose a container</select>
+                </div>
+                <div class="secondColumn">
+                    <label class="netWeightL">Net Weight</label>    
+                    <input class="netWeightI" type="number" min="1" max="1000">
+                    <label class="grossWeightL">Gross Weight</label>
+                    <input class="grossWeightI" type="number"  min="1" max="2000">
+                    <label class="termCodeL">Term Code</label>
+                    <input  class="termCodeI" type="text" placeholder="00-00-00">
+                    <label class="termCodeDescL">Term Code Description</label>
+                    <input  class="termCodeDescI" type="text" placeholder="Add Description" minlength="10" maxlength="25">
+                </div>
+                <div class="thirdColumn">
+                    <label class="userL">User</label>
+                    <select  class="userS">Choose a assigned User</select>
+                    <label class="revisionL">Revision</label>
+                    <select  class="revisionS">Choose a revision</select>
+                     <label class="plantL">Plant</label>
+                    <select  class="plantS">Choose a plant</select>
+                </div>
+                <div class="buttonContainer">
+                    <button type="click" class="cancelBtn">Cancel</button>
+                    <button type="submit" class="saveBtn">Save</button>
+                </div>
+                
+                
             </div>
                 
            </div>
@@ -320,11 +241,14 @@
     </main>
       {{>_footer}}
     </div>
-    <script
+<script
   src="https://code.jquery.com/jquery-3.7.0.js"
   integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
   crossorigin="anonymous"></script>
     <script src="/test.js" charset="UTF-8"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" 
+        integrity="sha256-yE5LLp5HSQ/z+hJeCqkz9hdjNkk1jaiGG0tDCraumnA=" 
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

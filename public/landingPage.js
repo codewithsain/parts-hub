@@ -24,6 +24,11 @@ $(document).ready(function (){
         $(".addPartModal").css("display", "none")
     })
 
+    $(".cancelBtn").on('click', function(){
+        $(".addPartModal").css("display", "none")
+    })
 
+    $(".partNumberI").mask('A00000');
+    $(".termCodeI").mask('00-00-00');
 
 })
