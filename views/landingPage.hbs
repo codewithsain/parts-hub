@@ -11,21 +11,30 @@
 <body>
         {{>_header}}
     <main>
-            <h2 class="allParts" id="allParts">All Parts()</h2>
+            <h2 class="allParts" id="allParts">All Parts(<span id="numberOfParts"></span>)</h2>
             <form action="/landingPage/search" method="POST" class="searchContainer">
                 <input type="text" placeholder="Search part by User ID" class="partSearch" value="{{userID}}"
                     name="userId">
                 <button class="searchBtn">Search</button>
             </form>
 
-            
+            <div class="message-container-success">
+                <div class="message">Part Added Succesfully</div>
+            </div>
+            <div class="message-container-error">
+                <div class="message">An error has ocurred</div>
+            </div>
+            <div class="message-container-successDelete">
+                <div class="message">Part Deleted Succesfully</div>
+            </div>
+
             <div class="addPartContainer">
                 <button class="addPartBtn">Add Part</button>
             </div>
                 
             <div class="cardLandingPage">
 
-                <table>
+                <table id="partsTable">
                     <thead>
                         <tr>
                             <th>
@@ -38,63 +47,21 @@
                                 Description
                             </th>
                             <th>
-                                Local Task
+                                Term Code
                             </th>
                              <th>
-                                Status
+                                Net Weight
                             </th>
                             <th>
-                                Task Current Duration
-                            </th>
-                             <th>
-                                Task Due Date
-                            </th>
-                             <th>
-                              Term Code
-                            </th>
-                              <th>
-                              Net Weight
-                            </th>
-                            <th>
-                              Gross Weight
+                                Gross Weight
                             </th>
                             <th>
                               Actions
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                <a href="">TX0000</a>
-                            </td>
-                            <td>
-                                A
-                            </td>
-                            <td>
-                                Develop_7
-                            </td>
-                            <td>
-                                Completed
-                            </td>
-                            <td>
-                                10
-                            </td>
-                            <td>
-                                28/08/2023
-                            </td>
-                            <td>
-                                001
-                            </td>
-                            <td>
-                                10
-                            </td>
-                            <td>
-                                1
-                            </td>
+                    {{!-- <tbody>
+                         <tr>
                             <td>
                                  <form action="/landingPage/deleteParts" method="POST">
                                     <input type="hidden" value="{{id}}" name="partDelete">
@@ -105,52 +72,103 @@
                                     <button class="actionBtn">Update</button>
                                 </form>
                             </td>
-                        </tr>
-                    </tbody>
+                        </tr> 
+                    </tbody> --}}
                 </table>
             </div>
            
            <div class="addPartModal">
-            <div class="addPartModal-content">
+            <form class="addPartModal-content" id="addPartForm">
                 <span class="close">&times;</span>
                 <div class="firstColumn">
                     <label class="partNumberL">Part Number</label>    
-                    <input class="partNumberI" type="text"  maxlength="6" minlength="6" style="text-transform:uppercase">
+                    <input class="partNumberI"  id="partNumberI" name="partNumberI" type="text" placeholder="X00000" maxlength="6" minlength="6" style="text-transform:uppercase">
                     <label class="descL">Description</label>
-                    <input class="descI" type="text" placeholder="Add Description" maxlength="25" minlength="25">
+                    <input class="descI" id="descI" name="descI" type="text" style="text-transform:uppercase" placeholder="Add Description" maxlength="25" minlength="4">
                     <label class="similarPartL">Similar Part</label>
-                    <select  class="similarPartS">Choose a Part</select>
+                    <select  class="similarPartS" name="similarPartS" id="similarPartS"></select>
                     <label class="containerL">Container</label>
-                    <select  class="containerS">Choose a container</select>
+                    <select  class="containerS" name="containerS" id="containerS"></select> 
                 </div>
                 <div class="secondColumn">
                     <label class="netWeightL">Net Weight</label>    
-                    <input class="netWeightI" type="number" min="1" max="1000">
+                    <input class="netWeightI" name="netWeightI"  id="netWeightI"  type="text" placeholder="0.00">
                     <label class="grossWeightL">Gross Weight</label>
-                    <input class="grossWeightI" type="number"  min="1" max="2000">
+                    <input class="grossWeightI" name="grossWeightI" id="grossWeightI"  type="text"  placeholder="0.00">
                     <label class="termCodeL">Term Code</label>
-                    <input  class="termCodeI" type="text" placeholder="00-00-00">
+                    <input  class="termCodeI" name="termCodeI" id="termCodeI" type="text" placeholder="000000" maxlength="6" minlength="6">
                     <label class="termCodeDescL">Term Code Description</label>
-                    <input  class="termCodeDescI" type="text" placeholder="Add Description" minlength="10" maxlength="25">
+                    <input  class="termCodeDescI" name="termCodeDescI" id="termCodeDescI" type="text" placeholder="Add Description" minlength="4" maxlength="25" style="text-transform:uppercase">
                 </div>
                 <div class="thirdColumn">
                     <label class="userL">User</label>
-                    <select  class="userS">Choose a assigned User</select>
+                    <select  class="userS" name="userS" id="userS"></select>
                     <label class="revisionL">Revision</label>
-                    <select  class="revisionS">Choose a revision</select>
+                    <select  class="revisionS" name="revisionS" id="revisionS"></select>
                      <label class="plantL">Plant</label>
-                    <select  class="plantS">Choose a plant</select>
+                    <select  class="plantS" name="plantS" id="plantS">
+                    </select>
                 </div>
                 <div class="buttonContainer">
                     <button type="click" class="cancelBtn">Cancel</button>
                     <button type="submit" class="saveBtn">Save</button>
+                 </div>
+            </form>
+           </div>
+
+           <div class="addPartModalUpdate" >
+            <form class="addPartModal-content" id="addPartForm">
+                <span class="close" id="closeBtnUpdate">&times;</span>
+                <div class="firstColumn">
+                    <label class="partNumberL">Part Number</label>    
+                    <input class="partNumberI"  id="partNumberU" name="partNumberI" type="text" placeholder="X00000" maxlength="6" minlength="6" style="text-transform:uppercase">
+                    <label class="descL">Description</label>
+                    <input class="descI" id="descU" name="descI" type="text" style="text-transform:uppercase" placeholder="Add Description" maxlength="25" minlength="4">
+                    <label class="similarPartL">Similar Part</label>
+                    <select  class="similarPartS" name="similarPartS" id="similarPartU"></select>
+                    <label class="containerL">Container</label>
+                    <select  class="containerS" name="containerS" id="containerU"></select> 
                 </div>
-                
-                
-            </div>
-                
+                <div class="secondColumn">
+                    <label class="netWeightL">Net Weight</label>    
+                    <input class="netWeightI" name="netWeightI"  id="netWeightU"  type="text" placeholder="0.00">
+                    <label class="grossWeightL">Gross Weight</label>
+                    <input class="grossWeightI" name="grossWeightI" id="grossWeightU"  type="text"  placeholder="0.00">
+                    <label class="termCodeL">Term Code</label>
+                    <input  class="termCodeI" name="termCodeI" id="termCodeU" type="text" placeholder="000000" maxlength="6" minlength="6">
+                    <label class="termCodeDescL">Term Code Description</label>
+                    <input  class="termCodeDescI" name="termCodeDescI" id="termCodeDescU" type="text" placeholder="Add Description" minlength="4" maxlength="25" style="text-transform:uppercase">
+                </div>
+                <div class="thirdColumn">
+                    <label class="userL">User</label>
+                    <select  class="userS" name="userS" id="userU"></select>
+                    <label class="revisionL">Revision</label>
+                    <select  class="revisionS" name="revisionS" id="revisionU"></select>
+                     <label class="plantL">Plant</label>
+                    <select  class="plantS" name="plantS" id="plantU">
+                    </select>
+                </div>
+                <div class="buttonContainer">
+                    <button type="click" class="cancelBtn" id="updateModalClose">Cancel</button>
+                    <button type="submit" class="saveBtn" id="updateBtn">Update</button>
+                 </div>
+            </form>
+           </div>
+
+           <div class="loadingContainer">
+            <div class="loading"></div>
            </div>
            
+           <div class="deletePartModal">
+            <div class="deleteParModal-content">
+                <span class="close" id="closeBtnDelete">&times;</span>
+                <span class="deleteConfirmation">Are you sure you want to delete this part and its estimations?</span>
+                <div class="buttonContainerDelete">
+                    <button type="click" class="cancelBtn" id="cancelBtnDelete">Cancel</button>
+                    <button type="click" class="confirmDelete">Delete</button>
+                 </div>
+            </div>
+           </div>
      
         {{!-- {{#if showModalAddPart}}
         <div id="myModal" class="modal">
@@ -245,10 +263,11 @@
   src="https://code.jquery.com/jquery-3.7.0.js"
   integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
   crossorigin="anonymous"></script>
-    <script src="/test.js" charset="UTF-8"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" 
         integrity="sha256-yE5LLp5HSQ/z+hJeCqkz9hdjNkk1jaiGG0tDCraumnA=" 
         crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

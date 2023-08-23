@@ -6,6 +6,10 @@ const cookieParser = require("cookie-parser");
 const db = require("./dbConnection");
 const hbs = require('hbs');
 
+
+
+
+
 const publicDirectory = path.join(__dirname, "./public");
 app.use(express.static(publicDirectory));
 

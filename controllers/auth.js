@@ -185,8 +185,11 @@ exports.logIn =  (req, res) => {
               httpOnly: true,
             };
 
+            res.cookie("userID", results[0].user, cookieOptions);
+            res.cookie("role", results[0].role, cookieOptions);
             res.cookie("jwt", token, cookieOptions);
             res.status(200).redirect("/landingPage");
+            
           }
         } catch (error) {
           console.log(error);
@@ -201,6 +204,7 @@ exports.logIn =  (req, res) => {
 exports.isLoggedIn = async (req, res, next) => {
 
   if (req.cookies.jwt) {
+
     try {
       const decoded = await util.promisify(jwt.verify)(
         req.cookies.jwt,
@@ -240,6 +244,8 @@ exports.isLoggedIn = async (req, res, next) => {
 };
 
 exports.logout = async (req, res) => {
+  res.clearCookie("userID");
+  res.clearCookie("role");
   res.clearCookie("jwt");
   res.clearCookie("loggedIn");
   res.status(200).redirect("/");

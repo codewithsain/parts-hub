@@ -266,6 +266,56 @@ background-color: WHITE;
   grid-template-rows: repeat(3, 1fr);
 }
 
+.addPartModalUpdate {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.loadingContainer{
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.loading{
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid green;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  grid-column: 2;
+  grid-row: 2;
+  place-self: center;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .addPartModal-content {
   background-color: #fefefe;
   margin: auto;
@@ -282,6 +332,10 @@ background-color: WHITE;
   row-gap: 10px;
 }
 
+.addPartModal-content p{
+  text-align: left;
+  margin-left: 8px;
+}
 .addPartModal-content input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{ 
   -webkit-appearance: none;
@@ -302,14 +356,26 @@ input::-webkit-inner-spin-button{
   flex-direction: column;
 }
 
-.firstColumn label, input, select{
+.firstColumn input, select{
+  margin-top: 0px!important;
+  margin-left: 8px!important;
+  margin-right: 8px!important;
+  margin-bottom: 0px!important;
+  border-radius: 8px;
+}
+
+.firstColumn label{
   margin: 8px;
 }
 
-.firstColumn input, select{
-  margin: 8px;
+.firstColumn input{
   width: 150px;
   height: 21.33px;
+}
+
+.firstColumn  select{
+  width: 150px;
+  height: 27.33px;
 }
 
 .secondColumn{
@@ -319,14 +385,26 @@ input::-webkit-inner-spin-button{
   flex-direction: column;
 }
 
-.secondColumn label, input, select{
+.secondColumn input, select{
+  margin-top: 0px!important;
+  margin-left: 8px!important;
+  margin-right: 8px!important;
+  margin-bottom: 0px!important;
+  border-radius: 8px;
+}
+
+.secondColumn label{
   margin: 8px;
 }
 
-.secondColumn input, select{
-  margin: 8px;
+.secondColumn input{
   width: 150px;
   height: 21.33px;
+}
+
+.secondColumn  select{
+  width: 150px;
+  height: 27.33px;
 }
 
 .thirdColumn{
@@ -336,14 +414,26 @@ input::-webkit-inner-spin-button{
   flex-direction: column;
 }
 
-.thirdColumn label, input, select{
+.thirdColumn input, select{
+  margin-top: 0px!important;
+  margin-left: 8px!important;
+  margin-right: 8px!important;
+  margin-bottom: 0px!important;
+  border-radius: 8px;
+}
+
+.thirdColumn label{
   margin: 8px;
 }
 
-.thirdColumn input, select{
-  margin: 8px;
+.thirdColumn input{
   width: 150px;
   height: 21.33px;
+}
+
+.thirdColumn  select{
+  width: 150px;
+  height: 27.33px;
 }
 
 .buttonContainer{
@@ -351,6 +441,7 @@ input::-webkit-inner-spin-button{
   justify-content: end;
   grid-column: 3;
   grid-row: 3;
+  position: sticky!important;
 }
 
 .saveBtn {
@@ -420,8 +511,6 @@ input::-webkit-inner-spin-button{
   background-color: white;
 }
 
-
-
 .close:hover,
 .close:focus {
   color: black;
@@ -429,7 +518,152 @@ input::-webkit-inner-spin-button{
   cursor: pointer;
 } 
 
+.error{
+  color: red;
+  font-size: smaller;
+  margin-top: 0px!important;
+  margin-bottom: 0px!important;
+  margin-left: 8px!important;
+}
 
+.message-container-success {
+  background-color:  rgba(0, 255, 0, 0.233);
+  border-radius: 5px;
+  width: 100px;
+  grid-column: 2;
+  grid-row: 1;
+  height: 50%;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  overflow: hidden;
+  top: 0;
+  text-align: center;
+  display: grid;
+  justify-content:center;
+  place-self: center;
+}
+
+.message-container-successDelete {
+  background-color:  rgba(0, 255, 0, 0.233);
+  border-radius: 5px;
+  width: 100px;
+  grid-column: 2;
+  grid-row: 1;
+  height: 50%;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  overflow: hidden;
+  top: 0;
+  text-align: center;
+  display: grid;
+  justify-content:center;
+  place-self: center;
+}
+.message-container-error {
+  background-color: rgba(255, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 100px;
+  grid-column: 2;
+  grid-row: 1;
+  height: 50%;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  overflow: hidden;
+  top: 0;
+  text-align: center;
+  display: grid;
+  justify-content:center;
+  place-self: center;
+}
+
+
+
+.message {
+  font-size: 14px;
+  font-weight: 700;
+  color: #5d6168;
+  text-align: center;
+}
+
+
+.deletePartModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.deleteParModal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 450px;
+  height: 150px;
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 20px 1fr 50px;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.deleteConfirmation{
+  grid-row: 2;
+  grid-column: 1/4;
+  place-self: center;
+  font-size: 20px;
+}
+
+.buttonContainerDelete{
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  grid-column: 3;
+  grid-row: 3;
+  position: sticky!important;
+}
+
+.confirmDelete {
+  background-color: red;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  margin-right: 16px;
+  -webkit-transition: all 0.3s ease;
+}
+
+.confirmDelete:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(255, 0, 0, 0.63);
+}
+
+.confirmDelete:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 /* #users table {
   border-collapse: collapse;
   color: black;
