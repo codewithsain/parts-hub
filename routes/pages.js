@@ -29,25 +29,25 @@ router.get("/admin", authController.isLoggedIn, (req, res) =>{
 })
 
 //CONSULTING ROUTERS
-// router.post('/getPlants', partController.getPlants);
-// router.post('/getUsers', partController.getUsers);
-// router.post('/getRevisions', partController.getRevision);
-// router.post('/getParts', partController.getParts);
-// router.post('/getContainers', partController.getContainers);
-// router.post('/getNumberOfParts', partController.countParts);
-// router.post('/getPartsTable', partController.getPartsTable);
-// router.post('/getUserID', partController.getUserID);
-// router.post('/getPartsForUpdate', partController.getPartsForUpdate);
+router.post('/getPlants', partController.getPlants);
+router.post('/getUsers', partController.getUsers);
+router.post('/getRevisions', partController.getRevision);
+router.post('/getParts', partController.getParts);
+router.post('/getContainers', partController.getContainers);
+router.post('/getNumberOfParts', partController.countParts);
+router.post('/getPartsTable', partController.getPartsTable);
+router.post('/getUserID', partController.getUserID);
+router.post('/getPartsForUpdate', partController.getPartsForUpdate);
 
-// //INSERT DATA ROUTER
-// router.post('/addPart', partController.addPart);
+//INSERT DATA ROUTER
+router.post('/addPart', partController.addPart);
 
 
-// //DELETE DATA 
-// router.post('/deletePart', partController.deletePart);
-// // router.get("/register", (req, res) => {
-// //     res.render("register")
-// // });
+//DELETE DATA 
+router.post('/deletePart', partController.deletePart);
+// router.get("/register", (req, res) => {
+//     res.render("register")
+// });
 
 
 
