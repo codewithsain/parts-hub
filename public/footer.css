@@ -1,0 +1,58 @@
+footer {
+    background-color: #ccc;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 120px;
+    overflow: hidden;
+    width: 100%;
+    grid-area: footer;
+  }
+  
+  footer p{
+    grid-column: 2;
+    grid-row: 2;
+    margin-bottom: 16px;
+    margin-top: 8px;
+    text-overflow: ellipsis;
+   
+  }
+  
+  .footerContainer {
+    grid-column: 1/4;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    justify-content: center;
+  }
+  
+  
+  
+  .home {
+    color: #666666;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  
+  .codeOfConduct {
+    color: #666666;
+    margin-left: 16px;
+    margin-right: 16px;
+  
+  }
+  
+  .terms {
+    color: #666666;
+    margin-left: 16px;
+    margin-right: 16px;
+    text-overflow: ellipsis;
+  }
+  
+  .use {
+    color: #666666;
+    margin-left: 16px;
+    margin-right: 16px;
+    text-overflow: ellipsis;
+  }

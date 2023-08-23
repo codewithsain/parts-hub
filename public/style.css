@@ -10,7 +10,7 @@ body {
 
 }
 
-.formLogIn {
+/* .formLogIn {
     margin-top: 64px;
     background-color: white;
     border-radius: 5px;
@@ -44,7 +44,7 @@ body {
     margin-top: 32px;
     margin-left: 32px;
     margin-right: 32px;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     position: relative;
 }
 
@@ -95,10 +95,10 @@ body {
     font-size: 12px;
     justify-content: center;
     align-items: center;
-    margin-top: 32px;
+    margin-top: 8px;
     margin-left: 32px;
-    margin-right: 32px;
-    margin-bottom: 32px;
+    margin-right: 16px;
+    margin-bottom: 8px;
     position: relative;
 }
 
@@ -161,12 +161,10 @@ body {
     font-size: 10px;
     justify-content: left;
     align-items: center;
-    margin-top: 1px;
     margin-left: 32px;
     margin-right: 4px;
-    margin-bottom: 32px;
     position: relative;
-}
+} */
 
 .registerBtn {
     background-color: #ffd621;

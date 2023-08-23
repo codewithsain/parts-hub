@@ -6,6 +6,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "hbs": "^4.2.0",
+    "jquery-validation": "^1.19.5",
     "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
     "node-localstorage": "^2.2.1",

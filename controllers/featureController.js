@@ -1,168 +1,168 @@
-const featureController = {}
-const dbConn = require("../dbConnection");
-const store = require("store2");
+// const featureController = {}
+// const dbConn = require("../dbConnection");
+// const store = require("store2");
 
-featureController.listFeatures = (req, res) => {
-  try {
-    return new Promise((resolve, reject) => {
-      dbConn.query(
-        "SELECT id, name, cookie, value FROM featureFlags",
-        (error, users) => {
-          if (error) {
-            reject(error);
-          }
+// featureController.listFeatures = (req, res) => {
+//   try {
+//     return new Promise((resolve, reject) => {
+//       dbConn.query(
+//         "SELECT id, name, cookie, value FROM featureFlags",
+//         (error, users) => {
+//           if (error) {
+//             reject(error);
+//           }
 
-          resolve(users);
-        }
-      );
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+//           resolve(users);
+//         }
+//       );
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-featureController.saveFeatures = async (req, res) =>{
-    const {idFF, nameFF, cookieFF, valueFF} = req.body;
-    const characters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+// featureController.saveFeatures = async (req, res) =>{
+//     const {idFF, nameFF, cookieFF, valueFF} = req.body;
+//     const characters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
-    store.setAll({
-        nameFF: nameFF,
-        cookieFF: cookieFF,
-        valueFF: valueFF
-      });
+//     store.setAll({
+//         nameFF: nameFF,
+//         cookieFF: cookieFF,
+//         valueFF: valueFF
+//       });
 
-      try {
+//       try {
 
-        if (
-            characters.test(nameFF) ||
-            characters.test(cookieFF)
-          ) {
-            return res.render("admin", {
-              specialC:
-                "Name or cookie cannot contain special characters",
-              showModalFeature: true,
-              nameFF: store.get("nameFF"),
-              cookieFF: store.get("cookieFF")
-            });
-          }
-        return new Promise((resolve, reject) => {
-            dbConn.query("INSERT INTO featureFlags SET ?", {name: nameFF, cookie: cookieFF, value: valueFF},
-            (error, results) => {
-                if(error){
-                    console.log(error)
-                }else{
-                    store.clear();
-                    return res.render("admin",{
-                        showModalFeature: true,
-                        featureRegisteredMessage: "Feature registered succesfully"
-                    }) 
-                }
-            })
-          })
-    } catch (error) {
-        console.log(error)
-      }
-}
+//         if (
+//             characters.test(nameFF) ||
+//             characters.test(cookieFF)
+//           ) {
+//             return res.render("admin", {
+//               specialC:
+//                 "Name or cookie cannot contain special characters",
+//               showModalFeature: true,
+//               nameFF: store.get("nameFF"),
+//               cookieFF: store.get("cookieFF")
+//             });
+//           }
+//         return new Promise((resolve, reject) => {
+//             dbConn.query("INSERT INTO featureFlags SET ?", {name: nameFF, cookie: cookieFF, value: valueFF},
+//             (error, results) => {
+//                 if(error){
+//                     console.log(error)
+//                 }else{
+//                     store.clear();
+//                     return res.render("admin",{
+//                         showModalFeature: true,
+//                         featureRegisteredMessage: "Feature registered succesfully"
+//                     }) 
+//                 }
+//             })
+//           })
+//     } catch (error) {
+//         console.log(error)
+//       }
+// }
 
-featureController.deleteFeatures = (req, res) => {
-    const featureDelete = req.body.featureDelete;
+// featureController.deleteFeatures = (req, res) => {
+//     const featureDelete = req.body.featureDelete;
     
-    try {
-      return new Promise((resolve, reject) => {
-        dbConn.query(
-          "DELETE FROM featureFlags WHERE id = ?",
-          [featureDelete],
-          (error, features) => {
-            if (error) {
-              reject(error);
-            }
+//     try {
+//       return new Promise((resolve, reject) => {
+//         dbConn.query(
+//           "DELETE FROM featureFlags WHERE id = ?",
+//           [featureDelete],
+//           (error, features) => {
+//             if (error) {
+//               reject(error);
+//             }
   
-            resolve(features);
-          }
-        );
-      });
-    } catch (error) {
-      console.log(error);
-    }
-};
+//             resolve(features);
+//           }
+//         );
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+// };
 
 
-featureController.updateFeatures = (req, res) =>{
-    const id = req.body.featureUpdate;
+// featureController.updateFeatures = (req, res) =>{
+//     const id = req.body.featureUpdate;
 
-    try{
-        return new Promise((resolve, reject) =>{
+//     try{
+//         return new Promise((resolve, reject) =>{
 
-            dbConn.query("SELECT id, name, cookie, value FROM featureFlags WHERE id = ? ", [id],
-            (error, features) =>{
-                if(error){
-                    console.log(error);
-                }else{
-                    return res.render("admin",{
-                        showModalUpdateFeature: true,
-                        idFF: features[0].id,
-                        nameFF: features[0].name,
-                        cookieFF: features[0].cookie,
-                        valueFF: features[0].value,
-                    })
-                }
-            })
+//             dbConn.query("SELECT id, name, cookie, value FROM featureFlags WHERE id = ? ", [id],
+//             (error, features) =>{
+//                 if(error){
+//                     console.log(error);
+//                 }else{
+//                     return res.render("admin",{
+//                         showModalUpdateFeature: true,
+//                         idFF: features[0].id,
+//                         nameFF: features[0].name,
+//                         cookieFF: features[0].cookie,
+//                         valueFF: features[0].value,
+//                     })
+//                 }
+//             })
             
-        })
-    }catch(error){
-        console.log(error)
-    }
-}
+//         })
+//     }catch(error){
+//         console.log(error)
+//     }
+// }
 
 
 
-featureController.editFeatures = async (req, res) =>{
+// featureController.editFeatures = async (req, res) =>{
 
-const id = req.body.id;
+// const id = req.body.id;
 
-const {
-    name,
-    cookie,
-    value} = req.body;
+// const {
+//     name,
+//     cookie,
+//     value} = req.body;
 
-const characters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+// const characters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
-store.setAll({
-    nameFF: name,
-    cookieFF: cookie,
-    valueFF: value,
-});
+// store.setAll({
+//     nameFF: name,
+//     cookieFF: cookie,
+//     valueFF: value,
+// });
 
-    try {
-        if (
-            characters.test(name) ||
-            characters.test(cookie) 
-          ) {
-            return res.render("admin", {
-              specialC:
-                "User, name, last name or position cannot contain special characters",
-              showModalUpdateFeature: true,
-              nameFF: name,
-              cookieFF: cookie,
-              valueFF: value
-            });
-          }
+//     try {
+//         if (
+//             characters.test(name) ||
+//             characters.test(cookie) 
+//           ) {
+//             return res.render("admin", {
+//               specialC:
+//                 "User, name, last name or position cannot contain special characters",
+//               showModalUpdateFeature: true,
+//               nameFF: name,
+//               cookieFF: cookie,
+//               valueFF: value
+//             });
+//           }
     
-          const data = req.body;
+//           const data = req.body;
           
-        return new Promise((resolve, reject) =>{
-            dbConn.query("UPDATE featureFlags SET ? WHERE id = ?", [data, id],
-            (error, results) => {
-                if(error){
-                    console.log(error)
-                }
-                console.log(results);
-                store.clear();
-                res.redirect("/admin")
-            })
-        })
-    } catch (error) {
-        console.log(error)
-    }
-}
-module.exports = featureController;
+//         return new Promise((resolve, reject) =>{
+//             dbConn.query("UPDATE featureFlags SET ? WHERE id = ?", [data, id],
+//             (error, results) => {
+//                 if(error){
+//                     console.log(error)
+//                 }
+//                 console.log(results);
+//                 store.clear();
+//                 res.redirect("/admin")
+//             })
+//         })
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+// module.exports = featureController;
