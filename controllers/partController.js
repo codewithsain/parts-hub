@@ -197,6 +197,35 @@ exports.getPartsForUpdate = (req, res) =>{
     
 }
 
+exports.updatePart = (req, res) =>{
+    const {partNumber, description, similarPart, container, netWeight, grossWeight, termCode, termCodeDesc, user, revision, plant} = req.body;
+
+    try {
+        dbConn.query("UPDATE part  SET ? WHERE partNumber = ?", [ 
+            {
+            partNumber: partNumber.toUpperCase(),
+            description: description.toUpperCase(),
+            similarPart: similarPart,
+            containerID: container,
+            netWeight: parseFloat(netWeight),
+            grossWeight: parseFloat(grossWeight),
+            termCode: parseInt(termCode),
+            termCodeDesc: termCodeDesc.toUpperCase(),
+            userID: parseInt(user),
+            revisionID: parseInt(revision),
+            plantID: parseInt(plant)},
+             partNumber], 
+             (error, results) =>{
+                if(results){
+                return res.send('ok');
+                }else{
+                    return res.send(error);
+                }
+             })
+    } catch (error) {
+        res.send(error);
+    }
+}
 
 // partController.listParts = (req, res) => {
 //   const sessionUser = store.get("sessionUser");

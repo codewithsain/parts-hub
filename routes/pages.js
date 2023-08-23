@@ -45,6 +45,9 @@ router.post('/addPart', partController.addPart);
 
 //DELETE DATA 
 router.post('/deletePart', partController.deletePart);
+
+//UPDATE DATA
+router.post('/updatePart', partController.updatePart);
 // router.get("/register", (req, res) => {
 //     res.render("register")
 // });

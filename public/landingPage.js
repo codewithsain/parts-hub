@@ -5,6 +5,7 @@ $(document).ready(function (){
     $(".message-container-success").css("display", "none");
     $(".message-container-error").css("display", "none");
     $(".message-container-successDelete").css("display", "none");
+    $(".message-container-successUpdate").css("display", "none");
     $(".deletePartModal").css('display', 'none')
     
 
@@ -183,14 +184,14 @@ $(document).ready(function (){
                 $(".message-container-error").css("display", "grid");
                 setTimeout(function () { 
                     $(".message-container-error").css("display", "none");
-                 },2000)
+                 },4000)
                 }else if(response === 'ok'){
                     $(".loadingContainer").css("display", "none")
                     $(".addPartModal").css("display", "none");
                     $(".message-container-success").css("display", "grid");
                     setTimeout(function () { 
                         $(".message-container-success").css("display", "none");
-                     },2000)
+                     },4000)
                      loadTable();
                     countParts();
                 }
@@ -202,7 +203,7 @@ $(document).ready(function (){
                 $(".message-container-error").css("display", "grid");
                 setTimeout(function () { 
                     $(".message-container-error").css("display", "none");
-                 },2000)
+                 },4000)
                 }
                 
             }
@@ -252,7 +253,7 @@ $(document).ready(function (){
                     $(".message-container-successDelete").css("display", "grid");
                     setTimeout(function () { 
                         $(".message-container-successDelete").css("display", "none");
-                     },2000)
+                     },4000)
                      
                      countParts();
                 }else{
@@ -261,7 +262,7 @@ $(document).ready(function (){
                     $(".message-container-error").css("display", "grid");
                     setTimeout(function () { 
                         $(".message-container-error").css("display", "none");
-                     },2000)
+                     },4000)
                  }
                 }
          })
@@ -365,6 +366,104 @@ $(document).ready(function (){
                     $("#plantU").val(response[0].plantID)
 
                 }
+            })
+
+            $(".updateBtn").on("click", function(){
+                $("#updatePartForm").validate({
+                    rules: {
+                        partNumberU: "required",
+                        descU: "required",
+                        similarPartU: "required",
+                        containerU: "required",
+                        netWeightU: {
+                            required: true,
+                            number: true
+                        },
+                        grossWeightU: {
+                            required: true,
+                            number: true
+                        },
+                        termCodeU: "required",
+                        termCodeDescU: "required",
+                        userU: "required",
+                        revisionU: "required",
+                        plantU: "required"
+                    },
+                    messages:{
+                        partNumberU: 'Please enter a part number',
+                        descU: "Please enter a description",
+                        similarPartU: "Please select a similar part",
+                        containerU: "Please select a container",
+                        netWeightU: {
+                            required: "Please enter a net weigth",
+                            number: "Only decimals numbers are allowed"
+                        },
+                        grossWeightU: {
+                            required: "Please enter a net weigth",
+                            number: "Only decimals numbers are allowed"
+                        },
+                        termCodeU: "Please enter a term code",
+                        termCodeDescU: "Plese enter a description",
+                        userU: "Please select a user",
+                        revisionU: "Please select a revision",
+                        plantU: "Please select a plant"
+                    },
+                    submitHandler: function(){
+                    $.ajax({
+                        url: "/updatePart",
+                        method: 'POST',
+                        data: {
+                            partNumber: $("#partNumberU").val().trim(),
+                            description: $("#descU").val().trim(),
+                            similarPart: $("#similarPartU").val().trim(),
+                            container: $("#containerU").val().trim(),
+                            netWeight: $("#netWeightU").val().trim(),
+                            grossWeight: $("#grossWeightU").val().trim(),
+                            termCode: $("#termCodeU").val().trim(),
+                            termCodeDesc: $("#termCodeDescU").val().trim(),
+                            user: $("#userU").val().trim(),
+                            revision: $("#revisionU").val().trim(),
+                            plant: $("#plantU").val().trim(),
+            
+                        }, 
+                        beforeSend: function () { 
+                            $(".loadingContainer").css("display", "grid")
+                        },
+                        success: function(response){
+                            // console.log(response)
+                             if(response === undefined || response != 'ok'){
+                                $(".loadingContainer").css("display", "none")
+                            $(".addPartModal").css("display", "none");
+                            $(".message-container-error").css("display", "grid");
+                            setTimeout(function () { 
+                                $(".message-container-error").css("display", "none");
+                             },4000)
+                            }else if(response === 'ok'){
+                                $(".loadingContainer").css("display", "none")
+                                $(".addPartModalUpdate").css("display", "none");
+                                $(".message-container-successUpdate").css("display", "grid");
+                                setTimeout(function () { 
+                                    $(".message-container-successUpdate").css("display", "none");
+                                 },4000)
+                                
+                                countParts();
+                            }
+                        },
+                        error: function(response){
+                            if(response === undefined || response != 'ok'){
+                                $(".loadingContainer").css("display", "none")
+                            $(".addPartModalUpdate").css("display", "none");
+                            $(".message-container-error").css("display", "grid");
+                            setTimeout(function () { 
+                                $(".message-container-error").css("display", "none");
+                             },4000)
+                            }
+                            
+                        }
+                       })
+                    }
+                   
+                    })
             })
 
             

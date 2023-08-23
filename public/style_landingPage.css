@@ -498,6 +498,32 @@ input::-webkit-inner-spin-button{
   transform: translateY(4px);
 }
  
+.updateBtn {
+  background-color: #ffd621;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  margin-right: 16px;
+  -webkit-transition: all 0.3s ease;
+}
+
+.updateBtn:hover {
+  transition: all 0.3s ease;
+  background-color: #e4c022;
+}
+
+.updateBtn:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
  
 .close {
   text-align: right;
@@ -546,6 +572,25 @@ input::-webkit-inner-spin-button{
 }
 
 .message-container-successDelete {
+  background-color:  rgba(0, 255, 0, 0.233);
+  border-radius: 5px;
+  width: 100px;
+  grid-column: 2;
+  grid-row: 1;
+  height: 50%;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  overflow: hidden;
+  top: 0;
+  text-align: center;
+  display: grid;
+  justify-content:center;
+  place-self: center;
+}
+
+.message-container-successUpdate {
   background-color:  rgba(0, 255, 0, 0.233);
   border-radius: 5px;
   width: 100px;

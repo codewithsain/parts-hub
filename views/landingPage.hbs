@@ -27,6 +27,9 @@
             <div class="message-container-successDelete">
                 <div class="message">Part Deleted Succesfully</div>
             </div>
+            <div class="message-container-successUpdate">
+                <div class="message">Part Updated Succesfully</div>
+            </div>
 
             <div class="addPartContainer">
                 <button class="addPartBtn">Add Part</button>
@@ -117,40 +120,40 @@
            </div>
 
            <div class="addPartModalUpdate" >
-            <form class="addPartModal-content" id="addPartForm">
+            <form class="addPartModal-content" id="updatePartForm">
                 <span class="close" id="closeBtnUpdate">&times;</span>
                 <div class="firstColumn">
                     <label class="partNumberL">Part Number</label>    
-                    <input class="partNumberI"  id="partNumberU" name="partNumberI" type="text" placeholder="X00000" maxlength="6" minlength="6" style="text-transform:uppercase">
+                    <input class="partNumberI"  id="partNumberU" name="partNumberU" type="text" placeholder="X00000" maxlength="6" minlength="6" style="text-transform:uppercase">
                     <label class="descL">Description</label>
-                    <input class="descI" id="descU" name="descI" type="text" style="text-transform:uppercase" placeholder="Add Description" maxlength="25" minlength="4">
+                    <input class="descI" id="descU" name="descU" type="text" style="text-transform:uppercase" placeholder="Add Description" maxlength="25" minlength="4">
                     <label class="similarPartL">Similar Part</label>
-                    <select  class="similarPartS" name="similarPartS" id="similarPartU"></select>
+                    <select  class="similarPartS" name="similarPartU" id="similarPartU"></select>
                     <label class="containerL">Container</label>
-                    <select  class="containerS" name="containerS" id="containerU"></select> 
+                    <select  class="containerS" name="containerU" id="containerU"></select> 
                 </div>
                 <div class="secondColumn">
                     <label class="netWeightL">Net Weight</label>    
-                    <input class="netWeightI" name="netWeightI"  id="netWeightU"  type="text" placeholder="0.00">
+                    <input class="netWeightI" name="netWeightU"  id="netWeightU"  type="text" placeholder="0.00">
                     <label class="grossWeightL">Gross Weight</label>
-                    <input class="grossWeightI" name="grossWeightI" id="grossWeightU"  type="text"  placeholder="0.00">
+                    <input class="grossWeightI" name="grossWeightU" id="grossWeightU"  type="text"  placeholder="0.00">
                     <label class="termCodeL">Term Code</label>
-                    <input  class="termCodeI" name="termCodeI" id="termCodeU" type="text" placeholder="000000" maxlength="6" minlength="6">
+                    <input  class="termCodeI" name="termCodeU" id="termCodeU" type="text" placeholder="000000" maxlength="6" minlength="6">
                     <label class="termCodeDescL">Term Code Description</label>
-                    <input  class="termCodeDescI" name="termCodeDescI" id="termCodeDescU" type="text" placeholder="Add Description" minlength="4" maxlength="25" style="text-transform:uppercase">
+                    <input  class="termCodeDescI" name="termCodeDescU" id="termCodeDescU" type="text" placeholder="Add Description" minlength="4" maxlength="25" style="text-transform:uppercase">
                 </div>
                 <div class="thirdColumn">
                     <label class="userL">User</label>
-                    <select  class="userS" name="userS" id="userU"></select>
+                    <select  class="userS" name="userU" id="userU"></select>
                     <label class="revisionL">Revision</label>
-                    <select  class="revisionS" name="revisionS" id="revisionU"></select>
+                    <select  class="revisionS" name="revisionU" id="revisionU"></select>
                      <label class="plantL">Plant</label>
-                    <select  class="plantS" name="plantS" id="plantU">
+                    <select  class="plantS" name="plantU" id="plantU">
                     </select>
                 </div>
                 <div class="buttonContainer">
                     <button type="click" class="cancelBtn" id="updateModalClose">Cancel</button>
-                    <button type="submit" class="saveBtn" id="updateBtn">Update</button>
+                    <button type="submit" class="updateBtn">Update</button>
                  </div>
             </form>
            </div>
