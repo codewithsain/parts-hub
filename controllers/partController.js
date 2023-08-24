@@ -127,6 +127,7 @@ exports.addPart = (req, res) =>{
 exports.countParts = (req, res) =>{
     try {
         dbConn.query("SELECT COUNT(id) AS numberOfParts FROM part", (error, results) =>{
+            
             if(results){
                 return res.send({status: 'ok', numberOfParts: results})
             }else{
@@ -198,10 +199,10 @@ exports.getPartsForUpdate = (req, res) =>{
 }
 
 exports.updatePart = (req, res) =>{
-    const {partNumber, description, similarPart, container, netWeight, grossWeight, termCode, termCodeDesc, user, revision, plant} = req.body;
+    const {id, partNumber, description, similarPart, container, netWeight, grossWeight, termCode, termCodeDesc, user, revision, plant} = req.body;
 
     try {
-        dbConn.query("UPDATE part  SET ? WHERE partNumber = ?", [ 
+        dbConn.query("UPDATE part  SET ? WHERE id = ?", [ 
             {
             partNumber: partNumber.toUpperCase(),
             description: description.toUpperCase(),
@@ -214,7 +215,7 @@ exports.updatePart = (req, res) =>{
             userID: parseInt(user),
             revisionID: parseInt(revision),
             plantID: parseInt(plant)},
-             partNumber], 
+             id], 
              (error, results) =>{
                 if(results){
                 return res.send('ok');

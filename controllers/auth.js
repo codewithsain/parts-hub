@@ -185,8 +185,13 @@ exports.logIn =  (req, res) => {
               httpOnly: true,
             };
 
-            res.cookie("userID", results[0].user, cookieOptions);
-            res.cookie("role", results[0].role, cookieOptions);
+            const lastName = results[0].lastName.split(" ");
+            const name = results[0].name.split(" ");
+          
+            res.cookie("userID", results[0].user);
+            res.cookie("name", name[0]);
+            res.cookie("lastName", lastName[0]);
+            res.cookie("position", results[0].position);
             res.cookie("jwt", token, cookieOptions);
             res.status(200).redirect("/landingPage");
             
@@ -243,10 +248,82 @@ exports.isLoggedIn = async (req, res, next) => {
   }
 };
 
+exports.isAdmin = async (req, res, next) =>{
+  if (req.cookies.jwt) {
+
+    try {
+      const decoded = await util.promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET
+      );
+
+
+      dbConn.query(
+        "SELECT role FROM user WHERE id = ?",
+        [decoded.id],
+        (error, results) => {
+          console.log(results);
+          if (results[0].role != 'admin') {
+
+            return res.render("restriction");
+          }
+          next();
+
+        }
+      );
+    } catch (error) {
+      return next();
+    }
+  } else {
+    res.status(400).redirect("/");
+  }
+  
+}
+
+
+exports.renderAdmin = async (req, res, next) =>{
+  if (req.cookies.jwt) {
+
+    try {
+      const decoded = await util.promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET
+      );
+
+
+      dbConn.query(
+        "SELECT role FROM user WHERE id = ?",
+        [decoded.id],
+        (error, results) => {
+          console.log(results);
+          if (results[0].role != 'admin') {
+
+            return res.send(false);
+          }else if(results[0].role === 'admin'){
+            return res.send(true);
+          }else if(error){
+            next();
+          }
+  
+
+        }
+      );
+    } catch (error) {
+      res.send(error);
+    }
+  } else {
+    res.status(400).redirect("/");
+  }
+}
+
 exports.logout = async (req, res) => {
   res.clearCookie("userID");
   res.clearCookie("role");
   res.clearCookie("jwt");
+  res.clearCookie("name");
+  res.clearCookie("lastName");
+  res.clearCookie("position");
   res.clearCookie("loggedIn");
+  res.clearCookie("currentUser");
   res.status(200).redirect("/");
 };

@@ -7,7 +7,29 @@ $(document).ready(function (){
     $(".message-container-successDelete").css("display", "none");
     $(".message-container-successUpdate").css("display", "none");
     $(".deletePartModal").css('display', 'none')
-    
+    loadTable();
+    countParts();
+    $.ajax({
+        url: "/renderAdmin",
+        method: 'POST',
+        success: function (response) {
+            if(response === false){
+                $(".addPartBtn").css("display", "none")
+                $("#adminLink").css("display", "none")
+                $("#actions").css("display", "none")
+                $("#tableActions").css("display", "none")
+                $(".actionBtn").css("display", "none")
+            }
+        }
+    })
+
+    $(".dropdownName").text(Cookies.get("name") + " "+ Cookies.get("lastName") );
+    $(".dropdownPos").text(Cookies.get("position"));
+    $("#userName").text(Cookies.get("name"));
+
+
+   
+   
 
     $(".dropdown").on('click', function (){
     
@@ -225,8 +247,7 @@ $(document).ready(function (){
     })
 
     
-    loadTable();
-    countParts();
+    
 
    $("table").on("click", '#deleteBtn', function(){
      $(".deletePartModal").css('display', 'grid')
@@ -255,7 +276,8 @@ $(document).ready(function (){
                         $(".message-container-successDelete").css("display", "none");
                      },4000)
                      
-                     countParts();
+                     loadTable();
+                    countParts();
                 }else{
                     $(".loadingContainer").css("display", "none")
                     $(".deletePartModal").css('display', 'grid')
@@ -413,6 +435,7 @@ $(document).ready(function (){
                         url: "/updatePart",
                         method: 'POST',
                         data: {
+                            id: id,
                             partNumber: $("#partNumberU").val().trim(),
                             description: $("#descU").val().trim(),
                             similarPart: $("#similarPartU").val().trim(),
@@ -445,7 +468,7 @@ $(document).ready(function (){
                                 setTimeout(function () { 
                                     $(".message-container-successUpdate").css("display", "none");
                                  },4000)
-                                
+                                loadTable();
                                 countParts();
                             }
                         },
@@ -473,34 +496,29 @@ $(document).ready(function (){
        $("#closeBtnUpdate"). on("click", function(){
         $(".addPartModalUpdate").css("display", "none");
        })
+
+
+       
+    
 })
 
 function loadTable() { 
-    var tableResults = '';
-    var userID = '';
 
-    $.ajax({
-        url: "/getUserID",
-        method: "POST",
-        success: function (response) { 
-            Cookies.set('currentUser', response);
-            console.log(response)
-         }
-    })
+    var tableResults = "";
+
 
     $.ajax({
         url: '/getPartsTable',
         method: 'POST',
         data:{
-            userID: Cookies.get('currentUser')
+            userID: Cookies.get('userID')
         },
         success: function (response){
-            $('#partsTable tr').not(':first').not(':last').remove();
+            $('#partsTable tr').not(':first').remove();
             $.each(response, function (key, val) { 
-                tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td><td><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
+                tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td><td id="tableActions"><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
              })
 
-             console.log(tableResults)
              $('#partsTable tr').first().after(tableResults);
         }
 

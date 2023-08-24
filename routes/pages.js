@@ -8,6 +8,7 @@ const partController = require('../controllers/partController')
 //AUTH ROUTES
 router.post("/auth", authController.logIn);
 router.get("/logout", authController.logout);
+router.post("/renderAdmin", authController.renderAdmin)
 
 //PAGES ROUTES
 router.get("/",  (req, res) =>{
@@ -24,30 +25,31 @@ router.get("/landingPage", authController.isLoggedIn ,(req, res) =>{
   res.render("landingPage")
 })
 
-router.get("/admin", authController.isLoggedIn, (req, res) =>{
+router.get("/admin", authController.isLoggedIn, authController.isAdmin, (req, res) =>{
   res.render("admin");
 })
 
 //CONSULTING ROUTERS
-router.post('/getPlants', partController.getPlants);
-router.post('/getUsers', partController.getUsers);
-router.post('/getRevisions', partController.getRevision);
+router.post('/getPlants', authController.isAdmin, partController.getPlants);
+router.post('/getUsers',authController.isAdmin, partController.getUsers);
+router.post('/getRevisions', authController.isAdmin, partController.getRevision);
 router.post('/getParts', partController.getParts);
-router.post('/getContainers', partController.getContainers);
+router.post('/getContainers', authController.isAdmin,partController.getContainers);
 router.post('/getNumberOfParts', partController.countParts);
 router.post('/getPartsTable', partController.getPartsTable);
 router.post('/getUserID', partController.getUserID);
-router.post('/getPartsForUpdate', partController.getPartsForUpdate);
+router.post('/getPartsForUpdate', authController.isAdmin ,partController.getPartsForUpdate);
+
 
 //INSERT DATA ROUTER
-router.post('/addPart', partController.addPart);
+router.post('/addPart', authController.isAdmin, partController.addPart);
 
 
 //DELETE DATA 
-router.post('/deletePart', partController.deletePart);
+router.post('/deletePart', authController.isAdmin ,partController.deletePart);
 
 //UPDATE DATA
-router.post('/updatePart', partController.updatePart);
+router.post('/updatePart', authController.isAdmin ,partController.updatePart);
 // router.get("/register", (req, res) => {
 //     res.render("register")
 // });

@@ -13,7 +13,7 @@
     <main>
             <h2 class="allParts" id="allParts">All Parts(<span id="numberOfParts"></span>)</h2>
             <form action="/landingPage/search" method="POST" class="searchContainer">
-                <input type="text" placeholder="Search part by User ID" class="partSearch" value="{{userID}}"
+                <input type="text" placeholder="Search part by User ID" class="partSearch" 
                     name="userId">
                 <button class="searchBtn">Search</button>
             </form>
@@ -58,25 +58,13 @@
                             <th>
                                 Gross Weight
                             </th>
-                            <th>
+                            <th id="actions">
                               Actions
                             </th>
                         </tr>
                     </thead>
-                    {{!-- <tbody>
-                         <tr>
-                            <td>
-                                 <form action="/landingPage/deleteParts" method="POST">
-                                    <input type="hidden" value="{{id}}" name="partDelete">
-                                    <button class="actionBtn">Delete</button>
-                                </form>
-                                <form action="/landingPage/updateParts" method="POST">
-                                    <input type="hidden" value="{{id}}" name="partUpdate">
-                                    <button class="actionBtn">Update</button>
-                                </form>
-                            </td>
-                        </tr> 
-                    </tbody> --}}
+                    <tbody id="partsTable" >
+                    </tbody>
                 </table>
             </div>
            
@@ -159,8 +147,9 @@
            </div>
 
            <div class="loadingContainer">
-            <div class="loading"></div>
+                <div class="loading"></div>
            </div>
+           
            
            <div class="deletePartModal">
             <div class="deleteParModal-content">
