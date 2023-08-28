@@ -73,7 +73,7 @@ p {
 }
 
 .searchContainer{
-margin-left: 8px;
+  margin-left: 8px;
   grid-area: searchContainer;
 }
 
@@ -120,7 +120,6 @@ margin-left: 8px;
   color: black;
   border: 0;
   border-radius: 5px;
-  display: block;
   position: absolute;
   margin: 8px;
   right: 0px;
@@ -149,7 +148,7 @@ margin-left: 8px;
 }
 
 .cardLandingPage {
-  background-color: WHITE;
+    background-color: WHITE;
     padding: 10px;
     box-shadow: 2px 2px 8px 4px #d3d3d3d1;
     border-radius: 5px;
@@ -369,13 +368,16 @@ background-color: WHITE;
 input::-webkit-inner-spin-button{ 
   -webkit-appearance: none;
   margin: 0;
-
 }
 
 .addPartModal-content h3{
   text-align: center;
   grid-column: 2;
   grid-row: 1;
+}
+
+.addPartModal-content label{
+  font-weight: 700;
 }
 
 .firstColumn{
@@ -657,6 +659,25 @@ input::-webkit-inner-spin-button{
   place-self: center;
 }
 
+.message-container-noParts {
+  background-color: rgba(255, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 100px;
+  grid-column: 2;
+  grid-row: 1;
+  height: 50%;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  overflow: hidden;
+  top: 0;
+  text-align: center;
+  display: grid;
+  justify-content:center;
+  place-self: center;
+}
+
 
 
 .message {
@@ -739,36 +760,9 @@ input::-webkit-inner-spin-button{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-/* #users table {
-  border-collapse: collapse;
-  color: black;
-}
-
-#users td,
-#users th {
-  border: none;
-  padding: 8px;
-  color: black !important;
-}
-
-
-.trHover:hover 
-{
-    background-color: #ddd;
-}
-
-
-#users th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    color: white;
-    border: none !important;
-} */
 
 
 .actionBtn{
-  display: block;
   background-color: #ffd621;
   color: black;
   border: 0;
@@ -793,7 +787,7 @@ input::-webkit-inner-spin-button{
     transform: translateY(4px);
 }
 
-.input {
+/* .input {
     border: 1px solid grey;
     border-radius: 5px;
     display: flex;
@@ -881,19 +875,13 @@ input::-webkit-inner-spin-button{
 
 
 
-.blankLP{
-  grid-column: 1;
-  grid-row: 4;
- 
-}
-
   .link {
     color: green;
 }
 
 .link:hover {
     text-decoration: none;
-}
+} */
 
 /* Style the list */
 ul.breadcrumb {
@@ -930,7 +918,7 @@ ul.breadcrumb li a:hover {
   text-decoration: underline;
 }
 
-.container{
+/* .container{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
@@ -1276,4 +1264,4 @@ label{
 .localECM{
   grid-column: 1;
   grid-row: 1;
-}
+} */

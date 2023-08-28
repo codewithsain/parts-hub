@@ -5,298 +5,278 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style_landingPage.css">
+    <link rel="stylesheet" href="/admin.css">
     <title>Admin Console</title>
 </head>
 
 <body>
     {{>_header}}
 
-    <main>
-        <ul class="breadcrumb">
+   <main>
+     <ul class="breadcrumb">
             <li><a href="/landingPage">Home</a></li>
             <li>Admin Console</li>
-        </ul>
-        <div class="adminContainer">
+    </ul>
 
-            <div class="container">
-                <div class="cardUsers">
+    <div class="message-container-successAdmin">
+          <span class="message"></span>
+    </div>
+    <div class="message-container-errorAdmin">
+          <span class="message"></span>
+      </div>
 
-                    <div class="cardTitleContainer">
-                        <div class="cardTitleText">
-                            <h3 class="cardTitle" id="users">Users</h3>
-                            {{#if userIsAdmin}}
-                            <h3 class="errorMessageRegister">{{userIsAdmin}}</h3>
-                            {{/if}}
-                        </div>
-                        <div class="cardTitleButton">
-                            <form action="/admin/addUsers" method="GET">
-                                <button id="getUsers" class="adminBtn">Add</button>
-                            </form>
-                        </div>
-                    </div>
-                    <table id="users">
-                        <thead>
-                            <tr class="headerTable">
-                                <th>
-                                    ID
-                                </th>
-                                <th>
-                                    User ID
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Last Name
-                                </th>
-                                <th>
-                                    Position
-                                </th>
-                                <th>
-                                    Role
-                                </th>
-                                <th>
-                                    Email
-                                </th>
-                                <th>
-                                    Actions
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each users}}
-                            <tr class="trHover">
-                                <td>{{id}}</td>
-                                <td>{{user}}</td>
-                                <td>{{name}}</td>
-                                <td>{{lastName}}</td>
-                                <td>{{position}}</td>
-                                <td>{{role}}</td>
-                                <td>{{email}}</td>
-                                <td>
-                                    <form action="/admin/deleteUsers" method="POST">
-                                        <input type="hidden" value="{{user}}" name="userDelete">
-                                        <button class="actionBtn">Delete</button>
-                                    </form>
-                                    <form action="/admin/updateUsers" method="POST">
-                                        <input type="hidden" value="{{id}}" name="userUpdate">
-                                        <button class="actionBtn">Update</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
+      <div class="loadingContainer">
+                <div class="loading"></div>
+           </div>
 
+    <div class="cardUsers">
+       <h2>Users</h2>
+       <button type="click" class="addBtn" id="addUserBtn">
+        Add
+       </button>
+       <table id="usersTable">
+          <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                User
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                              <th>
+                                Last Name
+                            </th>
+                            <th>
+                                Position
+                            </th>
+                             <th>
+                                Role
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                        </tr>
+           </thead>
+           <tbody>
+           </tbody>
+       </table>
+    </div>
+
+    <div class="addUserModal">
+            <form class="addUserModal-content" id="addUserForm">
+                <span class="close" id="closeUserModal">&times;</span>
+                <div class="firstColumn">
+                  <label>User</label>
+                  <input class="userID" id="newUser" name="newUser" type="text" placeholder="UserID" maxlength="7" minlength="7">
+                  <label>Role</label>
+                  <select name="role" id="role">
+                    <option value="" disabled selected hidden>Select a position</option>
+                    <option value="admin" >Admin</option>
+                    <option value="user">User</option>
+                  </select>
+                  <label>Password</label>
+                  <input type="password" class="password" id="password" name="password"  placeholder="Password" >
                 </div>
-                <div class="cardFeatures">
-
-                    <div class="cardTitleContainer">
-                        <div class="cardTitleText">
-                            <h3 class="cardTitle">Features Flags</h3>
-                        </div>
-                        <div class="cardTitleButton">
-                            <form action="/admin/addFeatures" method="GET">
-                                <button id="getUsers" class="adminBtn">Add</button>
-                            </form>
-                        </div>
-                    </div>
-                    <table id="users">
-                        <thead>
-                            <tr class="headerTable">
-                                <th>
-                                    ID
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Cookie
-                                </th>
-                                <th>
-                                    Value
-                                </th>
-                                <th>
-                                    Actions
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each features}}
-                            <tr class="trHover">
-                                <td>{{id}}</td>
-                                <td>{{name}}</td>
-                                <td>{{cookie}}</td>
-                                <td>{{value}}</td>
-                                <td>
-                                    <form action="/admin/deleteFeatures" method="POST">
-                                        <input type="hidden" value="{{id}}" name="featureDelete">
-                                        <button class="actionBtn">Delete</button>
-                                    </form>
-                                    <form action="/admin/updateFeatures" method="POST">
-                                        <input type="hidden" value="{{id}}" name="featureUpdate">
-                                        <button class="actionBtn">Update</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-
+                <div class="secondColumn">
+                  <label>Name</label>
+                  <input class="name" id="name" name="name" type="text" placeholder="Name" maxlength="25" minlength="2" style="text-transform:uppercase">
+                   <label>Position</label>
+                  <select name="position" id="position">
+                    <option value="" disabled selected hidden>Select a position</option>
+                    <option value="Software Engineer" >Software Engineer</option>
+                    <option value="Buyer">Buyer</option>
+                    <option value="Supply Chain Specialist">Supply Chain Specialist</option>
+                    <option value="Product Owner">Product Owner</option>
+                    <option value="Scrum Master">Scrum Master</option>
+                    <option value="Project Manager">Project Manager</option>
+                  </select>
+                   <label>Confirm Password</label>
+                  <input type="password" class="confirmPassword" id="confirmPassword" name="confirmPassword"  placeholder="Password" >
                 </div>
-                <div class="blank">
-                    <h1></h1>
+                 <div class="thirdColumn">
+                  <label>Last Name</label>
+                  <input class="lastName" id="lastName" name="lastName" type="text" placeholder="Last Name" maxlength="25" minlength="2" style="text-transform:uppercase">
+                   <label>Email</label>
+                   <input class="emaol" id="email" name="email" type="email" placeholder="Enter an email" maxlength="50">
                 </div>
+                 <div class="buttonContainer">
+                    <button type="click" class="cancelBtnAdmin" id="cancelBtnUser">Cancel</button>
+                    <button type="submit" class="saveBtnAdmin" id="saveBtnUser">Save</button>
+                 </div>
+            </form>
+           </div>
+
+    <div class="deleteUserModal">
+            <div class="deleteUserModal-content">
+                <span class="close" id="closeBtnUserDelete">&times;</span>
+                <span class="deleteConfirmation">Are you sure you want to delete this user?</span>
+                <div class="buttonContainerDelete">
+                    <button type="click" class="cancelBtnAdmin" id="cancelBtnUserDelete">Cancel</button>
+                    <button type="click" class="confirmUserDelete" id="confirmUserDelete">Delete</button>
+                 </div>
             </div>
+          </div>
 
+    <div class="updateUserModal">
+            <form class="updateUserModal-content" id="updateUserForm">
+                <span class="close" id="closeUpdateUserModal">&times;</span>
+                <div class="firstColumn">
+                  <label>User</label>
+                  <input class="userID" id="newUserU" name="newUser" type="text" placeholder="UserID" maxlength="7" minlength="7">
+                  <label>Role</label>
+                  <select name="role" id="roleU">
+                    <option value="" disabled selected hidden>Select a position</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                  </select>
+                </div>
+                <div class="secondColumn">
+                  <label>Name</label>
+                  <input class="name" id="nameU" name="name" type="text" placeholder="Name" maxlength="25" minlength="2" style="text-transform:uppercase">
+                   <label>Position</label>
+                  <select name="position" id="positionU">
+                   <option value="" disabled selected hidden>Select a position</option>
+                    <option value="Software Engineer" >Software Engineer</option>
+                    <option value="Buyer">Buyer</option>
+                    <option value="Supply Chain Specialist">Supply Chain Specialist</option>
+                    <option value="Product Owner">Product Owner</option>
+                    <option value="Scrum Master">Scrum Master</option>
+                    <option value="Project Manager">Project Manager</option>
+                  </select>
+                </div>
+                 <div class="thirdColumn">
+                  <label>Last Name</label>
+                  <input class="lastName" id="lastNameU" name="lastName" type="text" placeholder="Last Name" maxlength="25" minlength="2" style="text-transform:uppercase">
+                   <label>Email</label>
+                   <input class="email" id="emailU" name="email" type="email" placeholder="Enter an email" maxlength="50">
+                </div>
+                 <div class="buttonContainer">
+                    <button type="click" class="cancelBtnAdmin" id="cancelBtnUpdateUser">Cancel</button>
+                    <button type="submit" class="saveBtnAdmin" id="updateUserConfirmBtn">Update</button>
+                 </div>
+            </form>
+           </div>
 
+    <div class="cardFF">
+          <h2>Flags</h2>
+       <button type="click" class="addBtn" id="addFlagBtn">
+        Add
+       </button>
+       <table id="ffTable">
+          <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Cookie
+                            </th>
+                              <th>
+                                Value
+                            </th>
+                            <th>
+                              Actions
+                            </th>
+                        </tr>
+           </thead>
+           <tbody>
+           </tbody>
+       </table>
+      </div>
         </div>
-        {{#if showModalUser}}
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <form action="/admin" method="GET">
-                    <button class="close">&times;</button>
-                </form>
-                <form action="/admin/addUsers/save" method="POST">
-                    <input type="text" class="input" placeholder="User" name="user" value="{{userLS}}" minlength="7"
-                        maxlength="7" />
-                    <input type="text" class="input" placeholder="Name" name="name" value="{{nameLS}}" minlength="2"
-                        maxlength="25" />
-                    <input type="text" class="input" placeholder="Last Name" name="lastName" value="{{lastNameLS}}"
-                        minlength="2" maxlength="25" />
-                    <input type="text" class="input" placeholder="Position" name="position" value="{{positionLS}}"
-                        minlength="5" maxlength="50" />
-                    <select name="role" class="selectInput">
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                    <input type="email" class="input" placeholder="Email" name="email" value="{{emailLS}}"
-                        maxlength="100" />
-                    <input type="password" class="input" placeholder="Password" name="password" value="{{passwordLS}}"
-                        minlength="12" maxlength="50" />
-                    <input type="password" class="input" placeholder="Confirm your password" name="passwordConfirm"
-                        value="{{passwordConfirmLS}}" minlength="12" maxlength="50" />
-                    <button type="submit" class="registerBtn">Save</button>
-                    {{#if userRegisteredMessage}}
-                    <h4 class="succRegisMessage">{{userRegisteredMessage}}</h4>
-                    {{/if}}
-                    {{#if userTaken}}
-                    <h4 class="errorMessageRegister">{{userTaken}}</h4>
-                    {{/if}}
-                    {{#if userLength}}
-                    <h4 class="errorMessageRegister">{{userLength}}</h4>
-                    {{/if}}
-                    {{#if emailMessage}}
-                    <h4 class="errorMessageRegister">{{emailMessage}}</h4>
-                    {{/if}}
-                    {{#if passwordMessage}}
-                    <h4 class="errorMessageRegister">{{passwordMessage}}</h4>
-                    {{/if}}
-                    {{#if specialC}}
-                    <h4 class="errorMessageRegister">{{specialC}}</h4>
-                    {{/if}}
-                </form>
-                </form>
+
+
+    <div class="addFlagModal">
+      <form class="addFlagModal-content" id="addFlagForm">
+                <span class="close" id="closeFlagModal">&times;</span>
+                <div class="firstColumn">
+                    <label>Name</label>
+                <input type="text" name="nameFF" id="nameFF" class="nameFF" placeholder="Enter flag name">
+                </div>
+                <div class="secondColumn">
+                    <label>Cookie Name</label>
+                    <input type="text" name="cookieFF" id="cookieFF" class="cookieFF" placeholder="Enter cookie name">
+                </div>
+                <div class="thirdColumn">
+                  <label>Value</label>
+                <select name="valueFF" id="valueFF">
+                   <option value="" disabled selected hidden>Select a value</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+                </div>
+                <div class="buttonContainer">
+                    <button type="click" class="cancelBtnAdmin" id="cancelFlagBtn">Cancel</button>
+                    <button type="submit" class="saveBtnAdmin" id="saveFlagBtn">Save</button>
+                </div>
+                
+            </form>
+    </div>
+
+    <div class="updateFlagModal">
+      <form class="updateFlagModal-content" id="updateFlagForm">
+                <span class="close" id="closeUpdateFlagModal">&times;</span>
+                <div class="firstColumn">
+                    <label>Name</label>
+                <input type="text" name="nameFFU" id="nameFFU" class="nameFFU" placeholder="Enter flag name">
+                </div>
+                <div class="secondColumn">
+                  <label>Cookie Name</label>
+                   <input type="text" name="cookieFFU" id="cookieFFU" class="cookieFFU" placeholder="Enter cookie name">
+                </div>
+                <div class="thirdColumn">
+                  <label>Value</label>
+                <select name="valueFFU" id="valueFFU">
+                  <option value="" disabled selected hidden>Select a value</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+                </div>
+                <div class="buttonContainer">
+                    <button type="click" class="cancelBtnAdmin" id="cancelUpdateFlagBtn">Cancel</button>
+                  <button type="submit" class="saveBtnAdmin" id="updateFlagBtnConfirm">Update</button>
+                </div>
+        </form>
+    </div>
+
+    <div class="deleteFlagModal">
+            <div class="deleteFlagModal-content">
+                <span class="close" id="closeDeleteFlagModal">&times;</span>
+                <span class="deleteConfirmation">Are you sure you want to delete this flag?</span>
+                <div class="buttonContainerDelete">
+                    <button type="click" class="cancelBtnAdmin" id="cancelBtnFlagDelete">Cancel</button>
+                    <button type="click" class="confirmUserDelete" id="confirmFlagDelete">Delete</button>
+                 </div>
             </div>
-        </div>
-        </div>
-        {{/if}}
+      </div>
 
-        {{#if showModalUpdateUser}}
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <form action="/admin" method="GET">
-                    <button class="close">&times;</button>
-                </form>
-                <form action="/admin/updateUsers/save" method="POST">
-                    <input type="hidden" value="{{idLS}}" name="id">
-                    <input type="text" class="input" placeholder="Name" name="name" value="{{nameLS}}" minlength="2"
-                        maxlength="25" />
-                    <input type="text" class="input" placeholder="Last Name" name="lastName" value="{{lastNameLS}}"
-                        minlength="2" maxlength="25" />
-                    <input type="text" class="input" placeholder="Position" name="position" value="{{positionLS}}"
-                        minlength="5" maxlength="50" />
-                    <select name="role" class="selectInput">
-                        <option value="{{roleLS}}" selected disabled hidden>Choose here</option>
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                    <button type="submit" class="registerBtn">Edit</button>
-                    {{#if specialC}}
-                    <h4 class="errorMessageRegister">{{specialC}}</h4>
-                    {{/if}}
-                </form>
-                </form>
-            </div>
-        </div>
-        </div>
-        {{/if}}
 
-        {{#if showModalFeature}}
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <form action="/admin" method="GET">
-                    <button class="close">&times;</button>
-                </form>
-                </form>
-                <form action="/admin/addFeatures/save" method="POST">
-                    <input type="hidden" value="{{idFF}}" name="idFF">
-                    <input type="text" class="input" placeholder="Name" name="nameFF" value="{{nameFF}}" minlength="2"
-                        maxlength="50" />
-                    <input type="text" class="input" placeholder="Cookie" name="cookieFF" value="{{cookieFF}}"
-                        minlength="2" maxlength="50" />
-                    <select name="valueFF" class="selectInput">
-                        <option value="{{valueFF}}" selected disabled hidden>Choose here</option>
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
-                    <button type="submit" class="registerBtn">Save</button>
-                    {{#if specialC}}
-                    <h4 class="errorMessageRegister">{{specialC}}</h4>
-                    {{/if}}
-                    {{#if featureRegisteredMessage}}
-                    <h4 class="succRegisMessage">{{featureRegisteredMessage}}</h4>
-                    {{/if}}
-                </form>
-            </div>
-        </div>
-        {{/if}}
+   </main>
 
-        {{#if showModalUpdateFeature}}
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <form action="/admin" method="GET">
-                    <button class="close">&times;</button>
-                </form>
-                </form>
-                <form action="/admin/updateFeatures/save" method="POST">
-                    <input type="hidden" value="{{idFF}}" name="id">
-                    <input type="text" class="input" placeholder="Name" name="name" value="{{nameFF}}" minlength="2"
-                        maxlength="50" />
-                    <input type="text" class="input" placeholder="Cookie" name="cookie" value="{{cookieFF}}"
-                        minlength="2" maxlength="50" />
-                    <select name="value" class="selectInput">
-                        <option value="{{valueFF}}" selected disabled hidden>Choose here</option>
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
-                    <button type="submit" class="registerBtn">Edit</button>
-                    {{#if specialC}}
-                    <h4 class="errorMessageRegister">{{specialC}}</h4>
-                    {{/if}}
-                    {{#if featureRegisteredMessage}}
-                    <h4 class="succRegisMessage">{{featureRegisteredMessage}}</h4>
-                    {{/if}}
-                </form>
-            </div>
-        </div>
-        {{/if}}
-
-    </main>
 
 
     {{>_footer}}
+
+      <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" 
+        integrity="sha256-yE5LLp5HSQ/z+hJeCqkz9hdjNkk1jaiGG0tDCraumnA=" 
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+      <script src="/admin.js"></script>
 </body>
 
 </html>

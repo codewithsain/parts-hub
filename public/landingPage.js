@@ -6,30 +6,36 @@ $(document).ready(function (){
     $(".message-container-error").css("display", "none");
     $(".message-container-successDelete").css("display", "none");
     $(".message-container-successUpdate").css("display", "none");
+    $(".message-container-noParts").css("display", "none");
     $(".deletePartModal").css('display', 'none')
-    loadTable();
-    countParts();
+    $(".addPartBtn").css("display", "none")
+    $("#adminLink").css("display", "none")
+    $(".headActions").css("display", "none")
+
+
     $.ajax({
-        url: "/renderAdmin",
-        method: 'POST',
-        success: function (response) {
-            if(response === false){
-                $(".addPartBtn").css("display", "none")
-                $("#adminLink").css("display", "none")
-                $("#actions").css("display", "none")
-                $("#tableActions").css("display", "none")
-                $(".actionBtn").css("display", "none")
+    url: "/renderAdmin",
+    method: 'POST',
+    success: function (response) {
+        if(response === true){           
+            $(".addPartBtn").css("display", "block")
+            $("#adminLink").css("display", "block")
+            $(".headActions").css("display", "table-cell")
+            Cookies.set("isAdmin", true);  
+        }else{
+            Cookies.set("isAdmin", false); 
             }
         }
     })
+    
+    loadTable();
+    countParts();
 
+ 
     $(".dropdownName").text(Cookies.get("name") + " "+ Cookies.get("lastName") );
     $(".dropdownPos").text(Cookies.get("position"));
     $("#userName").text(Cookies.get("name"));
 
-
-   
-   
 
     $(".dropdown").on('click', function (){
     
@@ -60,6 +66,7 @@ $(document).ready(function (){
 
     $(".partNumberI").mask('A00000');
     $(".termCodeI").mask('000000');
+    $(".partSearch").mask('A00000');
     
 
     $(".addPartBtn").on("click", function (){
@@ -81,7 +88,7 @@ $(document).ready(function (){
             }
         })
         $.ajax({
-            url: '/getUsers',
+            url: '/getUsersDropdown',
             method: 'POST',
             success: function(response){
                 $.each(response, function (key, val) { 
@@ -119,7 +126,6 @@ $(document).ready(function (){
             url: '/getParts',
             method: 'POST',
             success: function(response){
-                // console.log(response);
                 $.each(response, function (key, val) { 
                     parts += "<option value='" + val.id + "'>" + val.partNumber + "</option>";
                  })
@@ -255,7 +261,7 @@ $(document).ready(function (){
         let row = $(this).closest('tr');
 
         let id= row.find('.tableID').text();
-
+        
     
      $(".confirmDelete").on('click', function(){
         $.ajax({
@@ -278,6 +284,7 @@ $(document).ready(function (){
                      
                      loadTable();
                     countParts();
+                    $(".rowActions").css("display", "table-cell")
                 }else{
                     $(".loadingContainer").css("display", "none")
                     $(".deletePartModal").css('display', 'grid')
@@ -468,8 +475,10 @@ $(document).ready(function (){
                                 setTimeout(function () { 
                                     $(".message-container-successUpdate").css("display", "none");
                                  },4000)
+                                 $(".rowActions").css("display", "table-cell")
                                 loadTable();
                                 countParts();
+                               
                             }
                         },
                         error: function(response){
@@ -493,14 +502,64 @@ $(document).ready(function (){
        })
     
 
-       $("#closeBtnUpdate"). on("click", function(){
+       $("#closeBtnUpdate").on("click", function(){
         $(".addPartModalUpdate").css("display", "none");
        })
 
 
-       
+     $(".searchBtn").on("click", function(){
+        console.log($("#searchedPart").text())
+        if($("#searchedPart").val() === ""){
+            loadTable();
+            console.log("sin parte")
+        }else{
+            console.log("con parte")
+            $.ajax({
+                url: "/getSpecificPart",
+                method: 'POST',
+                data:{
+                    partNumber: $("#searchedPart").val()
+                },
+                success: function(response){
+                    console.log(response.length)
+                    var tableResults = "";
+                    if(response.length <= 0){
+                        $(".message-container-noParts").css("display", "grid");
+                        setTimeout(function () { 
+                            $(".message-container-noParts").css("display", "none");
+                         },4000)
+                    }else if(Cookies.get("isAdmin") === "true"){
+                        $('#partsTable tr').not(':first').remove();
+                        $.each(response, function (key, val) { 
+                            tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td><td class="rowActions" id="rowActions"><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
+                         })
+            
+                         $('#partsTable tr').first().after(tableResults);
+                    }else if(Cookies.get("isAdmin") === "false"){
+                        $('#partsTable tr').not(':first').remove();
+                        $.each(response, function (key, val) { 
+                            tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td>';
+                         })
+            
+                         $('#partsTable tr').first().after(tableResults);
+                    }
+                }
+            })
+        }
+     })
     
+    //  $("#linkPartDetails").on("click", function(){
+    //     $.ajax({
+    //         url: "/partDetails",
+    //         method: "POST"
+    //     })
+    //  })
+
+     
 })
+
+
+
 
 function loadTable() { 
 
@@ -514,12 +573,23 @@ function loadTable() {
             userID: Cookies.get('userID')
         },
         success: function (response){
-            $('#partsTable tr').not(':first').remove();
-            $.each(response, function (key, val) { 
-                tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td><td id="tableActions"><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
-             })
-
-             $('#partsTable tr').first().after(tableResults);
+           console.log(response)
+         if(Cookies.get("isAdmin") === "true"){
+                $('#partsTable tr').not(':first').remove();
+                $.each(response, function (key, val) { 
+                    tableResults += '<tr><td class="tableID">' + val.id + '</td><td id="partNumber"><a href="/partDetails/'+val.partNumber+'" id="linkPartDetails">'+val.partNumber+'</a></td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td><td class="rowActions" id="rowActions"><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
+                 })
+    
+                 $('#partsTable tr').first().after(tableResults);
+            }else if(Cookies.get("isAdmin") === "false"){
+                $('#partsTable tr').not(':first').remove();
+                $.each(response, function (key, val) { 
+                    tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td>';
+                 })
+    
+                 $('#partsTable tr').first().after(tableResults);
+            }
+           
         }
 
     })
