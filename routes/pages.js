@@ -29,9 +29,14 @@ router.get("/admin", authController.isLoggedIn, authController.isAdmin, (req, re
   res.render("admin");
 })
 
+router.get("/partDetails/:id", authController.isLoggedIn, (req, res) =>{
+  console.log(req.params)
+  res.render("partDetails")
+})
+
 //CONSULTING ROUTERS
 router.post('/getPlants', authController.isAdmin, partController.getPlants);
-router.post('/getUsers',authController.isAdmin, partController.getUsers);
+router.post('/getUsersDropdown',authController.isAdmin, partController.getUsersDropdown);
 router.post('/getRevisions', authController.isAdmin, partController.getRevision);
 router.post('/getParts', partController.getParts);
 router.post('/getContainers', authController.isAdmin,partController.getContainers);
@@ -39,17 +44,27 @@ router.post('/getNumberOfParts', partController.countParts);
 router.post('/getPartsTable', partController.getPartsTable);
 router.post('/getUserID', partController.getUserID);
 router.post('/getPartsForUpdate', authController.isAdmin ,partController.getPartsForUpdate);
-
+router.post('/getSpecificPart', partController.getSpecificPart);
+router.post('/getUsers', userController.getUsers);
+router.post("/getFlags", featureController.getFlags);
 
 //INSERT DATA ROUTER
 router.post('/addPart', authController.isAdmin, partController.addPart);
+router.post('/addUser',  userController.addUser);
+router.post('/addFlag',  featureController.addFlag);
 
 
 //DELETE DATA 
 router.post('/deletePart', authController.isAdmin ,partController.deletePart);
+router.post('/deleteUser', authController.isAdmin ,userController.deleteUser);
+router.post('/deleteFlag', authController.isAdmin ,featureController.deleteFlag);
 
 //UPDATE DATA
 router.post('/updatePart', authController.isAdmin ,partController.updatePart);
+router.put('/updateUser/:id', authController.isAdmin ,userController.updateUser);
+router.put('/updateFlag/:id', authController.isAdmin, featureController.updateFlag);
+
+
 // router.get("/register", (req, res) => {
 //     res.render("register")
 // });

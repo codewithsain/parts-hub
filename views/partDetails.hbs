@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style_landingPage.css">
-    <title>Landing Page</title>
+    <link rel="stylesheet" href="/partDetails.css">
+    <title>Part Details</title>
 </head>
 
 <body>
@@ -16,204 +16,67 @@
             <li><a href="/landingPage">Home</a></li>
             <li>Part Details</li>
         </ul>
-        <div class="container">
-            <div class="cardPartOverview">
-                <div class="partOverviewContainer">
-                    <div class="image">
-                        <img src="/images/seatBack.jpg" alt="" width="250" height="250">
-                    </div>
-                    <div class="partInfo">
-                        <div class="partNameDesc">
-                            <h2>TA1234BGK</h2>
-                            <p>Seat Back</p>
-                        </div>
-                        <div class="unit">
-                            <label>Unit</label>
-                            <p>RX01</p>
-                        </div>
-                        <div class="geau">
-                            <label>Global Est Usage</label>
-                            <p>1835</p>
-                        </div>
-                        <div class="geometryFiles">
-                            <label>Sets</label>
-                            <p>No files available</p>
-                        </div>
-                        <div class="termCode">
-                            <label>Term Code</label>
-                            <p>12938</p>
-                        </div>
-                        <div class="mgc">
-                            <label>MGC</label>
-                            <p>D03030200</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="taskDrawer">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Task Drawer</h3>
-                    </div>
-                </div>
-                <div class="step">
-                    <div>
-                        <div class="circle"><i class="fa fa-check"></i></div>
-                    </div>
-                    <div>
-                        <div class="title">Tooling</div>
-                        <div class="caption">Estimate Tooling</div>
-                    </div>
-                </div>
-                <div class="step step-active">
-                    <div>
-                        <div class="circle">2</div>
-                    </div>
-                    <div>
-                        <div class="title">Cost</div>
-                        <div class="caption">Estimate Cost</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div>
-                        <div class="circle">3</div>
-                    </div>
-                    <div>
-                        <div class="title">Quantity Estimation</div>
-                        <div class="caption">Estimate Quantity</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div>
-                        <div class="circle">4</div>
-                    </div>
-                    <div>
-                        <div class="title">Suppliers</div>
-                        <div class="caption">Select Suppliers</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div>
-                        <div class="circle">5</div>
-                    </div>
-                    <div>
-                        <div class="title">Finish</div>
-                    </div>
-                </div>
+       
+       <div class="card" id="cardPartOverview">
 
-                <button class="signOffBtn">Sign Off</button>
-            </div>
-            <div class="infoModule">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Info Module</h3>
-                    </div>
-                </div>
-                <div class="infoContainer">
-                    <div class="ecmProject">
-                        <label>ECM Project</label>
-                        <p>23748</p>
-                    </div>
-                    <div class="localECM">
-                        <label>Local ECM</label>
-                        <p>23748</p>
-                    </div>
-                    <div class="teamName">
-                        <label>Team Name</label>
-                        <p>Informed Buying</p>
-                    </div>
-                    <div class="ecrNumber">
-                        <label>ECR Number</label>
-                        <p>60000885</p>
-                    </div>
-                </div>
+       </div>
+
+        <div class="card" id="cardTaskDrawer">
+             <h2>Task Drawer</h2>
+       </div>
+
+        <div class="card" id="cardProject">
+        
+       </div>
+
+        <div class="card" id="cardWhereUsed">
+             <h2>Where Used</h2>
+       </div>
+
+       <div class="card" id="cardCompareParts">
+             <h2>Compare Parts</h2>
+       </div>
+
+        <div class="card" id="cardCost">
+         <h2>Cost</h2>
+       </div>
+
+        <div class="card" id="cardLeadTime">
+         <h2>Lead Time</h2>
+       </div>
+
+       <div class="card" id="cardQuantities">
+            <h2>Quantities</h2>
+       </div>
 
 
+        <div class="card" id="cardTooling">
+             <h2>Tooling</h2>
+       </div>
 
-            </div>
-            <div class="whereUsed">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Where Used</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="compareParts">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Compare Parts</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="tooling">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Tooling</h3>
-                    </div>
+         <div class="card" id="cardNotes">
+             <h2>Notes</h2>
+       </div>
+       
+       
 
-                    <div class="cardTitleButton">
+       
 
-                        <button id="getUsers" class="adminBtn">Save</button>
-                        <button id="getUsers" class="adminBtn">Select</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="cost">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Cost</h3>
-                    </div>
-
-                    <div class="cardTitleButton">
-
-                        <button id="getUsers" class="adminBtn">Save</button>
-                        <button id="getUsers" class="adminBtn">Select</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="quantityEstimation">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Quantity Estimation</h3>
-                    </div>
-                    <div class="cardTitleButton">
-
-                        <button id="getUsers" class="adminBtn">Save</button>
-                        <button id="getUsers" class="adminBtn">Select</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="suppliers">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Suppliers</h3>
-                    </div>
-                    <div class="cardTitleButton">
-
-                        <button id="getUsers" class="adminBtn">Save</button>
-                        <button id="getUsers" class="adminBtn">Select</button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="notes">
-                <div class="cardTitleContainer">
-                    <div class="cardTitleText">
-                        <h3 class="cardTitle">Notes</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="blankPD">
-                <h1></h1>
-            </div>
-        </div>
+       
 
 
     </main>
     {{>_footer}}
+
+    <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" 
+        integrity="sha256-yE5LLp5HSQ/z+hJeCqkz9hdjNkk1jaiGG0tDCraumnA=" 
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

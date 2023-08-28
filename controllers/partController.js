@@ -35,7 +35,7 @@ exports.getRevision = (req, res) =>{
  
 }
 
-exports.getUsers = (req, res) =>{
+exports.getUsersDropdown = (req, res) =>{
 
     try {
         dbConn.query("SELECT id, user FROM user",
@@ -223,6 +223,25 @@ exports.updatePart = (req, res) =>{
                     return res.send(error);
                 }
              })
+    } catch (error) {
+        res.send(error);
+    }
+}
+
+exports.getSpecificPart = (req, res) =>{
+    const {partNumber} = req.body;
+
+    try {
+        dbConn.query("SELECT id, partNumber, description, termCode, netWeight, grossWeight FROM part WHERE partNumber = ?", [partNumber], 
+        (error, results) =>{
+            if(results){
+                console.log(results)
+                return res.send(results);
+            }else{
+                return res.send(error);
+
+            }
+        })
     } catch (error) {
         res.send(error);
     }

@@ -1,0 +1,184 @@
+html{
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: #f1f1f1;
+  }
+  
+  main {
+   width: 100%;
+   margin: 0 auto;
+    grid-area: main;
+    display: grid;
+    min-height: calc(100vh - 75px - 120px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, min-content);
+    grid-gap: 10px;
+    grid-template-areas: "breadcrumb breadcrumb breadcrumb breadcrumb"
+                          "partOverview partOverview partOverview taskDrawer"
+                          "project project project taskDrawer"
+                          "where where where taskDrawer"
+                          "compare compare compare compare"
+                          "cost cost cost cost"
+                          "lead lead lead quantities"
+                          "tooling tooling tooling tooling"
+                          "notes notes notes notes"
+                          
+  }
+  
+  
+  @media screen and (max-width: 768px){
+    main{
+        grid-template-areas: "breadcrumb breadcrumb breadcrumb breadcrumb"
+                          "partOverview partOverview partOverview partOverview"
+                          "project project project project"
+                          "where where where where"
+                          "compare compare compare compare"
+                          "cost cost cost cost"
+                          "lead lead lead lead"
+                          "quantities quantities quantities quantities"
+                          "tooling tooling tooling tooling"
+                          "notes notes notes notes"
+                          "taskDrawer taskDrawer taskDrawer taskDrawer"
+      }
+    
+  }
+  
+  @media screen and (max-width: 576px){
+      main{
+        grid-template-areas: "breadcrumb breadcrumb breadcrumb breadcrumb"
+                                "partOverview partOverview partOverview partOverview"
+                                "project project project project"
+                                "where where where where"
+                                "compare compare compare compare"
+                                "cost cost cost cost"
+                                "lead lead lead lead"
+                                "quantities quantities quantities quantities"
+                                "tooling tooling tooling tooling"
+                                "notes notes notes notes"
+                                "taskDrawer taskDrawer taskDrawer taskDrawer"
+          }
+  } 
+  
+
+  ul.breadcrumb {
+    padding: 10px 10px;
+    list-style: none;
+    background-color: inherit;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    grid-area: breadcrumb;
+ }
+  
+ 
+  ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+  }
+  
+
+  ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+  }
+  
+
+  ul.breadcrumb li a {
+    color: green;
+    text-decoration: none;
+    text-decoration: underline;
+  }
+
+  ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+  }
+
+.card{
+    background-color: WHITE;
+    padding: 10px;
+    box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+    border-radius: 5px;
+    margin: 10px;
+    overflow-y: auto; 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 50px 1fr;
+    grid-gap: 10px;
+  }
+
+.card h2 {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: left;
+    align-self: left;
+    margin: 8px
+  }
+
+#cardPartOverview{
+    grid-area: partOverview;
+    min-height: 300px;
+    max-height: 600px;
+}
+
+
+#cardTaskDrawer{
+    grid-area: taskDrawer;
+    min-height: 400px;
+    max-height: 900px;
+}
+
+
+#cardProject{
+    grid-area: project;
+    min-height: 100px;
+    max-height: 600px;
+}
+
+#cardWhereUsed{
+    grid-area: where;
+    min-height: 400px;
+    max-height: 600px;
+}
+
+#cardCompareParts{
+    grid-area: compare;
+    min-height: 600px;
+    max-height: 600px;
+}
+
+#cardCost{
+    grid-area: cost;
+    min-height: 400px;
+    max-height: 600px;
+}
+
+#cardLeadTime{
+    grid-area: lead;
+    min-height: 400px;
+    max-height: 600px;
+}
+
+#cardQuantities{
+    grid-area: quantities;
+    min-height: 400px;
+    max-height: 600px;
+}
+
+#cardTooling{
+    grid-area: tooling;
+    min-height: 400px;
+    max-height: 600px;
+}
+
+#cardNotes{
+    grid-area: notes;
+    min-height: 200px;
+    max-height: 400px;
+}
+
+
+
