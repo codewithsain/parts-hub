@@ -867,6 +867,14 @@ input::-webkit-inner-spin-button{
   flex-direction: column;
 }
 
+#idFFU{
+  display: none
+}
+
+#idUserUpdate{
+  display: none;
+}
+
 .updateFlagModal .secondColumn{
   display: flex;
   grid-column: 2;

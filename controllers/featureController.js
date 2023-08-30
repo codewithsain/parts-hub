@@ -53,8 +53,8 @@ exports.deleteFlag = (req, res) =>{
 
 
 exports.updateFlag = (req, res) =>{
+
     const {id} = req.params;
-    console.log(id)
     const {name, cookie, value} = req.body
     console.log(req.body)
 

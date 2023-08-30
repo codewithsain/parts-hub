@@ -326,5 +326,6 @@ exports.logout = async (req, res) => {
   res.clearCookie("loggedIn");
   res.clearCookie("currentUser");
   res.clearCookie("isAdmin");
+  res.clearCookie("currentPart");
   res.status(200).redirect("/");
 };

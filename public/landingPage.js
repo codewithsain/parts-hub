@@ -315,7 +315,7 @@ $(document).ready(function (){
                         plants += "<option value='" + val.id + "'>" + val.plant + "</option>";
                      })
     
-                     $(".plantS").html(plants + "<option value='' disabled selected hidden>Select a plant</option>");
+                     $(".plantS").html(plants);
     
                 }
             })
@@ -327,7 +327,7 @@ $(document).ready(function (){
                         users += "<option value='" + val.id + "'>" + val.user + "</option>";
                      })
     
-                     $(".userS").html(users + "<option value='' disabled selected hidden>Select a user</option>");
+                     $(".userS").html(users);
     
                 }
             })
@@ -339,7 +339,7 @@ $(document).ready(function (){
                         revisions += "<option value='" + val.id + "'>" + val.value + "</option>";
                      })
     
-                     $(".revisionS").html(revisions + "<option value='' disabled selected hidden>Select a revision</option>");
+                     $(".revisionS").html(revisions);
                 }
             })
             $.ajax({
@@ -350,7 +350,7 @@ $(document).ready(function (){
                         containers += "<option value='" + val.id + "'>" + val.containerDesc + "</option>";
                      })
     
-                     $(".containerS").html(containers + "<option value='' disabled selected hidden>Select a container</option>");
+                     $(".containerS").html(containers);
     
                 }
             })
@@ -363,7 +363,7 @@ $(document).ready(function (){
                         parts += "<option value='" + val.id + "'>" + val.partNumber + "</option>";
                      })
     
-                     $(".similarPartS").html(parts + "<option value='' disabled selected hidden>Select a part</option>");
+                     $(".similarPartS").html(parts);
     
                 }
             })
@@ -373,6 +373,14 @@ $(document).ready(function (){
             let row = $(this).closest('tr');
 
             let id= row.find('.tableID').text();
+
+            $("#idPart").val(id);
+            
+            let similarPart= ""
+            let container = ""
+            let user = ""
+            let revision = ""
+            let plant = ""
 
             $.ajax({
                 url:"/getPartsForUpdate",
@@ -384,18 +392,24 @@ $(document).ready(function (){
                     console.log(response[0].partNumber);
                     $("#partNumberU").val(response[0].partNumber)
                     $("#descU").val(response[0].description)
-                    $("#similarPartU").val(response[0].similarPart)
-                    $("#containerU").val(response[0].containerID)
+                     similarPart = response[0].similarPart;
+                    container = response[0].containerID;
                     $("#netWeightU").val(response[0].netWeight)
                     $("#grossWeightU").val(response[0].grossWeight)
                     $("#termCodeU").val(response[0].termCode)
                     $("#termCodeDescU").val(response[0].termCodeDesc)
-                    $("#userU").val(response[0].userID)
-                    $("#revisionU").val(response[0].revisionID)
-                    $("#plantU").val(response[0].plantID)
+                     user = response[0].userID
+                    revision = response[0].revisionID;
+                    plant = response[0].plantID
 
                 }
             })
+
+            $("#similarPartU").val(similarPart)
+            $("#containerU").val(container)
+            $("#userU").val(user)
+            $("#revisionU").val(revision)
+            $("#plantU").val(plant)
 
             $(".updateBtn").on("click", function(){
                 $("#updatePartForm").validate({
@@ -442,7 +456,7 @@ $(document).ready(function (){
                         url: "/updatePart",
                         method: 'POST',
                         data: {
-                            id: id,
+                            id: $("#idPart").val(),
                             partNumber: $("#partNumberU").val().trim(),
                             description: $("#descU").val().trim(),
                             similarPart: $("#similarPartU").val().trim(),
@@ -454,7 +468,6 @@ $(document).ready(function (){
                             user: $("#userU").val().trim(),
                             revision: $("#revisionU").val().trim(),
                             plant: $("#plantU").val().trim(),
-            
                         }, 
                         beforeSend: function () { 
                             $(".loadingContainer").css("display", "grid")
@@ -548,13 +561,7 @@ $(document).ready(function (){
         }
      })
     
-    //  $("#linkPartDetails").on("click", function(){
-    //     $.ajax({
-    //         url: "/partDetails",
-    //         method: "POST"
-    //     })
-    //  })
-
+   
      
 })
 
@@ -577,14 +584,14 @@ function loadTable() {
          if(Cookies.get("isAdmin") === "true"){
                 $('#partsTable tr').not(':first').remove();
                 $.each(response, function (key, val) { 
-                    tableResults += '<tr><td class="tableID">' + val.id + '</td><td id="partNumber"><a href="/partDetails/'+val.partNumber+'" id="linkPartDetails">'+val.partNumber+'</a></td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td><td class="rowActions" id="rowActions"><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
+                    tableResults += '<tr><td class="tableID">' + val.id + '</td><td id="partNumber"><a href="/partDetails/'+val.partNumber+'" id="linkPartDetails">'+val.partNumber+'</a></td><td id="description">' + val.description+ '</td><td id="termCode">' + val.termCode+ '</td><td id="netWeight">' + val.netWeight+ '</td><td id="grossWeight">' + val.grossWeight+ '</td><td class="rowActions" id="rowActions"><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
                  })
     
                  $('#partsTable tr').first().after(tableResults);
             }else if(Cookies.get("isAdmin") === "false"){
                 $('#partsTable tr').not(':first').remove();
                 $.each(response, function (key, val) { 
-                    tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td>';
+                    tableResults += '<tr><td class="tableID">' + val.id + '</td><td id="partNumber"><a href="/partDetails/'+val.partNumber+'" id="linkPartDetails">'+val.partNumber+'</a></td><td id="description">' + val.description+ '</td><td id="termCode">' + val.termCode+ '</td><td id="netWeight">' + val.netWeight+ '</td><td id="grossWeight">' + val.grossWeight+ '</td>';
                  })
     
                  $('#partsTable tr').first().after(tableResults);

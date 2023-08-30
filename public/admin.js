@@ -7,6 +7,16 @@ $(document).ready(function (){
      //USERS MODULE
     loadUserTable();
 
+   
+
+    //FF MODULE
+    loadFlagTable();
+
+  
+  
+})
+
+$(function () {
     $("#addUserBtn").on("click", function(){
         $(".addUserModal").css("display", "grid");
     })
@@ -188,9 +198,9 @@ $(document).ready(function (){
            role= row.find('.tableRole').text();
             position = row.find('.tablePosition').text();
             email = row.find('.tableEmail').text();
-            console.log(row)
-           console.log(id, user, name,  lastName, role, position, email);
+         
 
+            $("#idUserUpdate").val(id);
            $("#newUserU").val(user);
            $("#roleU").val(role);
            $("#nameU").val(name);
@@ -224,7 +234,7 @@ $(document).ready(function (){
                 },
                 submitHandler: function(){
                     $.ajax({
-                        url:"/updateUser/" + id,
+                        url:"/updateUser/" + $("#idUserUpdate").val(id),
                         method: "PUT",
                         data:{
                             user: $("#newUserU").val(),
@@ -292,9 +302,6 @@ $(document).ready(function (){
     $("#cancelBtnUpdateUser").on("click", function () {
         $(".updateUserModal").css("display", "none")
     })
-
-    //FF MODULE
-    loadFlagTable();
 
     $("#addFlagBtn").on("click", function(){
         $(".addFlagModal").css("display", "grid");
@@ -423,79 +430,76 @@ $(document).ready(function (){
 
     $("table").on("click", '#updateFlagBtn', function(){
         $(".updateFlagModal").css('display', 'grid')
-
-        let row = ""
-        var id= ""
-        let name = ""
-        let cookie=""
-        let value =""
-
-           
-            row = $(this).closest('tr');
         
-   
-            id= row.find('.tableFlagID').text();
-           name= row.find('.tableName').text();
-            cookie= row.find('.tableCookie').text();
-            value= row.find('.tableValue').text();
-         
+        let row = $(this).closest("tr");
 
-           $("#nameFFU").val(name);
-           $("#cookieFFU").val(cookie);
-           $("#valueFFU").val(value);
-           
+        let id = row.find(".tableFlagID").text();
+        let name = row.find(".tableName").text();
+        let cookie = row.find(".tableCookie").text();
+        let value = row.find(".tableValue").text();
+      
+    $("#idFFU").val(id)
+    $("#nameFFU").val(name);
+    $("#cookieFFU").val(cookie);
+    $("#valueFFU").val(value);
 
-        $("#updateFlagBtnConfirm").on('click', function(){
-            console.log("hola")
-            $("#updateFlagForm").validate({
-                rules:{
-                    nameFFU: "required",
-                    cookieFFU: "required",
-                    valueFFU:"required"
-                },
-                messages:{
-                    nameFFU: "Please enter a name",
-                    cookieFFU: "Please enter a cookie name",
-                    valueFFU:"Please select a value"
-                },
-                submitHandler: function(){
-                    $.ajax({
-                        url:"/updateFlag/" + id,
-                        method: "PUT",
-                        data:{
-                            name: $("#nameFFU").val(),
-                            cookie: $("#cookieFFU").val(),
-                            value: $("#valueFFU").val(),
-                        },
-                        beforeSend: function(){
-                            $(".loadingContainer").css("display", "grid")
-                        },
-                        success: function (response) {        
-                            if(response === "undefined" || response != 'ok'){
-                            $(".loadingContainer").css("display", "none")
-                            $(".updateFlagModal").css("display", "none");
-                            $(".message-container-errorAdmin .message").text("An error has ocurred");
-                            $(".message-container-error").css("display", "grid");
-                            setTimeout(function () { 
-                                $(".message-container-errorAdmin").css("display", "none");
-                             },4000)
-                            }else if(response === 'ok'){
+    
+            $("#updateFlagBtnConfirm").on("click", function (){
+              
+                $("#updateFlagForm").validate({
+                    rules:{
+                        nameFFU: "required",
+                        cookieFFU: "required",
+                        valueFFU:"required"
+                    },
+                    messages:{
+                        nameFFU: "Please enter a name",
+                        cookieFFU: "Please enter a cookie name",
+                        valueFFU:"Please select a value"
+                    },
+                    submitHandler: function(){
+                        $.ajax({
+                            url:"/updateFlag/" + $("#idFFU").val(),
+                            method: "PUT",
+                            data:{
+                               name: $("#nameFFU").val(),
+                               cookie: $("#cookieFFU").val(),
+                               value: $("#valueFFU").val()
+                            },
+                            beforeSend: function(){
+                                $(".loadingContainer").css("display", "grid")
+                                
+                            },
+                            success: function (response) {        
+                                if(response === "undefined" || response != 'ok'){
                                 $(".loadingContainer").css("display", "none")
                                 $(".updateFlagModal").css("display", "none");
-                                $(".message-container-successAdmin .message").text("Flag updated successfully");
-                                $(".message-container-successAdmin").css("display", "grid");
+                                $(".message-container-errorAdmin .message").text("An error has ocurred");
+                                $(".message-container-error").css("display", "grid");
                                 setTimeout(function () { 
-                                    $(".message-container-successAdmin").css("display", "none");
+                                    $(".message-container-errorAdmin").css("display", "none");
                                  },4000)
-                                loadFlagTable();
-                                
-                            }
-                         }
-                        
-                    })
-                }
+                                }else if(response === 'ok'){
+                                    $(".loadingContainer").css("display", "none")
+                                    $(".updateFlagModal").css("display", "none");
+                                    $(".message-container-successAdmin .message").text("Flag updated successfully");
+                                    $(".message-container-successAdmin").css("display", "grid");
+                                    setTimeout(function () { 
+                                        $(".message-container-successAdmin").css("display", "none");
+                                     },4000)
+                                     console.log("valor despues de mandarse pero antes de haber cargado la tabla", $("#idFlag").val(id))
+                                    loadFlagTable();
+                                    console.log("valor despues de mandar y haber cargado la tabla", $("#idFlag").val(id))
+                                    
+                                }
+                             }
+                            
+                        })
+                    }
+                })
             })
-        })
+            
+        
    
     })
 
@@ -506,10 +510,7 @@ $(document).ready(function (){
     $("#cancelUpdateFlagBtn").on("click", function () {
         $(".updateFlagModal").css("display", "none")
     })
-  
 })
-
-
 
 function loadUserTable(){
     var userTable = ''
