@@ -124,7 +124,8 @@ $(function () {
                         $(".deleteUserModal").css('display', 'none')
                         $(".message-container-successAdmin .message").text("Quan deleted successfully");
                         $(".message-container-successAdmin").css("display", "grid");
-                        $('#deleteQuanModal').css("display", "grid");
+                        $('#quantitySelectModal').css("display", "none");
+                        $('#deleteQuanModal').css("display", "none");
                         setTimeout(function () { 
                             $(".message-container-successAdmin").css("display", "none");
                          },6000)
