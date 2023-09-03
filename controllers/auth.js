@@ -178,21 +178,28 @@ exports.logIn =  (req, res) => {
               expiresIn: process.env.JWT_EXPIRES_IN,
             });
 
-            const cookieOptions = {
+            const cookieOptionsHttp = {
               expires: new Date(
                 Date.now() + process.env.JWT_COOKIE_IN * 24 * 60 * 60 * 1000
               ),
               httpOnly: true,
             };
 
+            const cookieOptions = {
+              expires: new Date(
+                Date.now() + process.env.JWT_COOKIE_IN * 24 * 60 * 60 * 1000
+              ),
+              httpOnly: false,
+            };
+
             const lastName = results[0].lastName.split(" ");
             const name = results[0].name.split(" ");
           
-            res.cookie("userID", results[0].user);
-            res.cookie("name", name[0]);
-            res.cookie("lastName", lastName[0]);
-            res.cookie("position", results[0].position);
-            res.cookie("jwt", token, cookieOptions);
+            res.cookie("userID", results[0].user, cookieOptions);
+            res.cookie("name", name[0], cookieOptions);
+            res.cookie("lastName", lastName[0], cookieOptions);
+            res.cookie("position", results[0].position, cookieOptions);
+            res.cookie("jwt", token, cookieOptionsHttp);
             res.status(200).redirect("/landingPage");
             
           }
@@ -215,7 +222,7 @@ exports.isLoggedIn = async (req, res, next) => {
         req.cookies.jwt,
         process.env.JWT_SECRET
       );
-
+        
 
       dbConn.query(
         "SELECT * FROM user WHERE id = ?",
@@ -256,7 +263,8 @@ exports.isAdmin = async (req, res, next) =>{
         req.cookies.jwt,
         process.env.JWT_SECRET
       );
-
+      
+      
 
       dbConn.query(
         "SELECT role FROM user WHERE id = ?",
@@ -326,5 +334,6 @@ exports.logout = async (req, res) => {
   res.clearCookie("loggedIn");
   res.clearCookie("currentUser");
   res.clearCookie("isAdmin");
+  res.clearCookie("currentPart");
   res.status(200).redirect("/");
 };

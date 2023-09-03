@@ -1,0 +1,4 @@
+$(ddocument).ready(function (){
+
+    
+})

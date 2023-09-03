@@ -787,6 +787,9 @@ input::-webkit-inner-spin-button{
     transform: translateY(4px);
 }
 
+#idPart{
+  display: none;
+}
 /* .input {
     border: 1px solid grey;
     border-radius: 5px;
