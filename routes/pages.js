@@ -5,6 +5,8 @@ const userController = require('../controllers/userController')
 const featureController = require('../controllers/featureController')
 const partController = require('../controllers/partController')
 const quantityController = require('../controllers/quantityController')
+const currencyController = require('../controllers/currencyController')
+const costController = require('../controllers/costController')
 
 //AUTH ROUTES
 router.post("/auth", authController.logIn);
@@ -50,12 +52,16 @@ router.post('/getSpecificPart', partController.getSpecificPart);
 router.post('/getUsers', userController.getUsers);
 router.post("/getFlags", featureController.getFlags);
 router.post("/getQuantities", quantityController.getQuantity);
+router.post("/getCurrency", currencyController.getCurrency);
+router.post("/getCosts", costController.getCosts)
+
 
 //INSERT DATA ROUTER
 router.post('/addPart', authController.isAdmin, partController.addPart);
 router.post('/addUser',  userController.addUser);
 router.post('/addFlag',  featureController.addFlag);
 router.post('/addQuantity',  quantityController.addQuantity);
+router.post('/addCost',  costController.addCost);
 
 
 //DELETE DATA 
@@ -63,6 +69,8 @@ router.post('/deletePart', authController.isAdmin ,partController.deletePart);
 router.post('/deleteUser', authController.isAdmin ,userController.deleteUser);
 router.post('/deleteFlag', authController.isAdmin ,featureController.deleteFlag);
 router.post('/deleteQuan',  quantityController.deleteQuan);
+router.post('/deleteCost',  costController.deleteCost);
+
 
 //UPDATE DATA
 router.post('/updatePart', authController.isAdmin ,partController.updatePart);

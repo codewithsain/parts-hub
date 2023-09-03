@@ -28,8 +28,7 @@ $(function () {
     $("#addQuantityBtn").on("click", function (){
 
         var date = new Date
-        var dateFormat = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-        var currDate =dateFormat.toString();
+       var dateTimestamp=  date.toISOString().slice(0, 19).replace('T', ' ')
         var currPart = Cookies.get("currentPart")
 
         $("#quantityForm").validate({
@@ -69,7 +68,7 @@ $(function () {
                         globalEstimation: $("#globalEstimation").val(),
                         buyerEstimation: $("#buyerEstimation").val(),
                         quotedEstimation: $("#quotedEstimation").val(),
-                        createDate: currDate,
+                        createDate: dateTimestamp,
                         partNumber: currPart
                     },
                     before: function (){
@@ -122,7 +121,7 @@ $(function () {
                     if(response === 'ok'){
                         $(".loadingContainer").css("display", "none")
                         $(".deleteUserModal").css('display', 'none')
-                        $(".message-container-successAdmin .message").text("Quan deleted successfully");
+                        $(".message-container-successAdmin .message").text("Quantity estimation deleted successfully");
                         $(".message-container-successAdmin").css("display", "grid");
                         $('#quantitySelectModal').css("display", "none");
                         $('#deleteQuanModal').css("display", "none");
@@ -155,14 +154,18 @@ $(function () {
         let be= row.find('.tableBuyerEst').text();
         let qe= row.find('.tableQuotedEst').text();
 
+
         $("#globalEstimation").val(ge)
         $("#buyerEstimation").val(be)
          $("#quotedEstimation").val(qe)
 
          $("#quantitySelectModal").css("display", "none")
-        
-
-        
+         $(".message-container-successAdmin .message").text("Quantity estimation loaded successfully");
+         $(".message-container-successAdmin").css("display", "grid");
+         $('#quantitySelectModal').css("display", "none");
+            setTimeout(function () { 
+            $(".message-container-successAdmin").css("display", "none");
+            },6000)
 
     })
 
@@ -187,7 +190,7 @@ function loadQuantityTable() {
         success: function(response){
             $('#quantityTable tr').not(':first').remove();
             $.each(response, function (key, val) { 
-                quanTable += '<tr><td class="tableQuanID">' + val.id + '</td><td class=tableGlobalEst">' + val.globalEstimation+ '</td><td class="tableBuyerEst">' + val.buyerEstimation+ '</td><td class="tableQuotedEst">' + val.quotedEstimation+ '</td><td class="tableCreateDate">' + val.createDate+ '</td><td class="rowActions" id="rowActions"><button type="click" class="actionBtn"  id="deleteQuanBtn">Delete</button><button type="click"  class="actionBtn" id="updateQuanBtn">Load</button></td></tr>';
+                quanTable += '<tr><td class="tableQuanID">' + val.id + '</td><td class="tableGlobalEst">' + val.globalEstimation+ '</td><td class="tableBuyerEst">' + val.buyerEstimation+ '</td><td class="tableQuotedEst">' + val.quotedEstimation+ '</td><td class="tableCreateDate">' + val.createDate+ '</td><td class="rowActions" id="rowActions"><button type="click" class="actionBtn"  id="deleteQuanBtn">Delete</button><button type="click"  class="actionBtn" id="updateQuanBtn">Load</button></td></tr>';
              })
              $('#quantityTable tr').first().after(quanTable);
         }
