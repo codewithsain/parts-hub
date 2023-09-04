@@ -119,7 +119,8 @@ $(function () {
         })
     })
 
-    $("#cancelBtnUser").on("click", function(){
+    $("#cancelBtnUser").on("click", function(e){
+        e.preventDefault();
         $("#addUserModal").css("display", "none")
     })  
 
@@ -171,7 +172,8 @@ $(function () {
         $(".deleteUserModal").css("display", "none")
     })
 
-    $("#cancelBtnUserDelete").on("click", function(){
+    $("#cancelBtnUserDelete").on("click", function(e){
+        e.preventDefault();
         $(".deleteUserModal").css("display", "none")
     })
 
@@ -299,7 +301,8 @@ $(function () {
         $(".updateUserModal").css("display", "none")
     })
 
-    $("#cancelBtnUpdateUser").on("click", function () {
+    $("#cancelBtnUpdateUser").on("click", function (e) {
+        e.preventDefault();
         $(".updateUserModal").css("display", "none")
     })
 
@@ -372,8 +375,9 @@ $(function () {
         })
     })
     
-    $("#cancelFlagBtn").on("click", function(){
-        $("#addFlagModal").css("display", "none")
+    $("#cancelFlagBtn").on("click", function(e){
+        e.preventDefault();
+        $(".addFlagModal").css("display", "none")
     }) 
 
     
@@ -424,7 +428,8 @@ $(function () {
         $(".deleteFlagModal").css("display", "none")
     })
 
-    $("#cancelBtnFlagDelete").on("click", function(){
+    $("#cancelBtnFlagDelete").on("click", function(e){
+        e.preventDefault();
         $(".deleteFlagModal").css("display", "none")
     })
 
@@ -507,7 +512,8 @@ $(function () {
         $(".updateFlagModal").css("display", "none")
     })
 
-    $("#cancelUpdateFlagBtn").on("click", function () {
+    $("#cancelUpdateFlagBtn").on("click", function (e) {
+        e.preventDefault();
         $(".updateFlagModal").css("display", "none")
     })
 })

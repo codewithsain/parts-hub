@@ -60,7 +60,8 @@ $(document).ready(function (){
         $(".error").css('display', 'none');
     })
 
-    $(".cancelBtn").on('click', function(){
+    $(".cancelBtn").on('click', function(e){
+        e.preventDefault();
         $(".addPartModal").css("display", "none");
     })
 
@@ -248,7 +249,8 @@ $(document).ready(function (){
         $(".deletePartModal").css('display', 'none')
     })
 
-    $("#cancelBtnDelete").on('click', function(){
+    $("#cancelBtnDelete").on('click', function(e){
+        e.preventDefault();
         $(".deletePartModal").css('display', 'none')
     })
 
@@ -561,6 +563,11 @@ $(document).ready(function (){
         }
      })
     
+
+     $('#updateModalClose').on("click", function(e){
+        e.preventDefault();
+        $(".addPartModalUpdate").css("display", "none")
+     })
    
      
 })

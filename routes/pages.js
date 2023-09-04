@@ -7,6 +7,7 @@ const partController = require('../controllers/partController')
 const quantityController = require('../controllers/quantityController')
 const currencyController = require('../controllers/currencyController')
 const costController = require('../controllers/costController')
+const leadTimeController = require('../controllers/leadTimeController')
 
 //AUTH ROUTES
 router.post("/auth", authController.logIn);
@@ -54,6 +55,7 @@ router.post("/getFlags", featureController.getFlags);
 router.post("/getQuantities", quantityController.getQuantity);
 router.post("/getCurrency", currencyController.getCurrency);
 router.post("/getCosts", costController.getCosts)
+router.post("/getLeadTimes", leadTimeController.getLeadTimes)
 
 
 //INSERT DATA ROUTER
@@ -62,6 +64,7 @@ router.post('/addUser',  userController.addUser);
 router.post('/addFlag',  featureController.addFlag);
 router.post('/addQuantity',  quantityController.addQuantity);
 router.post('/addCost',  costController.addCost);
+router.post('/addLeadTime',  leadTimeController.addLeadTime)
 
 
 //DELETE DATA 
@@ -70,7 +73,7 @@ router.post('/deleteUser', authController.isAdmin ,userController.deleteUser);
 router.post('/deleteFlag', authController.isAdmin ,featureController.deleteFlag);
 router.post('/deleteQuan',  quantityController.deleteQuan);
 router.post('/deleteCost',  costController.deleteCost);
-
+router.post('/deleteLeadTime',  leadTimeController.deleteLeadTime);
 
 //UPDATE DATA
 router.post('/updatePart', authController.isAdmin ,partController.updatePart);

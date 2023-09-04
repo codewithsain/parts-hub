@@ -29,12 +29,6 @@
     
       </div>
     
-
-     
-        
-
-     
-       
        <div class="card" id="cardPartOverview">
 
        </div>
@@ -55,6 +49,7 @@
              <h2>Compare Parts</h2>
        </div>
 
+        {{!-- COST MODULE --}}
         <div class="card" id="cardCost">
          <h2>Cost</h2>
                 <button class="selectBtn" id="selectCostBtn">Select</button>
@@ -195,10 +190,128 @@
             </div>
       </div>
 
+        {{!--LEAD TIME MODULE --}}
         <div class="card" id="cardLeadTime">
          <h2>Lead Time</h2>
+         <button class="selectBtn" id="selectLeadTimeBtn">Select</button>
+         <form id="leadTimeForm">
+            <div class="firstColumn">
+              <label for="selectPPBB">Prod Procure By Build</label>
+              <select name="selectPPBB" id="selectPPBB">
+                <option value="" disabled hidden selected>Please select a procurement</option>
+                <option value="Example">Example</option>
+              </select>
+              <label for="selectTNBB" id="selectTNBBLabel">Tool Need By Build</label>
+              <select name="selectTNBB" id="selectTNBB">
+                <option value="" disabled hidden selected>Please select a tool</option>
+                <option value="Example">Example</option>
+              </select>
+              <label for="location" id="locationLabel">Location</label>
+              <select name="location" id="location">
+                <option value="" disabled hidden selected>Please select a location</option>
+                <option value="Example">Example</option>
+              </select>
+            </div>
+            <div class="secondColumn">
+              <div class="firstRow">
+                <label id="expLTLabel">Experimental LT</label>
+                <div class="inputUOM">
+                  <input type="text" name="experimentalLT" id="experimentalLT">
+                  <span>Wks</span>
+                </div>
+              </div>
+              <div class="secondRow">
+                <label>Prod Procurement LT</label>
+                <div class="inputUOM">
+                  <input type="text" name="prodProcurementLT" id="prodProcurementLT">
+                  <span>Wks</span>
+                </div>
+                <label>Tooling LT</label>
+                <div class="inputUOM">
+                  <input type="text" name="toolingLT" id="toolingLT">
+                  <span>Wks</span>
+                </div>
+                <label>Admin LT</label>
+                 <div class="inputUOM">
+                  <input type="text" name="adminLT" id="adminLT">
+                  <span>Wks</span>
+                </div>
+                <label>Material Rel LT</label>
+                <div class="inputUOM">
+                 <span id="materialRelLT" style="margin-right: 8px;">0</span><span>Wks</span>
+                </div>
+              </div>
+                <button class="addBtn" type="click" id="addLeadTimeBtn">Save</button>
+            </div>
+         </form>
        </div>
 
+
+        <div class="modal" id="leadTimeSelectModal">
+          <div class="modal-content" id="leadTimeSelectModal-content">
+             <span class="close" id="closeLeadTimeModal">&times;</span>
+             <div id="tableContent">
+                <table id="leadTimeTable">
+            <thead >
+                        <tr>
+                          <th>
+                                ID
+                            </th>
+                            <th>
+                                Prod Procure By Build
+                            </th>
+                            <th>
+                                Tool Need By Build
+                            </th>
+                              <th>
+                               Location
+                            </th>
+                            <th>
+                                Experimental Lead Time
+                            </th>
+                            <th>
+                                Prod Procurement Lead Time
+                            </th>
+                            <th>
+                                Tooling LT
+                            </th>
+                             <th>
+                                Admin LT
+                            </th>
+                            <th>
+                                Material LT
+                            </th>
+                            <th>
+                                Create Date
+                            </th>
+                             <th>
+                                Actions
+                            </th>
+                        </tr>
+                        
+           </thead>
+           <tbody>
+           </tbody>
+                </table>
+      
+             </div>
+            
+          </div>
+       </div>
+
+        <div class="modal" id="deleteLeadtimeModal">
+            <div class="modal-content" id="deleteLeadtimeModal-content">
+                <span class="close" id="closeDeleteLeadTimeModal">&times;</span>
+                <span class="deleteConfirmation">Are you sure you want to delete this lead time estimation?</span>
+                <div class="buttonContainerDelete">
+                    <button type="click" class="cancelBtnAdmin" id="cancelLeadTimeDelete">Cancel</button>
+                    <button type="click" class="confirmUserDelete" id="confirmLeadTimeDelete">Delete</button>
+                 </div>
+            </div>
+      </div>
+       
+
+        {{!-- QUANTTITIES MODULE --}}
        <div class="card" id="cardQuantities">
             <h2>Quantities</h2>
             <div class="btnContainer" id="quantityBtnContainer">
@@ -268,10 +381,12 @@
             </div>
       </div>
 
+        {{!-- TOOLING MODULE --}}
         <div class="card" id="cardTooling">
              <h2>Tooling</h2>
        </div>
 
+        {{!-- NOTES MODULE --}}
          <div class="card" id="cardNotes">
              <h2>Notes</h2>
        </div>
@@ -292,6 +407,7 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
      <script src="/quantity.js"></script>
      <script src="/cost.js"></script>
+     <script src="/leadTime.js"></script>
 </body>
 
 </html>

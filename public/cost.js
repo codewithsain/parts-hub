@@ -269,6 +269,11 @@ $(function () {
         $('#deleteCostModal').css("display", "none");
     })
 
+    $("#cancelCostDelete").on("click", function(e){
+        e.preventDefault();
+        $("#deleteCostModal").css("display", "none")
+    })
+
     $("table").on("click", "#updateCostBtn", function(){
         
         let row = $(this).closest('tr');
