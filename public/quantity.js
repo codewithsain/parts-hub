@@ -173,6 +173,11 @@ $(function () {
     $("#closeDeleteQuanModal").on("click", function() {
         $('#deleteQuanModal').css("display", "none");
     })
+
+    $("#cancelQuanDelete").on("click", function(e) {
+        e.preventDefault();
+        $('#deleteQuanModal').css("display", "none");
+    })
     
 })
 
