@@ -121,7 +121,7 @@ $(function () {
 
     $("#cancelBtnUser").on("click", function(e){
         e.preventDefault();
-        $("#addUserModal").css("display", "none")
+        $(".addUserModal").css("display", "none")
     })  
 
 
