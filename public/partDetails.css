@@ -21,45 +21,43 @@ html{
                           "project project project taskDrawer"
                           "where where where taskDrawer"
                           "compare compare compare compare"
-                          "cost cost cost cost"
+                          "cost cost cost supplier"
                           "lead lead lead quantities"
-                          "tooling tooling tooling tooling"
-                          "notes notes notes notes"
+                          "tooling tooling notes service"
+
                           
   }
   
   
   @media screen and (max-width: 768px){
-    main{
-        grid-template-areas: "notBar notBar notBar notBar"
-                          "partOverview partOverview partOverview partOverview"
-                          "project project project project"
-                          "where where where where"
-                          "compare compare compare compare"
-                          "cost cost cost cost"
-                          "lead lead lead lead"
-                          "quantities quantities quantities quantities"
-                          "tooling tooling tooling tooling"
-                          "notes notes notes notes"
-                          "taskDrawer taskDrawer taskDrawer taskDrawer"
-      }
+   main{
+    grid-template-areas: "notBar notBar notBar notBar"
+    "partOverview partOverview taskDrawer taskDrawer"
+    "project project taskDrawer taskDrawer"
+    "where where taskDrawer taskDrawer"
+    "compare compare compare compare"
+    "cost cost cost cost"
+    "supplier supplier quantities quantities"
+    "lead lead lead lead"
+    "tooling tooling tooling tooling"
+    "notes notes service service"
+   }
     
   }
   
   @media screen and (max-width: 576px){
-      main{
-        grid-template-areas: "notBar notBar notBar notBar"
-                                "partOverview partOverview partOverview partOverview"
-                                "project project project project"
-                                "where where where where"
-                                "compare compare compare compare"
-                                "cost cost cost cost"
-                                "lead lead lead lead"
-                                "quantities quantities quantities quantities"
-                                "tooling tooling tooling tooling"
-                                "notes notes notes notes"
-                                "taskDrawer taskDrawer taskDrawer taskDrawer"
-          }
+    main{
+      grid-template-areas: "notBar notBar notBar notBar"
+      "partOverview partOverview taskDrawer taskDrawer"
+      "project project taskDrawer taskDrawer"
+      "where where taskDrawer taskDrawer"
+      "compare compare compare compare"
+      "cost cost cost cost"
+      "supplier supplier quantities quantities"
+      "lead lead lead lead"
+      "tooling tooling tooling tooling"
+      "notes notes service service"
+     }
   } 
   
 
@@ -445,11 +443,23 @@ html{
     max-height: 600px;
 }
 
+#cardSupplier{
+  grid-area: supplier;
+  min-height: 400px;
+  max-height: 400px;
+}
+
+#cardService{
+  grid-area: service;
+  min-height: 100px;
+  max-height: 100px;
+}
+
 /*COST MODULE*/
 #cardCost{
     grid-area: cost;
     min-height: 400px;
-    max-height: 600px;
+    max-height: 400px;
 }
 
 
@@ -827,7 +837,8 @@ html{
 #cardQuantities label{
   margin: 8px;
   margin-bottom: 32px;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 #cardQuantities input{
@@ -909,19 +920,249 @@ html{
   text-align: center;
 }
 
-
-
+/*TOOLING*/
 
 #cardTooling{
     grid-area: tooling;
-    min-height: 400px;
-    max-height: 600px;
+    min-height: 350px;
+    max-height: 350px;
 }
 
+#toolingBtnContainer{
+  grid-column: 2/4;
+  grid-row: 1;
+  place-self: right!important;
+  justify-self: right;
+  align-self: right;
+  display: flex;
+}
+#selectToolingBtn{
+  grid-column: 3;
+  grid-row: 1;
+  place-self: right!important;
+  justify-self: end !important;
+  align-self: right;
+}
+
+#addToolingBtn{
+  grid-column: 3;
+  grid-row: 4;
+  margin-left: 64px;
+}
+
+#toolingForm{
+  max-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column: 1/4;
+  grid-row: 2;
+  width: inherit;
+}
+
+#toolingForm label{
+  margin: 8px;
+  margin-bottom: 0px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#toolingForm input{
+ margin-top: 0;
+ margin-left: 8px;
+ margin-right: 8px;
+  margin-bottom: 32px;
+  font-size: 16px;
+  text-align: right;
+  width: 150px;
+  height: 25px;
+}
+
+#toolingForm select{
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 0;
+  width: 170px;
+  height: 30px;
+  margin-bottom: 32px;
+}
+
+#toolingSelectModal-content{
+  height: 600px !important;
+  width: 1050px !important;
+
+}
+
+#toolingForm .firstColumn{
+  display: flex;
+  flex-direction: column;
+  grid-column: 1;
+  grid-row: 1/5;
+}
+
+#toolingForm .secondColumn{
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  grid-row: 1/5;
+
+}
+
+
+#toolingForm .thirdColumn{
+  display: flex;
+  flex-direction: column;
+  grid-column: 3;
+  grid-row: 1/5;
+
+}
+
+#saveToolingBtn{
+  grid-column: 3;
+  grid-row: 4;
+  justify-self: right !important;
+  align-self: right !important;
+}
+
+#tableContent{
+  overflow-y: auto;
+  grid-row: 2/4;
+  grid-column: 1/4;
+}
+
+#toolingTable{
+  border: 1px solid gray;
+  border-collapse: collapse; 
+  width: 100%;
+  align-self: self-start;
+
+}
+
+#closeToolingModal{
+  grid-column: 3;
+}
+
+
+#toolingTable thead th {
+  position: sticky; 
+  top: -15px;
+  height: 50px;
+  border-bottom: 2px solid rgb(194, 193, 193);
+  font-size: 16px;
+}
+
+#toolingTable  thead :hover{
+  background-color: #c9c9c9;
+}
+
+#toolingTable  th, td {
+  padding: 8px 16px;
+  border-bottom: 1px solid rgb(194, 193, 193);
+  font-size: 14px;
+}
+
+#toolingTable  th {
+  background: white;
+}
+
+#toolingTable  td{
+  text-align: center;
+}
+
+/*NOTES*/
 #cardNotes{
     grid-area: notes;
     min-height: 200px;
-    max-height: 400px;
+    max-height: 200px;
+    max-width: 600px;
+}
+
+#notesBtnContainer{
+  grid-column: 2/4;
+  grid-row: 1;
+  place-self: right!important;
+  justify-self: right;
+  align-self: right;
+  display: flex;
+}
+
+#selectNotesBtn{
+  grid-column: 3;
+  grid-row: 1;
+  place-self: right!important;
+  justify-self: end !important;
+  align-self: right;
+}
+
+
+#notesForm{
+  max-height: 300px;
+  display: grid;
+  grid-column: 1/4;
+  grid-template-rows: 1fr, 50px;
+}
+
+#notesForm textarea{
+  resize: none;
+  grid-row: 1;
+}
+
+#notesSelectModal-content{
+  height: 600px !important;
+  width: 1050px !important;
+
+}
+
+#saveNotesBtn{
+  grid-row: 2;
+  place-self: end  !important;
+  align-items: end !important;
+  justify-self: end !important; 
+}
+
+#tableContent{
+  overflow-y: auto;
+  grid-row: 2/4;
+  grid-column: 1/4;
+}
+
+#notesTable{
+  border: 1px solid gray;
+  border-collapse: collapse; 
+  width: 100%;
+  align-self: self-start;
+
+}
+
+#closeNotesModal{
+  grid-column: 3;
+}
+
+
+#notesTable thead th {
+  position: sticky; 
+  top: -15px;
+  height: 50px;
+  border-bottom: 2px solid rgb(194, 193, 193);
+  font-size: 16px;
+}
+
+#notesTable  thead :hover{
+  background-color: #c9c9c9;
+}
+
+#notesTable  th, td {
+  padding: 8px 16px;
+  border-bottom: 1px solid rgb(194, 193, 193);
+  font-size: 14px;
+}
+
+#notesTable  th {
+  background: white;
+}
+
+#notesTable  td{
+  text-align: center;
 }
 
 

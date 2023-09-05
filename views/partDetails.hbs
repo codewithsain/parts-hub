@@ -199,17 +199,26 @@
               <label for="selectPPBB">Prod Procure By Build</label>
               <select name="selectPPBB" id="selectPPBB">
                 <option value="" disabled hidden selected>Please select a procurement</option>
-                <option value="Example">Example</option>
+                <option value="Durability Build">Durability Build</option>
+                <option value="Feasability Build">Feasability Build</option>
+                <option value="Limited Production Build">Limited Production Build</option>
+                <option value="Production Build">Production Build</option>
               </select>
               <label for="selectTNBB" id="selectTNBBLabel">Tool Need By Build</label>
               <select name="selectTNBB" id="selectTNBB">
                 <option value="" disabled hidden selected>Please select a tool</option>
-                <option value="Example">Example</option>
+                <option value="Durability Build">Durability Build</option>
+                <option value="Feasability Build">Feasability Build</option>
+                <option value="Limited Production Build">Limited Production Build</option>
+                <option value="Production Build">Production Build</option>
               </select>
               <label for="location" id="locationLabel">Location</label>
               <select name="location" id="location">
                 <option value="" disabled hidden selected>Please select a location</option>
-                <option value="Example">Example</option>
+                <option value="Fabrication">Fabrication</option>
+                <option value="Cab Line">Cab Line</option>
+                <option value="Main Line">Main Line</option>
+                <option value="Program Defined">Program Defined</option>
               </select>
             </div>
             <div class="secondColumn">
@@ -238,7 +247,7 @@
                 </div>
                 <label>Material Rel LT</label>
                 <div class="inputUOM">
-                 <span id="materialRelLT" style="margin-right: 8px;">0</span><span>Wks</span>
+                 <span id="materialRelLT" style="margin-right: 8px; font-weight: 700">0</span><span>Wks</span>
                 </div>
               </div>
                 <button class="addBtn" type="click" id="addLeadTimeBtn">Save</button>
@@ -310,6 +319,16 @@
             </div>
       </div>
        
+
+       {{!-- SUPPLIER MODULE --}}
+      <div class="card" id="cardSupplier">
+        <h2>Supplier</h2>
+      </div>
+
+      {{!-- SERVICE MODULE --}}
+      <div class="card" id="cardService">
+        <h2>Service</h2>
+      </div>
 
         {{!-- QUANTTITIES MODULE --}}
        <div class="card" id="cardQuantities">
@@ -384,12 +403,166 @@
         {{!-- TOOLING MODULE --}}
         <div class="card" id="cardTooling">
              <h2>Tooling</h2>
+             <div class="btnContainer" id="toolingBtnContainer">
+                <button class="selectBtn" id="selectToolingBtn">Select</button>
+            </div>
+            <form id="toolingForm">
+                <div class="firstColumn">
+                  <label>Investment Quality</label>
+                  <select name="invQual" id="invQual">
+                    <option value="" disabled selected hidden> Please select an option</option>
+                    <option value="Estimate">Estimate</option>
+                    <option value="Regression">Regression</option>
+                    <option value="Quote Form Analysis">Quote Form Analysis</option>
+                  </select>
+                  <label>Supplier Tooling</label>
+                  <input type="text" name="supTool" id="supTool">
+                  <label>Deere Tooling Expense</label>
+                  <input type="text" name="deereToolExp" id="deereToolExp">
+                </div>
+                <div class="secondColumn">
+                  <label>Investment Reports</label>
+                  <select name="invRep" id="invRep">
+                    <option value="" disabled selected hidden> Please select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  <label>Supplier Tooling Expense</label>
+                  <input type="text" name="supToolExp" id="supToolExp">
+                  <label>Returnable Container</label>
+                  <input type="text" name="returnCont" id="returnCont">
+                </div>
+                <div class="thirdColumn">
+                  <label>Experimenal Tooling</label>
+                  <input type="text" name="expTool" id="expTool">
+                  <label>Deere Tooling</label>
+                  <input type="text" name="deereTool" id="deereTool">
+                </div>
+            
+                <button type="click" class="addBtn" id="saveToolingBtn">Save</button>
+           
+            </form>
        </div>
+
+       <div class="modal" id="toolingSelectModal">
+          <div class="modal-content" id="toolingSelectModal-content">
+             <span class="close" id="closeToolingModal">&times;</span>
+             <div id="tableContent">
+                <table id="toolingTable">
+            <thead >
+                        <tr>
+                          <th>
+                                ID
+                            </th>
+                            <th>
+                                Investment Quality
+                            </th>
+                            <th>
+                                Investment Reports
+                            </th>
+                              <th>
+                               Experimental Tooling
+                            </th>
+                            <th>
+                                Supplier Tooling
+                            </th>
+                            <th>
+                                Supplier Tooling Expense
+                            </th>
+                            <th>
+                                Deere Tooling
+                            </th>
+                            <th>
+                                Deere Tooling Expense
+                            </th>
+                            <th>
+                                Returnable Container
+                            </th>
+                            <th>
+                                Create Date
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                        
+           </thead>
+           <tbody>
+           </tbody>
+                </table>
+      
+             </div>
+            
+          </div>
+       </div>
+
+       <div class="modal" id="deleteToolingModal">
+            <div class="modal-content" id="deleteToolingModal-content">
+                <span class="close" id="closeDeleteToolingModal">&times;</span>
+                <span class="deleteConfirmation">Are you sure you want to delete this tooling estimation?</span>
+                <div class="buttonContainerDelete">
+                    <button type="click" class="cancelBtnAdmin" id="cancelToolingDelete">Cancel</button>
+                    <button type="click" class="confirmUserDelete" id="confirmToolingDelete">Delete</button>
+                 </div>
+            </div>
+      </div>
 
         {{!-- NOTES MODULE --}}
          <div class="card" id="cardNotes">
              <h2>Notes</h2>
+             <div class="btnContainer" id="notesBtnContainer">
+                <button class="selectBtn" id="selectNotesBtn">Select</button>
+            </div>
+            <form id="notesForm">
+              <textarea id="notes" name="notes" cols="52" rows="2"></textarea>
+              <button type="click" class="addBtn" id="saveNotesBtn">Save</button>
+            </form>
+          </div>
+
+
+      <div class="modal" id="notesSelectModal">
+          <div class="modal-content" id="notesSelectModal-content">
+             <span class="close" id="closeNotesModal">&times;</span>
+             <div id="tableContent">
+                <table id="notesTable">
+            <thead >
+                        <tr>
+                          <th>
+                                ID
+                            </th>
+                            <th>
+                                Note
+                            </th>
+                            <th>
+                                Create Date
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                        
+           </thead>
+           <tbody>
+           </tbody>
+                </table>
+      
+             </div>
+            
+          </div>
        </div>
+
+
+      <div class="modal" id="deleteNotesModal">
+            <div class="modal-content" id="deleteNotesModal-content">
+                <span class="close" id="closeDeleteNotesModal">&times;</span>
+                <span class="deleteConfirmation">Are you sure you want to delete this note?</span>
+                <div class="buttonContainerDelete">
+                    <button type="click" class="cancelBtnAdmin" id="cancelNotesDelete">Cancel</button>
+                    <button type="click" class="confirmUserDelete" id="confirmNoteDelete">Delete</button>
+                 </div>
+            </div>
+      </div>
+       
        
     
 
@@ -408,6 +581,8 @@
      <script src="/quantity.js"></script>
      <script src="/cost.js"></script>
      <script src="/leadTime.js"></script>
+      <script src="/tooling.js"></script>
+       <script src="/notes.js"></script>
 </body>
 
 </html>
