@@ -666,6 +666,7 @@ html{
   margin-bottom: 0px;
   font-size: 16px;
   font-weight: 700;
+
 }
 
 #cardLeadTime input{
@@ -677,6 +678,7 @@ html{
   text-align: right;
   width: 150px;
   height: 20px;
+  display: block !important;
 }
 
 #cardLeadTime select{
@@ -1164,7 +1166,6 @@ html{
 #notesTable  td{
   text-align: center;
 }
-
 
 
 
