@@ -523,7 +523,7 @@ $(document).ready(function (){
 
 
      $(".searchBtn").on("click", function(){
-        console.log($("#searchedPart").text())
+       
         if($("#searchedPart").val() === ""){
             loadTable();
             console.log("sin parte")
@@ -546,14 +546,14 @@ $(document).ready(function (){
                     }else if(Cookies.get("isAdmin") === "true"){
                         $('#partsTable tr').not(':first').remove();
                         $.each(response, function (key, val) { 
-                            tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td><td class="rowActions" id="rowActions"><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
+                            tableResults += '<tr><td class="tableID">' + val.id + '</td><td id="partNumber"><a href="/partDetails/'+val.partNumber+'" id="linkPartDetails">'+val.partNumber+'</a></td><td id="description">' + val.description+ '</td><td id="termCode">' + val.termCode+ '</td><td id="netWeight">' + val.netWeight+ '</td><td id="grossWeight">' + val.grossWeight+ '</td><td class="rowActions" id="rowActions"><button type="click" class="actionBtn"  id="deleteBtn">Delete</button><button type="click"  class="actionBtn" id="updateBtn">Update</button></td></tr>';
                          })
             
                          $('#partsTable tr').first().after(tableResults);
                     }else if(Cookies.get("isAdmin") === "false"){
                         $('#partsTable tr').not(':first').remove();
                         $.each(response, function (key, val) { 
-                            tableResults += '<tr><td class="tableID">' + val.id + '</td><td>' + val.partNumber+ '</td><td>' + val.description+ '</td><td>' + val.termCode+ '</td><td>' + val.netWeight+ '</td><td>' + val.grossWeight+ '</td>';
+                            tableResults += '<tr><td class="tableID">' + val.id + '</td><td id="partNumber"><a href="/partDetails/'+val.partNumber+'" id="linkPartDetails">'+val.partNumber+'</a></td><td id="description">' + val.description+ '</td><td id="termCode">' + val.termCode+ '</td><td id="netWeight">' + val.netWeight+ '</td><td id="grossWeight">' + val.grossWeight+ '</td>';
                          })
             
                          $('#partsTable tr').first().after(tableResults);
