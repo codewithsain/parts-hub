@@ -204,6 +204,7 @@ html{
   }
 
   .selectBtn {
+    display: block;
     background-color: #f1f1f1;
     color: black;
     border: 0;
@@ -464,6 +465,7 @@ html{
 
 
 #selectCostBtn{
+  display: block;
   grid-column: 3;
   grid-row: 1;
   place-self: right !important;
@@ -537,6 +539,7 @@ html{
 }
 
 .costCalculationSecondColumn input{
+  display: block;
   align-self: end;
 }
 
@@ -555,6 +558,7 @@ html{
 }
 
 #cardCost input{
+  display: block;
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
@@ -566,6 +570,7 @@ html{
 }
 
 #cardCost select{
+  display: block;
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
@@ -636,6 +641,7 @@ html{
 }
 
 #selectLeadTimeBtn{
+  display: block;
   grid-column: 3;
   place-self: right !important;
   align-items: right !important;
@@ -670,6 +676,7 @@ html{
 }
 
 #cardLeadTime input{
+  display: block;
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
@@ -682,6 +689,7 @@ html{
 }
 
 #cardLeadTime select{
+  display: block;
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
@@ -724,6 +732,7 @@ html{
 }
 
 .inputUOM{
+  display: block;
   grid-column: 2;
   display: flex;
   justify-content: end;
@@ -820,6 +829,7 @@ html{
   display: flex;
 }
 #selectQuantityBtn{
+  display: block;
   grid-column: 3;
   grid-row: 1;
   place-self: right!important;
@@ -844,6 +854,7 @@ html{
 }
 
 #cardQuantities input{
+  display: block;
   margin: 8px;
   margin-bottom: 32px;
   font-size: 16px;
@@ -939,6 +950,7 @@ html{
   display: flex;
 }
 #selectToolingBtn{
+  display: block;
   grid-column: 3;
   grid-row: 1;
   place-self: right!important;
@@ -970,6 +982,7 @@ html{
 }
 
 #toolingForm input{
+  display: block;
  margin-top: 0;
  margin-left: 8px;
  margin-right: 8px;
@@ -981,6 +994,8 @@ html{
 }
 
 #toolingForm select{
+  display: block;
+
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
@@ -1089,6 +1104,7 @@ html{
 }
 
 #selectNotesBtn{
+  display: block;
   grid-column: 3;
   grid-row: 1;
   place-self: right!important;

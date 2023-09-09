@@ -569,6 +569,7 @@ $(document).ready(function (){
         $(".addPartModalUpdate").css("display", "none")
      })
    
+
      
 })
 
