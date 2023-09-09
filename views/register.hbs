@@ -5,56 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/register.css">
     <title>Register</title>
 </head>
 
-<body>
+
 
     <body>
-        <form action="/auth/register" method="POST" class="formRegister">
-            <div class="center">
+        <form  class="formRegister" id="formRegister" novalidate>
                 <h2 class="form-title" id="login">Register</h2>
-                <input type="text" class="input" placeholder="User" name="user" value="{{userLSR}}" minlength="7"
+                <label> User</label>
+                <input type="text" class="input" placeholder="User" name="user" id="user"  minlength="7"
                     maxlength="7" />
-                <input type="text" class="input" placeholder="Name" name="name" value="{{nameLSR}}" minlength="2"
+                <label>Name</label>
+                <input type="text" class="input" placeholder="Name" name="name" id="name" minlength="2"
                     maxlength="25" />
-                <input type="text" class="input" placeholder="Last Name" name="lastName" value="{{lastNameLSR}}"
+                <label >Last Name</label>  
+                <input type="text" class="input" placeholder="Last Name" name="lastName" id="lastName"
                     minlength="2" maxlength="25" />
-                <input type="text" class="input" placeholder="Position" name="position" value="{{positionLSR}}"
-                    minlength="5" maxlength="50" />
-                <input type="email" class="inputEmail" placeholder="Email" name="email" value="{{emailLSR}}"
-                    maxlength="100" />
-                <input type="password" class="input" placeholder="Password" name="password" value="{{passwordLSR}}"
-                    minlength="12" maxlength="50" />
+                <label >Position</label>  
+                <select name="position" id="position">
+                    <option value="" disabled selected hidden>Select a position</option>
+                    <option value="Software Engineer" >Software Engineer</option>
+                    <option value="Buyer">Buyer</option>
+                    <option value="Supply Chain Specialist">Supply Chain Specialist</option>
+                    <option value="Product Owner">Product Owner</option>
+                    <option value="Scrum Master">Scrum Master</option>
+                    <option value="Project Manager">Project Manager</option>
+                </select>
+                <label >Email</label>
+                <input type="text" class="input" placeholder="Email" name="email" id="email">
+                <label >Password</label>
+                <input type="password" class="input" placeholder="Password" name="password"
+                   id="password" minlength="12" maxlength="50" />
+                <label >Confirm Password</label>
                 <input type="password" class="inputConfirmPassword" placeholder="Confirm your password"
-                    name="passwordConfirm" value="{{passwordConfirmLSR}}" minlength="12" maxlength="50" />
-                <button type="submit" class="registerBtn">Register</button>
-                {{#if userRegisteredMessage}}
-                <h4 class="succRegisMessage">{{userRegisteredMessage}}</h4>
-                {{/if}}
-                {{#if emailMessage}}
-                <h4 class="errorMessageRegister">{{emailMessage}}</h4>
-                {{/if}}
-                {{#if specialC}}
-                <h4 class="errorMessageRegister">{{specialC}}</h4>
-                {{/if}}
-                {{#if userTaken}}
-                <h4 class="errorMessageRegister">{{userTaken}}</h4>
-                {{/if}}
-                {{#if userLength}}
-                <h4 class="errorMessageRegister">{{userLength}}</h4>
-                {{/if}}
-                {{#if qMMessage}}
-                <h4 class="errorMessageRegister">{{qMMessage}}</h4>
-                {{/if}}
-                {{#if passwordMessage}}
-                <h4 class="errorMessageRegister">{{passwordMessage}}</h4>
-                {{/if}}
-            </div>
+                    name="passwordConfirm" id="passwordConfirm" minlength="12" maxlength="50" />
+                <button type="click" class="registerBtn">Register</button>
         </form>
+        <div class="message-container-success" id="message-container">
+           <p class="message"></p>
         </div>
-    </body>
+        <div class="message-container-error" id="message-container">
+           <p class="message"></p>
+        </div>
+         <script
+  src="https://code.jquery.com/jquery-3.7.0.js"
+  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" 
+        integrity="sha256-yE5LLp5HSQ/z+hJeCqkz9hdjNkk1jaiGG0tDCraumnA=" 
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="/register.js"></script>
+
 </body>
 
 </html>
