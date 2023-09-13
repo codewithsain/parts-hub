@@ -10,6 +10,8 @@ const costController = require('../controllers/costController')
 const leadTimeController = require('../controllers/leadTimeController')
 const toolingController = require('../controllers/toolingController')
 const notesController = require('../controllers/notesController')
+const supplierController = require('../controllers/supplierController')
+const serviceController = require('../controllers/serviceController')
 
 //AUTH ROUTES
 router.post("/auth", authController.logIn);
@@ -65,7 +67,11 @@ router.post("/getCosts", costController.getCosts)
 router.post("/getLeadTimes", leadTimeController.getLeadTimes)
 router.post("/getTooling", toolingController.getTooling)
 router.post("/getNotes", notesController.getNotes)
-
+router.post("/getSuppliers", supplierController.getSuppliers)
+router.post("/getInfo", supplierController.getInfo)
+router.post("/getCurrentsupplier", supplierController.getCurrentSupplier)
+router.post("/getPartOverview", partController.getPartOverview)
+router.post("/getService", serviceController.getService)
 
 //INSERT DATA ROUTER
 router.post('/addPart', authController.isAdmin, partController.addPart);
@@ -77,6 +83,8 @@ router.post('/addLeadTime',  leadTimeController.addLeadTime)
 router.post('/addTooling',  toolingController.addTooling)
 router.post("/addNotes", notesController.addNotes)
 router.post("/registerUser", userController.registerUSer)
+router.post("/saveSupplier", supplierController.saveSupplier)
+router.post("/saveService", serviceController.saveService)
 
 //DELETE DATA 
 router.post('/deletePart', authController.isAdmin ,partController.deletePart);
