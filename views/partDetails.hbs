@@ -29,6 +29,7 @@
 
     </div>
 
+    {{!-- PART OVERVIEW MODULE --}}
     <div class="card" id="cardPartOverview">
       <div id="imageContainer">
         <img src="/images/descarga.png" width="284" height="177">
@@ -55,18 +56,62 @@
       </div>
     </div>
 
+
+    {{!-- TAST DRAWER MODULE --}}
     <div class="card" id="cardTaskDrawer">
       <h2>Task Drawer</h2>
     </div>
 
+    {{!-- PROJECT MODULE --}}
     <div class="card" id="cardProject">
-
+      <label id="ecmLabel">ECM Project</label>
+      <p id="ecm"></p>
+      <label id="localEcmLabel">Local ECM</label>
+      <p id="localEcm"></p>
+      <label id="changeTypeLabel">Change Type</label>
+      <p id="changeType"></p>
+      <label id="teamNameLabel">Team Name</label>
+      <p id="teamName"></p>
+      <label id="ecrNumberLabel">ECR Number</label>
+      <p id="ecrNumber"></p>
     </div>
 
+    {{!-- WHERE USED MODULE --}}
     <div class="card" id="cardWhereUsed">
       <h2>Where Used</h2>
+      <div id="tableContent">
+          <table id="whereUsedTable">
+            <thead>
+              <tr>
+                <th>
+                  Plant
+                </th>
+                <th>
+                  Supplier Number-Name
+                </th>
+                <th>
+                  Term Code
+                </th>
+                <th>
+                  Term Code Description
+                </th>
+                <th>
+                  52 Wk Forecast
+                </th>
+                <th>
+                Price
+                </th>
+              </tr>
+             
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+
+        </div>
     </div>
 
+    {{!-- COMPARE PARTS MODULE --}}
     <div class="card" id="cardCompareParts">
       <h2>Compare Parts</h2>
     </div>
@@ -124,7 +169,7 @@
               <input type="text" name="directMat" id="directMat">
               <input type="text" name="dirOverhead" id="dirOverhead">
               <input type="text" name="perOverhead" id="perOverhead">
-              <input type="text" name="tic" id="tic">
+              <span id="tic" style="margin-right: 8px; font-weight: 700">0</span>
             </div>
           </div>
           <button type="click" class="addBtn" id="saveCostBtn">Save</button>
@@ -372,8 +417,8 @@
       <h2>Service</h2>
       <form id="serviceForm">
         <div class="firstColumn">
-          <label>Local Service</label>
-          <label>Global Service</label>
+          <label>Local Service Indicator</label>
+          <label>Global Service Indicator</label>
         </div>
         <div class="secondColumn">
           <select name="lsi" id="lsi">
@@ -654,7 +699,9 @@
   <script src="/featureFlags.js"></script>
   <script src="/supplier.js"></script>
   <script src="/overview.js"></script>
-    <script src="/service.js"></script>
+  <script src="/service.js"></script>
+  <script src="/project.js"></script>
+    <script src="/whereUsed.js"></script>
 </body>
 
 </html>

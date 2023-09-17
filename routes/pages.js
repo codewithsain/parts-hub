@@ -12,6 +12,8 @@ const toolingController = require('../controllers/toolingController')
 const notesController = require('../controllers/notesController')
 const supplierController = require('../controllers/supplierController')
 const serviceController = require('../controllers/serviceController')
+const projectController = require('../controllers/projectController')
+const whereUsedController = require('../controllers/whereUsedController')
 
 //AUTH ROUTES
 router.post("/auth", authController.logIn);
@@ -72,6 +74,8 @@ router.post("/getInfo", supplierController.getInfo)
 router.post("/getCurrentsupplier", supplierController.getCurrentSupplier)
 router.post("/getPartOverview", partController.getPartOverview)
 router.post("/getService", serviceController.getService)
+router.post("/getProject", projectController.getProject)
+router.post("/getWhereUsed", whereUsedController.getWhereUsed)
 
 //INSERT DATA ROUTER
 router.post('/addPart', authController.isAdmin, partController.addPart);
