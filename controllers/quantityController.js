@@ -17,12 +17,25 @@ exports.addQuantity = (req, res) =>{
                         if(error){
                             return res.send(error)
                         }else if(results){
-                            return res.send("ok");
+                            try {
+                                dbConn.query("UPDATE part SET ? WHERE id = ?", [{globalEAU: globalEstimation}, id] ,
+                                (error, results) =>{
+                                    if(error){
+                                        return res.send(error)
+                                    }else if(results){
+                                        return res.send("ok");
+                                    }
+                                })
+                            } catch (error) {
+                                return res.send(error);
+                            }
                         }
                     })
                 } catch (error) {
-                    return res.send();
+                    return res.send(error);
                 }
+
+              
             }
         })
     } catch (error) {

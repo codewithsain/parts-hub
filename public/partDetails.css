@@ -1,106 +1,100 @@
-html{
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    background-color: #f1f1f1;
-  }
-  
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  grid-area: main;
+  display: grid;
+  min-height: calc(100vh - 75px - 120px);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, min-content);
+  grid-gap: 10px;
+  grid-template-areas:
+    'notBar notBar notBar notBar'
+    'partOverview partOverview partOverview taskDrawer'
+    'project project project taskDrawer'
+    'where where where taskDrawer'
+    'compare compare compare compare'
+    'cost cost cost supplier'
+    'lead lead lead quantities'
+    'tooling tooling notes service';
+}
+
+@media screen and (max-width: 768px) {
   main {
-   width: 100%;
-   margin: 0 auto;
-    grid-area: main;
-    display: grid;
-    min-height: calc(100vh - 75px - 120px);
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(8, min-content);
-    grid-gap: 10px;
-    grid-template-areas: "notBar notBar notBar notBar"
-                          "partOverview partOverview partOverview taskDrawer"
-                          "project project project taskDrawer"
-                          "where where where taskDrawer"
-                          "compare compare compare compare"
-                          "cost cost cost supplier"
-                          "lead lead lead quantities"
-                          "tooling tooling notes service"
+    grid-template-areas:
+      'notBar notBar notBar notBar'
+      'partOverview partOverview taskDrawer taskDrawer'
+      'project project taskDrawer taskDrawer'
+      'where where taskDrawer taskDrawer'
+      'compare compare compare compare'
+      'cost cost cost cost'
+      'supplier supplier quantities quantities'
+      'lead lead lead lead'
+      'tooling tooling tooling tooling'
+      'notes notes service service';
+  }
+}
 
-                          
+@media screen and (max-width: 576px) {
+  main {
+    grid-template-areas:
+      'notBar notBar notBar notBar'
+      'partOverview partOverview taskDrawer taskDrawer'
+      'project project taskDrawer taskDrawer'
+      'where where taskDrawer taskDrawer'
+      'compare compare compare compare'
+      'cost cost cost cost'
+      'supplier supplier quantities quantities'
+      'lead lead lead lead'
+      'tooling tooling tooling tooling'
+      'notes notes service service';
   }
-  
-  
-  @media screen and (max-width: 768px){
-   main{
-    grid-template-areas: "notBar notBar notBar notBar"
-    "partOverview partOverview taskDrawer taskDrawer"
-    "project project taskDrawer taskDrawer"
-    "where where taskDrawer taskDrawer"
-    "compare compare compare compare"
-    "cost cost cost cost"
-    "supplier supplier quantities quantities"
-    "lead lead lead lead"
-    "tooling tooling tooling tooling"
-    "notes notes service service"
-   }
-    
-  }
-  
-  @media screen and (max-width: 576px){
-    main{
-      grid-template-areas: "notBar notBar notBar notBar"
-      "partOverview partOverview taskDrawer taskDrawer"
-      "project project taskDrawer taskDrawer"
-      "where where taskDrawer taskDrawer"
-      "compare compare compare compare"
-      "cost cost cost cost"
-      "supplier supplier quantities quantities"
-      "lead lead lead lead"
-      "tooling tooling tooling tooling"
-      "notes notes service service"
-     }
-  } 
-  
+}
 
-  ul.breadcrumb {
-    padding: 10px 10px;
-    list-style: none;
-    background-color: inherit;
-    margin-bottom: 4px;
-    margin-left: 4px;
-    grid-area: breadcrumb;
-    grid-column: 1;
- }
-  
- 
-  ul.breadcrumb li {
-    display: inline;
-    font-size: 18px;
-  }
-  
+ul.breadcrumb {
+  padding: 10px 10px;
+  list-style: none;
+  background-color: inherit;
+  margin-bottom: 4px;
+  margin-left: 4px;
+  grid-area: breadcrumb;
+  grid-column: 1;
+}
 
-  ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
-  }
-  
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
 
-  ul.breadcrumb li a {
-    color: green;
-    text-decoration: none;
-    text-decoration: underline;
-  }
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: '/\00a0';
+}
 
-  ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
-  }
+ul.breadcrumb li a {
+  color: green;
+  text-decoration: none;
+  text-decoration: underline;
+}
+
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
 
 /*UTILS*/
 
-
 .message-container-successAdmin {
-  background-color:  rgba(0, 255, 0, 0.233);
+  background-color: rgba(0, 255, 0, 0.233);
   border-radius: 5px;
   width: 100px;
   grid-column: 2;
@@ -113,7 +107,7 @@ html{
   top: 0;
   text-align: center;
   display: grid;
-  justify-content:center;
+  justify-content: center;
   place-self: center;
   display: none;
 }
@@ -132,10 +126,9 @@ html{
   top: 0;
   text-align: center;
   display: grid;
-  justify-content:center;
+  justify-content: center;
   place-self: center;
   display: none;
-
 }
 
 .message {
@@ -145,7 +138,7 @@ html{
   text-align: center;
 }
 
-.actionBtn{
+.actionBtn {
   background-color: #ffd621;
   color: black;
   border: 0;
@@ -161,271 +154,261 @@ html{
 }
 
 .actionBtn:hover {
-    transition: all 0.3s ease;
-    background-color: #e4c022;
+  transition: all 0.3s ease;
+  background-color: #e4c022;
 }
-  
+
 .actionBtn:active {
-    background-color: #666666;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
+.addBtn {
+  background-color: #ffd621;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+  margin: 8px;
+  right: 0px;
+  width: 80px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  margin-right: 16px;
+  -webkit-transition: all 0.3s ease;
+}
 
-  .addBtn {
-    background-color: #ffd621;
-    color: black;
-    border: 0;
-    border-radius: 5px;
-    margin: 8px;
-    right: 0px;
-    width: 80px;
-    height: 30px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    opacity: 1;
-    visibility: visible;
-    margin-right: 16px;
-    -webkit-transition: all 0.3s ease;
-  }
-  
-  .addBtn:hover {
-    display: block;
-    transition: all 0.3s ease;
-    background-color: #e4c022;
-  }
-  
-  
-  .addBtn:active {
-    background-color: #666666;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+.addBtn:hover {
+  display: block;
+  transition: all 0.3s ease;
+  background-color: #e4c022;
+}
 
-  .selectBtn {
-    display: block;
-    background-color: #f1f1f1;
-    color: black;
-    border: 0;
-    border-radius: 5px;
-    margin: 8px;
-    right: 0px;
-    width: 80px;
-    height: 30px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    opacity: 1;
-    visibility: visible;
-    margin-right: 16px;
-    -webkit-transition: all 0.3s ease;
-    border: 1px solid;
-  }
-  
-  .selectBtn:hover {
-    display: block;
-    transition: all 0.3s ease;
-    background-color: #f1f1f1c5;
-  }
-  
-  
-  .selectBtn:active {
-    background-color: #666666;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+.addBtn:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
-  
+.selectBtn {
+  display: block;
+  background-color: #f1f1f1;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+  margin: 8px;
+  right: 0px;
+  width: 80px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  margin-right: 16px;
+  -webkit-transition: all 0.3s ease;
+  border: 1px solid;
+}
 
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 450px;
-    height: 150px;
-    grid-column: 2;
-    grid-row: 2;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 20px 1fr 50px;
-    column-gap: 10px;
-    row-gap: 10px;
-  }
+.selectBtn:hover {
+  display: block;
+  transition: all 0.3s ease;
+  background-color: #f1f1f1c5;
+}
 
+.selectBtn:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
-  .close {
-    text-align: right;
-    grid-row: 1;
-    grid-column: 3;
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    border: none;
-    background-color: white;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  } 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
 
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 450px;
+  height: 150px;
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 20px 1fr 50px;
+  column-gap: 10px;
+  row-gap: 10px;
+}
 
-  .card h2 {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: left;
-    align-self: left;
-    margin: 8px
-  }
+.close {
+  text-align: right;
+  grid-row: 1;
+  grid-column: 3;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  border: none;
+  background-color: white;
+}
 
-
-  .error{
-    color: red;
-    font-size: smaller;
-    margin-top: 0px!important;
-    margin-bottom: 0px!important;
-    margin-left: 8px!important;
-  }
-
-  .cancelBtnAdmin {
-    background-color: #f1f1f1;
-    color: black;
-    border: 0;
-    border-radius: 5px;
-    width: 80px;
-    height: 30px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    opacity: 1;
-    visibility: visible;
-    margin-right: 16px;
-    -webkit-transition: all 0.3s ease;
-    justify-self: right;
-    align-self: right;
-  }
-  
-  .cancelBtnAdmin:hover {
-    transition: all 0.3s ease;
-    background-color: #f1f1f1c5;
-  }
-  
-  .cancelBtnAdmin:active {
-    background-color: #666666;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-
-  .confirmUserDelete {
-    background-color: red;
-    color: black;
-    border: 0;
-    border-radius: 5px;
-    width: 80px;
-    height: 30px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    opacity: 1;
-    visibility: visible;
-    margin-right: 16px;
-    -webkit-transition: all 0.3s ease;
-  }
-  
-  .confirmUserDelete:hover {
-    transition: all 0.3s ease;
-    background-color: rgba(255, 0, 0, 0.63);
-  }
-  
-  .confirmUserDelete:active {
-    background-color: #666666;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-  .buttonContainerDelete{
-    display: flex;
-    align-items: end;
-    justify-content: end;
-    grid-column: 3;
-    grid-row: 3;
-    position: sticky!important;
-  }
-
-  .deleteConfirmation{
-    grid-row: 2;
-    grid-column: 1/4;
-    place-self: center;
-    font-size: 20px;
-  }
-
-  .breadAndNotContainer{
-    position: sticky !important;
-    top: 75px !important;
-    background-color: #f1f1f1;
-    grid-area: notBar;
-    height: 70px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-
-
-  /*CARDS*/
-
-.card{
-    background-color: WHITE;
-    padding: 10px;
-    box-shadow: 2px 2px 8px 4px #d3d3d3d1;
-    border-radius: 5px;
-    margin: 10px;
-    overflow-y: auto; 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 50px 1fr;
-    grid-gap: 10px;
-  }
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .card h2 {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: left;
-    align-self: left;
-    margin: 8px
-  }
-
-  /*CARD PART OVERVIEW MODEL */
-#cardPartOverview{
-    grid-area: partOverview;
-    min-height: 300px;
-    max-height: 300px;
-    display: grid;
-    grid-template-columns: 300px 1fr
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: left;
+  align-self: left;
+  margin: 8px;
 }
 
-#imageContainer{
+.error {
+  color: red;
+  font-size: smaller;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  margin-left: 8px !important;
+}
+
+.cancelBtnAdmin {
+  background-color: #f1f1f1;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  margin-right: 16px;
+  -webkit-transition: all 0.3s ease;
+  justify-self: right;
+  align-self: right;
+}
+
+.cancelBtnAdmin:hover {
+  transition: all 0.3s ease;
+  background-color: #f1f1f1c5;
+}
+
+.cancelBtnAdmin:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.confirmUserDelete {
+  background-color: red;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  margin-right: 16px;
+  -webkit-transition: all 0.3s ease;
+}
+
+.confirmUserDelete:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(255, 0, 0, 0.63);
+}
+
+.confirmUserDelete:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.buttonContainerDelete {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  grid-column: 3;
+  grid-row: 3;
+  position: sticky !important;
+}
+
+.deleteConfirmation {
+  grid-row: 2;
+  grid-column: 1/4;
+  place-self: center;
+  font-size: 20px;
+}
+
+.breadAndNotContainer {
+  position: sticky !important;
+  top: 75px !important;
+  background-color: #f1f1f1;
+  grid-area: notBar;
+  height: 70px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/*CARDS*/
+
+.card {
+  background-color: WHITE;
+  padding: 10px;
+  box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+  border-radius: 5px;
+  margin: 10px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 50px 1fr;
+  grid-gap: 10px;
+}
+
+.card h2 {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: left;
+  align-self: left;
+  margin: 8px;
+}
+
+/*CARD PART OVERVIEW MODEL */
+#cardPartOverview {
+  grid-area: partOverview;
+  min-height: 300px;
+  max-height: 300px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+#imageContainer {
   grid-column: 1;
 }
 
-#overViewInfo{
+#overViewInfo {
   grid-column: 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -433,12 +416,12 @@ html{
   grid-gap: 10px;
 }
 
-#overViewInfo label{
+#overViewInfo label {
   font-size: 16px;
   font-weight: 700;
 }
 
-#overViewInfo p{
+#overViewInfo p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -473,7 +456,6 @@ html{
   grid-row: 2;
 }
 
-
 #unitLabel {
   grid-column: 1;
   grid-row: 3;
@@ -483,7 +465,6 @@ html{
   grid-column: 1;
   grid-row: 4;
 }
-
 
 #termCodeLabel {
   grid-column: 2;
@@ -535,35 +516,131 @@ html{
   grid-row: 6;
 }
 
-
 /*TASK DRAWER MODULE */
-#cardTaskDrawer{
-    grid-area: taskDrawer;
-    min-height: 400px;
-    max-height: 900px;
+#cardTaskDrawer {
+  grid-area: taskDrawer;
+  min-height: 400px;
+  max-height: 900px;
+}
+
+/*PROJECT MODULE */
+#cardProject {
+  grid-area: project;
+  min-height: 100px;
+  max-height: 600px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 5px;
+  align-items: center;
+  justify-content: center;
+  place-items: center;
+}
+
+#cardProject label {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+#ecmLabel {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#localEcmLabel {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#changeTypeLabel {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#teamNameLabel {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+#ecrNumberLabel {
+  grid-column: 5;
+  grid-row: 1;
+}
+
+#ecm {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#localEcm {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#changeType {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#teamName {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+#ecrNumber {
+  grid-column: 5;
+  grid-row: 2;
+}
+/*WHERE USED MODULE */
+#cardWhereUsed {
+  grid-area: where;
+  min-height: 400px;
+  max-height: 400px;
 }
 
 
-#cardProject{
-    grid-area: project;
-    min-height: 100px;
-    max-height: 600px;
+#whereUsedTable {
+  border-collapse: collapse;
+  width: 100%;
+  align-self: self-start;
 }
 
-#cardWhereUsed{
-    grid-area: where;
-    min-height: 400px;
-    max-height: 600px;
+#whereUsedTable thead th {
+  position: sticky;
+  top: -15px;
+  height: 50px;
+  border-bottom: 2px solid rgb(194, 193, 193);
+  font-size: 16px;
 }
 
-#cardCompareParts{
-    grid-area: compare;
-    min-height: 600px;
-    max-height: 600px;
+#whereUsedTable thead :hover {
+  background-color: #c9c9c9;
+}
+
+#whereUsedTable th,
+td {
+  padding: 8px 8px;
+  border-bottom: 1px solid rgb(194, 193, 193);
+  font-size: 12px;
+}
+
+#whereUsedTable th {
+  background: white;
+}
+
+#whereUsedTable td {
+  text-align: center;
+}
+
+/*COMPARE PARTS MODULE */
+#cardCompareParts {
+  grid-area: compare;
+  min-height: 600px;
+  max-height: 600px;
 }
 
 /*SUPPLIER MODULE */
-#cardSupplier{
+#cardSupplier {
   grid-area: supplier;
   min-height: 400px;
   max-height: 400px;
@@ -573,7 +650,7 @@ html{
   overflow: hidden;
 }
 
-#supplierForm{
+#supplierForm {
   display: grid;
   grid-row: 2;
   grid-column: 1/3;
@@ -582,28 +659,28 @@ html{
   overflow: hidden;
 }
 
-#supplierForm .firstColumn{
+#supplierForm .firstColumn {
   grid-column: 1;
   grid-row: 2;
   display: flex;
   flex-direction: column;
 }
 
-#supplierForm label{
+#supplierForm label {
   font-size: 16px;
   font-weight: 700;
   margin-left: 8px;
   margin-bottom: 40px;
 }
 
-#supplierForm .secondColumn{
+#supplierForm .secondColumn {
   grid-column: 2;
   grid-row: 2;
   display: flex;
   flex-direction: column;
 }
 
-#supplierForm .secondColumn label{
+#supplierForm .secondColumn label {
   font-size: x-small;
   margin-left: 36px !important;
 }
@@ -615,7 +692,7 @@ html{
   margin-bottom: 32px;
   place-self: end;
   margin-right: 16px;
-} 
+}
 
 .supplierInfo {
   font-size: 14px;
@@ -626,17 +703,15 @@ html{
   margin-right: 20px;
 }
 
-#saveSupplier{
+#saveSupplier {
   grid-row: 3;
   grid-column: 2;
   place-self: end;
 }
 
-
-
 /* SERVICE MODULE */
 
-#cardService{
+#cardService {
   grid-area: service;
   min-height: 200px;
   max-height: 250px;
@@ -645,10 +720,9 @@ html{
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 50px 1fr;
   overflow: hidden;
-  
 }
 
-#serviceForm{
+#serviceForm {
   display: grid;
   grid-row: 2;
   grid-column: 1/3;
@@ -657,28 +731,28 @@ html{
   overflow: hidden;
 }
 
-#serviceForm .firstColumn{
+#serviceForm .firstColumn {
   grid-column: 1;
   grid-row: 2;
   display: flex;
   flex-direction: column;
 }
 
-#serviceForm label{
+#serviceForm label {
   font-size: 16px;
   font-weight: 700;
   margin-left: 8px;
   margin-bottom: 40px;
 }
 
-#serviceForm .secondColumn{
+#serviceForm .secondColumn {
   grid-column: 2;
   grid-row: 2;
   display: flex;
   flex-direction: column;
 }
 
-#serviceForm .secondColumn label{
+#serviceForm .secondColumn label {
   font-size: x-small;
   margin-left: 12px !important;
   margin-bottom: 8px !important;
@@ -691,25 +765,22 @@ html{
   margin-bottom: 32px;
   place-self: end;
   margin-right: 16px;
-} 
+}
 
-
-#saveService{
+#saveService {
   grid-row: 3;
   grid-column: 2;
   place-self: end;
 }
 
-
 /*COST MODULE*/
-#cardCost{
-    grid-area: cost;
-    min-height: 400px;
-    max-height: 400px;
+#cardCost {
+  grid-area: cost;
+  min-height: 400px;
+  max-height: 400px;
 }
 
-
-#selectCostBtn{
+#selectCostBtn {
   display: block;
   grid-column: 3;
   grid-row: 1;
@@ -718,7 +789,7 @@ html{
   justify-self: end !important;
 }
 
-#costForm{
+#costForm {
   max-height: 300px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -726,39 +797,35 @@ html{
   grid-row: 2;
 }
 
-#costForm .firstColumn{
+#costForm .firstColumn {
   display: flex;
- flex-direction: column;
+  flex-direction: column;
   grid-column: 1;
 }
 
-
-#costForm .secondColumn{
+#costForm .secondColumn {
   display: flex;
   flex-direction: column;
   grid-column: 2;
-
 }
 
-#costForm .thirdColumn{
+#costForm .thirdColumn {
   display: grid;
   grid-column: 3;
   grid-template-columns: repeat(1, 1fr);
 }
 
-#costForm .thirdColumn button{
+#costForm .thirdColumn button {
   justify-self: end;
 }
 
-
-
-.costCalculation{
+.costCalculation {
   background-color: #f1f1f1;
   padding: 10px;
   box-shadow: 2px 2px 8px 4px #d3d3d3d1;
   border-radius: 5px;
   margin: 10px;
-  overflow-y: auto; 
+  overflow-y: auto;
   display: grid;
   grid-gap: 10px;
   max-height: 250px;
@@ -767,33 +834,32 @@ html{
   grid-template-columns: repeat(2, 1fr);
 }
 
-.costCalculationFirstColumn{
+.costCalculationFirstColumn {
   grid-column: 1;
   display: flex;
   flex-direction: column;
 }
 
-.costCalculationSecondColumn{
+.costCalculationSecondColumn {
   grid-column: 2;
   display: flex;
   flex-direction: column;
 }
 
-.costCalculationFirstColumn label{
- margin-bottom: 28px !important;
+.costCalculationFirstColumn label {
+  margin-bottom: 28px !important;
 }
 
-.costCalculationSecondColumn input{
+.costCalculationSecondColumn input {
   display: block;
   align-self: end;
 }
 
-.costCalculationSecondColumn label{
+.costCalculationSecondColumn label {
   text-align: end;
 }
 
-
-#cardCost label{
+#cardCost label {
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
@@ -802,7 +868,7 @@ html{
   font-weight: 700;
 }
 
-#cardCost input{
+#cardCost input {
   display: block;
   margin-left: 8px;
   margin-right: 8px;
@@ -814,7 +880,7 @@ html{
   height: 20px;
 }
 
-#cardCost select{
+#cardCost select {
   display: block;
   margin-left: 8px;
   margin-right: 8px;
@@ -824,68 +890,67 @@ html{
   height: 30px;
 }
 
-
-
-#tableContent{
+#tableContent {
   overflow-y: auto;
   grid-row: 2/4;
   grid-column: 1/4;
 }
 
-
-#costSelectModal-content{
+#costSelectModal-content {
   width: 1000px;
   height: 500px;
 }
 
-#costTableTable{
+#costTableTable {
   border: 1px solid gray;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   width: 100%;
   align-self: self-start;
 }
 
-
-
 #costTable thead th {
-  position: sticky; 
+  position: sticky;
   top: -15px;
   height: 50px;
   border-bottom: 2px solid rgb(194, 193, 193);
   font-size: 12px;
 }
 
-#costTable  thead :hover{
+#costTable thead :hover {
   background-color: #c9c9c9;
 }
 
-#costTable  th, td {
+#costTable th,
+td {
   padding: 8px 8px;
   border-bottom: 1px solid rgb(194, 193, 193);
   font-size: 12px;
 }
 
-#costTable  th {
+#costTable th {
   background: white;
 }
 
-#costTable  td{
+#costTable td {
   text-align: center;
 }
 
- #costForm .error{
+#costForm .error {
   font-size: 12px !important;
 }
 
-
-/*LEAD TIME MODULE*/
-#cardLeadTime{
-    grid-area: lead;
-    min-height: 500px;
-    max-height: 500px;
+#tic {
+  place-self: end;
 }
 
-#selectLeadTimeBtn{
+/*LEAD TIME MODULE*/
+#cardLeadTime {
+  grid-area: lead;
+  min-height: 500px;
+  max-height: 500px;
+}
+
+#selectLeadTimeBtn {
   display: block;
   grid-column: 3;
   place-self: right !important;
@@ -893,7 +958,7 @@ html{
   justify-self: end !important;
 }
 
-#leadTimeForm{
+#leadTimeForm {
   max-height: 300px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -901,26 +966,25 @@ html{
   grid-row: 2;
 }
 
-#addLeadTimeBtn{
+#addLeadTimeBtn {
   grid-column: 2;
   grid-row: 1;
-  place-self: end!important;
+  place-self: end !important;
   justify-self: end;
   align-self: end;
   margin-left: 64px;
 }
 
-#cardLeadTime label{
+#cardLeadTime label {
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
   margin-bottom: 0px;
   font-size: 16px;
   font-weight: 700;
-
 }
 
-#cardLeadTime input{
+#cardLeadTime input {
   display: block;
   margin-left: 8px;
   margin-right: 8px;
@@ -933,7 +997,7 @@ html{
   display: block !important;
 }
 
-#cardLeadTime select{
+#cardLeadTime select {
   display: block;
   margin-left: 8px;
   margin-right: 8px;
@@ -942,20 +1006,19 @@ html{
   height: 30px;
 }
 
-#leadTimeForm .firstColumn{
+#leadTimeForm .firstColumn {
   grid-column: 1;
   display: flex;
   flex-direction: column;
-
 }
 
-#leadTimeForm .secondColumn{
+#leadTimeForm .secondColumn {
   grid-column: 2;
   display: flex;
   flex-direction: column;
 }
 
-#leadTimeForm .secondColumn .firstRow{
+#leadTimeForm .secondColumn .firstRow {
   grid-column: 2;
   grid-column: 2;
   background-color: white;
@@ -964,19 +1027,18 @@ html{
   box-shadow: 2px 2px 8px 4px #d3d3d3d1;
   border-radius: 5px;
   margin: 10px;
-  overflow-y: hidden; 
+  overflow-y: hidden;
   max-height: 50px;
   min-height: 50px;
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
 }
 
-.firstRow label{
+.firstRow label {
   grid-column: 1;
-
 }
 
-.inputUOM{
+.inputUOM {
   display: block;
   grid-column: 2;
   display: flex;
@@ -984,13 +1046,11 @@ html{
   align-items: center !important;
 }
 
-.inputUOM input{
- margin-top: 12px !important;
+.inputUOM input {
+  margin-top: 12px !important;
 }
 
-
-
-#leadTimeForm .secondColumn .secondRow{
+#leadTimeForm .secondColumn .secondRow {
   grid-column: 2;
   grid-column: 2;
   display: grid;
@@ -999,7 +1059,7 @@ html{
   box-shadow: 2px 2px 8px 4px #d3d3d3d1;
   border-radius: 5px;
   margin: 10px;
-  overflow-y: auto; 
+  overflow-y: auto;
   grid-gap: 10px;
   max-height: 250px;
   min-height: 250px;
@@ -1007,98 +1067,94 @@ html{
   grid-template-columns: repeat(2, 1fr);
 }
 
-#leadTimeSelectModal-content{
+#leadTimeSelectModal-content {
   width: 1000px;
   height: 500px;
 }
 
-#leadTimeTable{
+#leadTimeTable {
   border: 1px solid gray;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   width: 100%;
   align-self: self-start;
 }
 
-
-
 #leadTimeTable thead th {
-  position: sticky; 
+  position: sticky;
   top: -15px;
   height: 50px;
   border-bottom: 2px solid rgb(194, 193, 193);
   font-size: 12px;
 }
 
-#leadTimeTable  thead :hover{
+#leadTimeTable thead :hover {
   background-color: #c9c9c9;
 }
 
-#leadTimeTable  th, td {
+#leadTimeTable th,
+td {
   padding: 8px 8px;
   border-bottom: 1px solid rgb(194, 193, 193);
   font-size: 12px;
 }
 
-
-#leadTimeTable  th {
+#leadTimeTable th {
   background: white;
 }
 
-#leadTimeTable  td{
+#leadTimeTable td {
   text-align: center;
 }
 
-#selectTNBBLabel{
+#selectTNBBLabel {
   margin-top: 64px !important;
 }
 
-#locationLabel{
+#locationLabel {
   margin-top: 64px !important;
 }
-
-
 
 /* QUANTITY MODULE */
-#cardQuantities{
-    grid-area: quantities;
-    min-height: 300px;
-    max-height: 300px;
+#cardQuantities {
+  grid-area: quantities;
+  min-height: 300px;
+  max-height: 300px;
 }
 
-#quantityBtnContainer{
+#quantityBtnContainer {
   grid-column: 2/4;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: right;
   align-self: right;
   display: flex;
 }
-#selectQuantityBtn{
+#selectQuantityBtn {
   display: block;
   grid-column: 3;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: right;
   align-self: right;
 }
 
-#addQuantityBtn{
+#addQuantityBtn {
   grid-column: 3;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: right;
   align-self: right;
   margin-left: 64px;
 }
 
-#cardQuantities label{
+#cardQuantities label {
   margin: 8px;
   margin-bottom: 32px;
   font-size: 16px;
   font-weight: 700;
 }
 
-#cardQuantities input{
+#cardQuantities input {
   display: block;
   margin: 8px;
   margin-bottom: 32px;
@@ -1107,109 +1163,106 @@ html{
   width: 100px;
 }
 
-#quantitySelectModal-content{
+#quantitySelectModal-content {
   height: 600px !important;
   width: 650px !important;
-
 }
 
-#cardQuantities .firstColumn{
+#cardQuantities .firstColumn {
   display: flex;
   flex-direction: column;
   grid-column: 1/3;
   grid-row: 2;
 }
 
-#cardQuantities .secondColumn{
+#cardQuantities .secondColumn {
   display: flex;
   flex-direction: column;
   grid-column: 3;
   grid-row: 2;
-
 }
 
-#cardQuantities .secondColumn label{
+#cardQuantities .secondColumn label {
   font-size: 12px;
   margin-bottom: 32px !important;
 }
 
-#tableContent{
+#tableContent {
   overflow-y: auto;
   grid-row: 2/4;
   grid-column: 1/4;
 }
 
-#quantityTable{
+#quantityTable {
   border: 1px solid gray;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   width: 100%;
   align-self: self-start;
-
 }
 
-#closeQuantityModal{
+#closeQuantityModal {
   grid-column: 3;
 }
 
-
 #quantityTable thead th {
-  position: sticky; 
+  position: sticky;
   top: -15px;
   height: 50px;
   border-bottom: 2px solid rgb(194, 193, 193);
   font-size: 16px;
 }
 
-#quantityTable  thead :hover{
+#quantityTable thead :hover {
   background-color: #c9c9c9;
 }
 
-#quantityTable  th, td {
+#quantityTable th,
+td {
   padding: 8px 16px;
   border-bottom: 1px solid rgb(194, 193, 193);
   font-size: 14px;
 }
 
-#quantityTable  th {
+#quantityTable th {
   background: white;
 }
 
-#quantityTable  td{
+#quantityTable td {
   text-align: center;
 }
 
 /*TOOLING*/
 
-#cardTooling{
-    grid-area: tooling;
-    min-height: 350px;
-    max-height: 350px;
+#cardTooling {
+  grid-area: tooling;
+  min-height: 350px;
+  max-height: 350px;
 }
 
-#toolingBtnContainer{
+#toolingBtnContainer {
   grid-column: 2/4;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: right;
   align-self: right;
   display: flex;
 }
-#selectToolingBtn{
+#selectToolingBtn {
   display: block;
   grid-column: 3;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: end !important;
   align-self: right;
 }
 
-#addToolingBtn{
+#addToolingBtn {
   grid-column: 3;
   grid-row: 4;
   margin-left: 64px;
 }
 
-#toolingForm{
+#toolingForm {
   max-height: 300px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1219,18 +1272,18 @@ html{
   width: inherit;
 }
 
-#toolingForm label{
+#toolingForm label {
   margin: 8px;
   margin-bottom: 0px;
   font-size: 16px;
   font-weight: 700;
 }
 
-#toolingForm input{
+#toolingForm input {
   display: block;
- margin-top: 0;
- margin-left: 8px;
- margin-right: 8px;
+  margin-top: 0;
+  margin-left: 8px;
+  margin-right: 8px;
   margin-bottom: 32px;
   font-size: 16px;
   text-align: right;
@@ -1238,7 +1291,7 @@ html{
   height: 25px;
 }
 
-#toolingForm select{
+#toolingForm select {
   display: block;
 
   margin-left: 8px;
@@ -1249,185 +1302,173 @@ html{
   margin-bottom: 32px;
 }
 
-#toolingSelectModal-content{
+#toolingSelectModal-content {
   height: 600px !important;
   width: 1050px !important;
-
 }
 
-#toolingForm .firstColumn{
+#toolingForm .firstColumn {
   display: flex;
   flex-direction: column;
   grid-column: 1;
   grid-row: 1/5;
 }
 
-#toolingForm .secondColumn{
+#toolingForm .secondColumn {
   display: flex;
   flex-direction: column;
   grid-column: 2;
   grid-row: 1/5;
-
 }
 
-
-#toolingForm .thirdColumn{
+#toolingForm .thirdColumn {
   display: flex;
   flex-direction: column;
   grid-column: 3;
   grid-row: 1/5;
-
 }
 
-#saveToolingBtn{
+#saveToolingBtn {
   grid-column: 3;
   grid-row: 4;
   justify-self: right !important;
   align-self: right !important;
 }
 
-#tableContent{
+#tableContent {
   overflow-y: auto;
   grid-row: 2/4;
   grid-column: 1/4;
 }
 
-#toolingTable{
+#toolingTable {
   border: 1px solid gray;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   width: 100%;
   align-self: self-start;
-
 }
 
-#closeToolingModal{
+#closeToolingModal {
   grid-column: 3;
 }
 
-
 #toolingTable thead th {
-  position: sticky; 
+  position: sticky;
   top: -15px;
   height: 50px;
   border-bottom: 2px solid rgb(194, 193, 193);
   font-size: 16px;
 }
 
-#toolingTable  thead :hover{
+#toolingTable thead :hover {
   background-color: #c9c9c9;
 }
 
-#toolingTable  th, td {
+#toolingTable th,
+td {
   padding: 8px 16px;
   border-bottom: 1px solid rgb(194, 193, 193);
   font-size: 14px;
 }
 
-#toolingTable  th {
+#toolingTable th {
   background: white;
 }
 
-#toolingTable  td{
+#toolingTable td {
   text-align: center;
 }
 
 /*NOTES*/
-#cardNotes{
-    grid-area: notes;
-    min-height: 200px;
-    max-height: 200px;
-    max-width: 600px;
+#cardNotes {
+  grid-area: notes;
+  min-height: 200px;
+  max-height: 200px;
+  max-width: 600px;
 }
 
-#notesBtnContainer{
+#notesBtnContainer {
   grid-column: 2/4;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: right;
   align-self: right;
   display: flex;
 }
 
-#selectNotesBtn{
+#selectNotesBtn {
   display: block;
   grid-column: 3;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: end !important;
   align-self: right;
 }
 
-
-#notesForm{
+#notesForm {
   max-height: 300px;
   display: grid;
   grid-column: 1/4;
   grid-template-rows: 1fr, 50px;
 }
 
-#notesForm textarea{
+#notesForm textarea {
   resize: none;
   grid-row: 1;
 }
 
-#notesSelectModal-content{
+#notesSelectModal-content {
   height: 600px !important;
   width: 1050px !important;
-
 }
 
-#saveNotesBtn{
+#saveNotesBtn {
   grid-row: 2;
-  place-self: end  !important;
+  place-self: end !important;
   align-items: end !important;
-  justify-self: end !important; 
+  justify-self: end !important;
 }
 
-#tableContent{
+#tableContent {
   overflow-y: auto;
   grid-row: 2/4;
   grid-column: 1/4;
 }
 
-#notesTable{
+#notesTable {
   border: 1px solid gray;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   width: 100%;
   align-self: self-start;
-
 }
 
-#closeNotesModal{
+#closeNotesModal {
   grid-column: 3;
 }
 
-
 #notesTable thead th {
-  position: sticky; 
+  position: sticky;
   top: -15px;
   height: 50px;
   border-bottom: 2px solid rgb(194, 193, 193);
   font-size: 16px;
 }
 
-#notesTable  thead :hover{
+#notesTable thead :hover {
   background-color: #c9c9c9;
 }
 
-#notesTable  th, td {
+#notesTable th,
+td {
   padding: 8px 16px;
   border-bottom: 1px solid rgb(194, 193, 193);
   font-size: 14px;
 }
 
-#notesTable  th {
+#notesTable th {
   background: white;
 }
 
-#notesTable  td{
+#notesTable td {
   text-align: center;
 }
-
-
-
-
