@@ -252,6 +252,14 @@ $(function () {
             }
           }
         })
+
+        $("#saveSupplier").prop("disabled", false)
+        $("#costStep").focus()
+        $("#costStep").css("background-color", "#367c2b")
+        $("#costStep").css("border", " 3px solid #367c2b")
+
+
+
       }
     })
   })

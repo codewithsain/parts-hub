@@ -162,6 +162,10 @@ $(function () {
                         }
                     }
                 })
+
+                $("#addQuantityBtn").prop("disabled", false)
+                $("#leadTimeStep").css("background-color", "#367c2b")
+                $("#leadTimeStep").css("border", " 3px solid #367c2b")
             }
         })
 

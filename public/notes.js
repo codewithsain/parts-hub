@@ -70,6 +70,10 @@ $(function () {
                         }
                     }
                 })
+
+                $("#saveService").prop("disabled", false)
+                $("#notesStep").css("background-color", "#367c2b")
+                $("#notesStep").css("border", " 3px solid #367c2b")
             }
         })
     })

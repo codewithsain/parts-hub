@@ -155,6 +155,10 @@ $(function () {
                         }
                     }
                 })
+
+                $("#saveNotesBtn").prop("disabled", false)
+                $("#toolingStep").css("background-color", "#367c2b")
+                $("#toolingStep").css("border", " 3px solid #367c2b")
             }
         })
 
