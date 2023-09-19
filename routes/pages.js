@@ -14,6 +14,7 @@ const supplierController = require('../controllers/supplierController')
 const serviceController = require('../controllers/serviceController')
 const projectController = require('../controllers/projectController')
 const whereUsedController = require('../controllers/whereUsedController')
+const comparePartsController = require('../controllers/comparePartsController')
 
 //AUTH ROUTES
 router.post("/auth", authController.logIn);
@@ -76,6 +77,14 @@ router.post("/getPartOverview", partController.getPartOverview)
 router.post("/getService", serviceController.getService)
 router.post("/getProject", projectController.getProject)
 router.post("/getWhereUsed", whereUsedController.getWhereUsed)
+router.post("/getComparePart", comparePartsController.getComparePart)
+router.post("/getComparePartPrice", comparePartsController.getComparePartPrice)
+router.post("/getComparePartQuantities", comparePartsController.getCompareQuantities)
+router.post("/getECM", comparePartsController.getECM)
+router.post("/getSimilarPart", comparePartsController.similarPart)
+router.post("/getSimlarPartPrice", comparePartsController.getSimilarPartPrice)
+router.post("/getSimilarPartQuantities", comparePartsController.getSimilarQuantities)
+
 
 //INSERT DATA ROUTER
 router.post('/addPart', authController.isAdmin, partController.addPart);

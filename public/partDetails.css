@@ -729,8 +729,316 @@ td {
 /*COMPARE PARTS MODULE */
 #cardCompareParts {
   grid-area: compare;
-  min-height: 600px;
-  max-height: 600px;
+  min-height: 1310px;
+  max-height: 1310px;
+}
+
+.compareParts-content{
+  grid-column: 1/4;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr;
+}
+
+
+.compareParts-content .label{
+  font-size: 20px;
+  font-weight: 700;
+  margin: 8px;
+}
+
+.compareParts-content .subLabel{
+  font-size: 16px;
+  font-weight: 700;
+  margin: 8px;
+  place-self: center;
+}
+
+.indexes{
+  display: grid;
+  grid-column: 1;
+  border-top: 1px;
+  grid-template-rows: 200px 50px 50px 50px 50px 50px 50px 50px 50px  50px 50px  50px 50px 50px 50px 50px 50px 50px 50px  50px 50px  50px   ;
+}
+
+
+
+.indexes #plant{
+  grid-column: 1;
+  grid-row: 2;
+  border-bottom: 0.5px solid;
+}
+
+.indexes #partInfo{
+  grid-column: 1;
+  grid-row: 3;
+  border-bottom: 0.5px solid;
+}
+.indexes #termCode{
+  grid-column: 1;
+  grid-row: 4;
+}
+.indexes #netWeight{
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.indexes #grossWeight{
+  grid-column: 1;
+  grid-row: 6;
+}
+.indexes #sourcing{
+  grid-column: 1;
+  grid-row: 7;
+  border-bottom: 0.5px solid;
+}
+.indexes #price{
+  grid-column: 1;
+  grid-row: 8;
+}
+.indexes #supplierNumberLabel{
+  grid-column: 1;
+  grid-row: 9;
+}
+.indexes #supplierName{
+  grid-column: 1;
+  grid-row: 10;
+}
+.indexes #usage{
+  grid-column: 1;
+  grid-row: 11;
+  border-bottom: 0.5px solid;
+}
+.indexes #ecmProject{
+  grid-column: 1;
+  grid-row: 12;
+}
+.indexes #globalEstimationCP{
+  grid-column: 1;
+  grid-row: 13;
+}
+.indexes #buyerEstimationCP{
+  grid-column: 1;
+  grid-row: 14;
+}
+.indexes #service{
+  grid-column: 1;
+  grid-row: 15;
+  border-bottom: 0.5px solid;
+}
+.indexes #localService{
+  grid-column: 1;
+  grid-row: 16;
+}
+.indexes #globalService{
+  grid-column: 1;
+  grid-row: 17;
+}
+.indexes #container{
+  grid-column: 1;
+  grid-row: 18;
+  border-bottom: 0.5px solid;
+}
+.indexes #quantity{
+  grid-column: 1;
+  grid-row: 19;
+}
+.indexes #description{
+  grid-column: 1;
+  grid-row: 20;
+}
+.indexes #roundingValue{
+  grid-column: 1;
+  grid-row: 21;
+}
+.indexes #minLotSize{
+  grid-column: 1;
+  grid-row: 22;
+}
+
+.part{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px 50px 50px 50px 50px 50px 50px 50px 50px  50px 50px  50px 50px 50px 50px 50px 50px 50px 50px  50px 50px  50px   ;
+}
+
+.part span{
+  place-self: center;
+}
+
+#partImage{
+  grid-row: 1;
+  place-self: center;
+  align-self: start;
+  justify-self: center;
+}
+
+.part #partPlant{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.part #partPartInfo{
+  grid-column: 1;
+  grid-row: 3;
+
+}
+.part #partTermCode{
+  grid-column: 1;
+  grid-row: 4;
+}
+.part #partNetWeight{
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.part #partGrossWeight{
+  grid-column: 1;
+  grid-row: 6;
+}
+
+.part #partPrice{
+  grid-column: 1;
+  grid-row: 8;
+}
+.part #partSupplierNumber{
+  grid-column: 1;
+  grid-row: 9;
+}
+.part #partSupplierName{
+  grid-column: 1;
+  grid-row: 10;
+}
+
+.part #partECMProject{
+  grid-column: 1;
+  grid-row: 12;
+}
+.part #partGlobalEstimation{
+  grid-column: 1;
+  grid-row: 13;
+}
+.part #partBuyerEstimation{
+  grid-column: 1;
+  grid-row: 14;
+}
+
+.part #partLocalService{
+  grid-column: 1;
+  grid-row: 16;
+}
+.part #partGlobalService{
+  grid-column: 1;
+  grid-row: 17;
+}
+
+.part #partQuantity{
+  grid-column: 1;
+  grid-row: 19;
+}
+.part #partDescription{
+  grid-column: 1;
+  grid-row: 20;
+}
+.part #partRoundingValue{
+  grid-column: 1;
+  grid-row: 21;
+}
+.part #partMinLotSize{
+  grid-column: 1;
+  grid-row: 22;
+}
+
+.similarPart{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px 50px 50px 50px 50px 50px 50px 50px 50px  50px 50px  50px 50px 50px 50px 50px 50px 50px 50px  50px 50px  50px   ;
+}
+
+
+.similarPart span{
+  place-self: center;
+}
+#similarPartImage{
+  grid-row: 1;
+  place-self: center;
+  align-self: start;
+  justify-self: center;
+} 
+
+.similarPart #similarPartPlant{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.similarPart #similarPartInfo{
+  grid-column: 1;
+  grid-row: 3;
+}
+.similarPart #similarPartTermCode{
+  grid-column: 1;
+  grid-row: 4;
+}
+.similarPart #similarPartNetWeight{
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.similarPart #similarPartGrossWeight{
+  grid-column: 1;
+  grid-row: 6;
+}
+
+.similarPart #similarPartPrice{
+  grid-column: 1;
+  grid-row: 8;
+}
+.similarPart #similarPartSupplierNumber{
+  grid-column: 1;
+  grid-row: 9;
+}
+.similarPart #similarPartSupplierName{
+  grid-column: 1;
+  grid-row: 10;
+}
+
+.similarPart #similarPartECMProject{
+  grid-column: 1;
+  grid-row: 12;
+}
+.similarPart #similarPartGlobalEstimation{
+  grid-column: 1;
+  grid-row: 13;
+}
+.similarPart #similarPartBuyerEstimation{
+  grid-column: 1;
+  grid-row: 14;
+}
+
+.similarPart #similarPartLocalService{
+  grid-column: 1;
+  grid-row: 16;
+}
+.similarPart #similarPartGlobalService{
+  grid-column: 1;
+  grid-row: 17;
+}
+
+.similarPart #similarPartQuantity{
+  grid-column: 1;
+  grid-row: 19;
+}
+.similarPart #similarPartDescription{
+  grid-column: 1;
+  grid-row: 20;
+}
+.similarPart #similarPartRoundingValue{
+  grid-column: 1;
+  grid-row: 21;
+}
+.similarPart #similarPartMinLotSize{
+  grid-column: 1;
+  grid-row: 22;
 }
 
 /*SUPPLIER MODULE */
@@ -743,6 +1051,7 @@ td {
   grid-template-rows: 50px 1fr;
   overflow: hidden;
 }
+
 
 #supplierForm {
   display: grid;

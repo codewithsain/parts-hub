@@ -192,12 +192,84 @@
           </tbody>
         </table>
 
-      </div>
+        </div>
     </div>
 
     {{!-- COMPARE PARTS MODULE --}}
     <div class="card" id="cardCompareParts">
       <h2>Compare Parts</h2>
+      <div class="compareParts-content">
+        <div class="indexes">
+         
+            <label id="plant" class="label">Plant</label>
+            <label id="partInfo" class="label" >General Part Info</label>
+            <label id="termCode" class="subLabel">Term Code</label>
+            <label id="netWeight" class="subLabel">Net Weight</label>
+            <label id="grossWeight" class="subLabel">Gross Weight</label>
+
+            <label id="sourcing"  class="label">Sourcing</label>
+            <label id="price" class="subLabel">Price</label>
+            <label id="supplierNumberLabel" class="subLabel">Supplier Number</label>
+            <label id="supplierName" class="subLabel">Supplier Name</label>
+
+            <label id="usage"  class="label">Usage</label>
+            <label id="ecmProject" class="subLabel">ECM Project</label>
+            <label id="globalEstimationCP" class="subLabel">Global Est EAU</label>
+            <label id="buyerEstimationCP" class="subLabel">Buyer Est EAU</label>
+
+            <label id="service"  class="label">Service</label>
+            <label id="localService" class="subLabel">Local Service Indicator</label>
+            <label id="globalService" class="subLabel">Global Service Indicator</label>
+
+            <label id="container"  class="label">Container</label>
+            <label id="quantity" class="subLabel">Container Quantity</label>
+            <label id="description" class="subLabel">Description</label>
+            <label id="roundingValue" class="subLabel">Rounding Value</label>
+            <label id="minLotSize" class="subLabel">Min. Lot Size</label>
+            
+        </div>
+        <div class="part">
+                <img src="/images/descarga.png" width="284" height="177" id="partImage">
+                <span id="partPlant"></span>
+                <span id="partPartInfo"></span>
+                <span id="partTermCode"></span>
+                <span id="partNetWeight"></span>
+                <span id="partGrossWeight"></span>
+                <span id="partPrice"></span>
+                <span id="partSupplierNumber"></span>
+                <span id="partSupplierName"></span>
+                <span id="partECMProject"></span>
+                <span id="partGlobalEstimation"></span>
+                <span id="partBuyerEstimation"></span>
+                <span id="partLocalService"></span>
+                <span id="partGlobalService"></span>
+                <span id="partQuantity"></span>
+                <span id="partDescription"></span>
+                <span id="partRoundingValue"></span>
+                <span id="partMinLotSize"></span>
+        </div>
+        <div class="similarPart">
+          <img src="/images/descarga.png" width="284" height="177" id="similarPartImage">
+                <span id="similarPartPlant"></span>
+                <span id="similarPartPartInfo"></span>
+                <span id="similarPartTermCode"></span>
+                <span id="similarPartNetWeight"></span>
+                <span id="similarPartGrossWeight"></span>
+                <span id="similarPartPrice"></span>
+                <span id="similarPartSupplierNumber"></span>
+                <span id="similarPartSupplierName"></span>
+                <span id="similarPartECMProject"></span>
+                <span id="similarPartGlobalEstimation"></span>
+                <span id="similarPartBuyerEstimation"></span>
+                <span id="similarPartLocalService"></span>
+                <span id="similarPartGlobalService"></span>
+                <span id="similarPartQuantity"></span>
+                <span id="similarPartDescription"></span>
+                <span id="similarPartRoundingValue"></span>
+                <span id="similarPartMinLotSize"></span>
+        </div>
+      </div>
+
     </div>
 
     {{!-- COST MODULE --}}
@@ -785,7 +857,7 @@
   <script src="/overview.js"></script>
   <script src="/service.js"></script>
   <script src="/project.js"></script>
-  <script src="/whereUsed.js"></script>
+    <script src="/whereUsed.js"></script>
 </body>
 
 </html>
