@@ -63,6 +63,10 @@ $(function () {
                         }
                      }
                 })
+
+                $("#signOffButton").prop("disabled", false)
+                $("#serviceStep").css("background-color", "#367c2b")
+                $("#serviceStep").css("border", " 3px solid #367c2b")
             })
         }
         

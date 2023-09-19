@@ -59,7 +59,91 @@
 
     {{!-- TAST DRAWER MODULE --}}
     <div class="card" id="cardTaskDrawer">
-      <h2>Task Drawer</h2>
+      <h2 id="tdTitle">Task Drawer</h2>
+      <div id="stepper-content">
+
+        <!-- completed -->
+        <div class="step completed" >
+          <div class="v-stepper">
+            <div class="circle" id="costStep"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+           Cost <span>(Estimate various part costs and final price)</span>
+          </div>
+        </div>
+
+        <div class="step completed">
+          <div class="v-stepper">
+            <div class="circle" id="supplierStep"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+            Supplier <span>(Choose one supplier for the part)</span>
+          </div>
+        </div>
+
+        <div class="step completed">
+          <div class="v-stepper">
+            <div class="circle"  id="leadTimeStep"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+            Lead Time  <span>(Estimate delivery times in weeks)</span>
+
+          </div>
+        </div>
+
+        <div class="step completed">
+          <div class="v-stepper">
+            <div class="circle"  id="quantitiesStep"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+            Quantities <span>(Estimate quantity  and per buyer)</span>
+          </div>
+        </div>
+
+        <div class="step completed">
+          <div class="v-stepper">
+            <div class="circle"  id="toolingStep"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+            Tooling <span>(Estimate tooling charge)</span>
+          </div>
+        </div>
+
+        <div class="step completed">
+          <div class="v-stepper">
+            <div class="circle" id="notesStep"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+            Notes <span>(Add notes to the part)</span>
+          </div>
+        </div>
+
+        <div class="step completed">
+          <div class="v-stepper">
+            <div class="circle"  id="serviceStep"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+            Service <span>(Select local and global service)</span>
+          </div>
+        </div>
+       
+      </div>
+
+      <button disabled type="click" id="signOffButton" class="addBtn">Sign Off Part</button>
     </div>
 
     {{!-- PROJECT MODULE --}}
@@ -80,35 +164,35 @@
     <div class="card" id="cardWhereUsed">
       <h2>Where Used</h2>
       <div id="tableContent">
-          <table id="whereUsedTable">
-            <thead>
-              <tr>
-                <th>
-                  Plant
-                </th>
-                <th>
-                  Supplier Number-Name
-                </th>
-                <th>
-                  Term Code
-                </th>
-                <th>
-                  Term Code Description
-                </th>
-                <th>
-                  52 Wk Forecast
-                </th>
-                <th>
+        <table id="whereUsedTable">
+          <thead>
+            <tr>
+              <th>
+                Plant
+              </th>
+              <th>
+                Supplier Number-Name
+              </th>
+              <th>
+                Term Code
+              </th>
+              <th>
+                Term Code Description
+              </th>
+              <th>
+                52 Wk Forecast
+              </th>
+              <th>
                 Price
-                </th>
-              </tr>
-             
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
+              </th>
+            </tr>
 
-        </div>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+
+      </div>
     </div>
 
     {{!-- COMPARE PARTS MODULE --}}
@@ -317,7 +401,7 @@
               <span id="materialRelLT" style="margin-right: 8px; font-weight: 700">0</span><span>Wks</span>
             </div>
           </div>
-          <button class="addBtn" type="click" id="addLeadTimeBtn">Save</button>
+          <button disabled class="addBtn" type="click" id="addLeadTimeBtn">Save</button>
         </div>
       </form>
     </div>
@@ -407,7 +491,7 @@
           <p class="supplierInfo" id="category"></p>
           <p class="supplierInfo" id="subcontracting"></p>
         </div>
-        <button type="click" class="addBtn" id="saveSupplier">Save</button>
+        <button disabled type="click" class="addBtn" id="saveSupplier">Save</button>
     </div>
     </form>
 
@@ -432,7 +516,7 @@
             <option value="No">No</option>
           </select>
         </div>
-        <button type="click" class="addBtn" id="saveService">Save</button>
+        <button disabled type="click" class="addBtn" id="saveService">Save</button>
       </form>
 
 
@@ -454,7 +538,7 @@
         <input type="text" name="globalEstimation" id="globalEstimation">
         <input type="text" name="buyerEstimation" id="buyerEstimation">
         <input type="text" name="quotedEstimation" id="quotedEstimation">
-        <button class="addBtn" type="click" id="addQuantityBtn">Save</button>
+        <button disabled class="addBtn" type="click" id="addQuantityBtn">Save</button>
 
       </form>
     </div>
@@ -547,7 +631,7 @@
           <input type="text" name="deereTool" id="deereTool">
         </div>
 
-        <button type="click" class="addBtn" id="saveToolingBtn">Save</button>
+        <button disabled type="click" class="addBtn" id="saveToolingBtn">Save</button>
 
       </form>
     </div>
@@ -623,7 +707,7 @@
       </div>
       <form id="notesForm">
         <textarea id="notes" name="notes" cols="52" rows="2"></textarea>
-        <button type="click" class="addBtn" id="saveNotesBtn">Save</button>
+        <button disabled type="click" class="addBtn" id="saveNotesBtn">Save</button>
       </form>
     </div>
 
@@ -701,7 +785,7 @@
   <script src="/overview.js"></script>
   <script src="/service.js"></script>
   <script src="/project.js"></script>
-    <script src="/whereUsed.js"></script>
+  <script src="/whereUsed.js"></script>
 </body>
 
 </html>

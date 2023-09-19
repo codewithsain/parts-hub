@@ -20,7 +20,7 @@ main {
     'notBar notBar notBar notBar'
     'partOverview partOverview partOverview taskDrawer'
     'project project project taskDrawer'
-    'where where where taskDrawer'
+    'where where where where'
     'compare compare compare compare'
     'cost cost cost supplier'
     'lead lead lead quantities'
@@ -33,7 +33,7 @@ main {
       'notBar notBar notBar notBar'
       'partOverview partOverview taskDrawer taskDrawer'
       'project project taskDrawer taskDrawer'
-      'where where taskDrawer taskDrawer'
+      'where where where where'
       'compare compare compare compare'
       'cost cost cost cost'
       'supplier supplier quantities quantities'
@@ -49,7 +49,7 @@ main {
       'notBar notBar notBar notBar'
       'partOverview partOverview taskDrawer taskDrawer'
       'project project taskDrawer taskDrawer'
-      'where where taskDrawer taskDrawer'
+      'where where where where'
       'compare compare compare compare'
       'cost cost cost cost'
       'supplier supplier quantities quantities'
@@ -370,6 +370,7 @@ ul.breadcrumb li a:hover {
   height: 70px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  z-index: 1;
 }
 
 /*CARDS*/
@@ -398,8 +399,8 @@ ul.breadcrumb li a:hover {
 /*CARD PART OVERVIEW MODEL */
 #cardPartOverview {
   grid-area: partOverview;
-  min-height: 300px;
-  max-height: 300px;
+  min-height: 270px;
+  max-height: 270px;
   display: grid;
   grid-template-columns: 300px 1fr;
 }
@@ -521,6 +522,100 @@ ul.breadcrumb li a:hover {
   grid-area: taskDrawer;
   min-height: 400px;
   max-height: 900px;
+  grid-template-rows: 50px 1fr 50px !important;
+}
+
+#tdTitle {
+  grid-column: 1/3;
+}
+
+#stepper-content {
+  grid-row: 2;
+  grid-column: 1/4;
+  margin-left: 12px;
+}
+
+#stepper-content span {
+  font-size: 16px;
+  font-weight: 500;
+}
+.step {
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  background-color: cream;
+}
+
+.v-stepper {
+  position: relative;
+  /*   visibility: visible; */
+}
+
+/* regular step */
+.step .circle {
+  background-color: #ffd621;
+  border: 3px solid #ffd621;
+  border-radius: 100%;
+  width: 20px; /* +6 for border */
+  height: 20px;
+  display: inline-block;
+}
+
+.step .line {
+  top: 25px;
+  left: 12px;
+  /*   height: 120px; */
+  height: 100%;
+  position: absolute;
+  border-left: 3px solid #ffd621;
+}
+
+.step.completed .circle {
+  visibility: visible;
+  background-color: #ffd621;
+  border-color: #ffd621;
+  z-index: 2;
+}
+
+.step.completed .line {
+  border-left: 3px solid #367c2b;
+}
+
+.step.active .circle {
+  visibility: visible;
+  border-color: #ffd621;
+}
+
+.step.empty .circle {
+  visibility: hidden;
+}
+
+.step.empty .line {
+  /*     visibility: hidden; */
+  /*   height: 150%; */
+  top: 0;
+  height: 150%;
+}
+
+.step:last-child .line {
+  border-left: 3px solid white;
+  z-index: -1; /* behind the circle to completely hide */
+}
+
+.content {
+  margin-left: 20px;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#signOffButton {
+  grid-row: 3;
+  grid-column: 2;
+  width: 120px;
 }
 
 /*PROJECT MODULE */
@@ -597,7 +692,6 @@ ul.breadcrumb li a:hover {
   min-height: 400px;
   max-height: 400px;
 }
-
 
 #whereUsedTable {
   border-collapse: collapse;
@@ -1471,4 +1565,14 @@ td {
 
 #notesTable td {
   text-align: center;
+}
+
+#saveSupplier:disabled,
+#addLeadTimeBtn:disabled,
+#addQuantityBtn:disabled,
+#saveToolingBtn:disabled,
+#saveNotesBtn:disabled,
+#saveService:disabled,
+#signOffButton {
+  background-color: gray;
 }
