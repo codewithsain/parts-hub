@@ -21,6 +21,7 @@ $(document).ready(function () {
                 $("#partDescription").text(compareResponse[0].containerDesc),
                 $("#partRoundingValue").text(compareResponse[0].roudingValue),
                 $("#partMinLotSize").text(compareResponse[0].minLotSize)
+                $("#partImage").append('<img src="/partImages/'+currPart+'.jpg" width="284" height="177">')
         }
     })
 
@@ -77,6 +78,8 @@ $(document).ready(function () {
                 $("#similarPartDescription").text(similarPartResults[0].containerDesc),
                 $("#similarPartRoundingValue").text(similarPartResults[0].roudingValue),
                 $("#similarPartMinLotSize").text(similarPartResults[0].minLotSize)
+                $("#similarPartImage").append('<img src="/partImages/'+similarPartResults[0].partNumber+'.jpg" width="284" height="177">')
+
         }
     })
 

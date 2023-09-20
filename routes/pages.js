@@ -15,6 +15,8 @@ const serviceController = require('../controllers/serviceController')
 const projectController = require('../controllers/projectController')
 const whereUsedController = require('../controllers/whereUsedController')
 const comparePartsController = require('../controllers/comparePartsController')
+const taskDrawerController = require('../controllers/taskDrawerController')
+const reportsController = require('../controllers/reportsController')
 
 //AUTH ROUTES
 router.post("/auth", authController.logIn);
@@ -84,6 +86,8 @@ router.post("/getECM", comparePartsController.getECM)
 router.post("/getSimilarPart", comparePartsController.similarPart)
 router.post("/getSimlarPartPrice", comparePartsController.getSimilarPartPrice)
 router.post("/getSimilarPartQuantities", comparePartsController.getSimilarQuantities)
+router.post("/getPartsCompleted", reportsController.getPartsCompleted)
+router.post("/getReport", reportsController.getReport)
 
 
 //INSERT DATA ROUTER
@@ -113,6 +117,7 @@ router.post("/deleteNotes", notesController.deleteNotes)
 router.post('/updatePart', authController.isAdmin ,partController.updatePart);
 router.put('/updateUser/:id', authController.isAdmin ,userController.updateUser);
 router.put('/updateFlag/:id', authController.isAdmin, featureController.updateFlag);
+router.post('/updatePartStatus', taskDrawerController.signOffPart);
 
 
 
