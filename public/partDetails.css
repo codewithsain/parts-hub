@@ -1882,6 +1882,6 @@ td {
 #saveToolingBtn:disabled,
 #saveNotesBtn:disabled,
 #saveService:disabled,
-#signOffButton {
+#signOffButton:disabled {
   background-color: gray;
 }

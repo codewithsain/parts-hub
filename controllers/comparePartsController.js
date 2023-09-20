@@ -190,7 +190,8 @@ exports.similarPart = (req, res) => {
                     container.roudingValue,
                     container.minLotSize,
                     supplier.supplierName,
-                    supplier.supplierNumber
+                    supplier.supplierNumber,
+                    part.partNumber
                 from
                     part
                 inner join plant on

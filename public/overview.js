@@ -1,5 +1,6 @@
 $(document).ready(function (){
     var currPart = Cookies.get("currentPart")
+    
     $.ajax({
         url: "/getPartOverview",
         method: "POST",
@@ -17,6 +18,7 @@ $(document).ready(function (){
             $("#netWeight").text(response[0].netWeight),
             $("#grossWeight").text(response[0].grossWeight),
             $("#globalEAU").text(response[0].globalEAU === null ? "0" : response[0].globalEAU)
+            $("#imageContainer").append('<img src="/partImages/'+response[0].partNumber+'.jpg" width="284" height="177">')
         }
     })
 })

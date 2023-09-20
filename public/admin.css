@@ -22,7 +22,7 @@ main {
   grid-gap: 10px;
   grid-template-areas: "breadcrumb breadcrumb breadcrumb"
                         "cardUsers cardUsers cardFF"
-                        "cardUsers cardUsers cardFF"
+                        "reports reports reports"
 }
 
 
@@ -945,5 +945,55 @@ input::-webkit-inner-spin-button{
   grid-column: 3;
   grid-row: 3;
   position: sticky!important;
+}
+
+.card {
+  background-color: WHITE;
+  padding: 10px;
+  box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+  border-radius: 5px;
+  margin: 10px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 50px 1fr;
+  grid-gap: 10px;
+}
+
+.card h2 {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: left;
+  align-self: left;
+  margin: 8px;
+}
+
+#cardReports {
+  grid-area: reports;
+  min-height: 130px;
+  max-height: 130px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  max-width: 320px;
+}
+
+#generateReports{
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#completedParts{
+  width: 160px;
+  height: 30px;
+  margin-left: 32px;
+  margin-bottom: 32px;
+  margin-right: 16px;
+}
+
+#generateReport{
+  height: 50px;
+  place-self: end;
 }
 
