@@ -955,8 +955,8 @@ select {
 
 #cardReports {
   grid-area: reports;
-  min-height: 130px;
-  max-height: 130px;
+  min-height: 180px;
+  max-height: 180px;
   display: grid;
   grid-template-columns: 300px 1fr;
   max-width: 320px;
@@ -964,22 +964,38 @@ select {
 
 #generateReports {
   grid-row: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
 }
 
-#completedParts {
-  width: 160px;
+
+#generateReports .firstColumn{
+  grid-column: 1;
+  grid-row: 1;
+  justify-items: center;
+}
+
+#generateReports .secondColumn{
+  grid-column: 2;
+  grid-row: 1;
+  justify-items: center;
+}
+
+
+#completedParts{
+  width: 150px;
   height: 30px;
   margin-left: 32px;
   margin-bottom: 32px;
   margin-right: 16px;
+  margin-top: 16px !important;
+
 }
 
 #generateReport {
   height: 50px;
-  place-self: end;
+  
 }
 
 #cardCharts {

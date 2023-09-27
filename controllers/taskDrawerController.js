@@ -2,10 +2,10 @@ const dbConn = require("../dbConnection");
 
 
 exports.signOffPart = (req, res) =>{
-    const {partNumber} = req.body;
+    const {partNumber, updateDate} = req.body;
 
     try {
-        dbConn.query("UPDATE part SET ? WHERE partNumber = ?", [{status: 'completed'}, partNumber], (error, results) =>{
+        dbConn.query("UPDATE part SET ? WHERE partNumber = ?", [{status: 'completed', updateDate: updateDate}, partNumber], (error, results) =>{
             if(error){
                 return res.send(error)
             }else if(results){

@@ -1,11 +1,14 @@
 $(function (){
     var currPart = Cookies.get("currentPart")
+    var date = new Date
+    var dateTimestamp=  date.toISOString().slice(0, 19).replace('T', ' ')
     $("#signOffButton").on("click", function (){
         $.ajax({
             url: "/updatePartStatus",
             method: "POST",
             data: {
-                partNumber: currPart
+                partNumber: currPart,
+                updateDate: dateTimestamp
             },
             success: function (response){
                 if(response === 'ok'){
