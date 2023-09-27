@@ -272,6 +272,28 @@
       </div>
     </div>
 
+    <div class="card" id="cardCharts">
+      <h2>Charts</h2>
+      <div id="cardChartContent">
+        <form id="selectSection">
+          <label>Part</label>
+          <select name="partsForChart" id="partsForChart">
+          </select>
+          <label>Type</label>
+          <select name="chartType" id="chartType">
+            <option value="" disabled selected hidden>Select a type</option>
+            <option value="cost">Cost</option>
+            <option value="leadtime">Lead Time</option>
+            <option value="quantity">Quantity</option>
+          </select>
+          <button class="addBtn" id="generateChart" type="click">Generate Chart</button>
+        </form>
+        <div id="chartContent">
+          <canvas id="canvasChart" width="950" height="420"></canvas>
+        </div>
+      </div>
+    </div>
+
    </main>
 
 
@@ -289,6 +311,8 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js" integrity="sha512-nlp9/l96/EpjYBx7EP7pGASVXNe80hGhYAUrjeXnu/fyF5Py0/RXav4BBNs7n5Hx1WFhOEOWSAVjGeC3oKxDVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <script src="/admin.js"></script>
       <script src="/reports.js"></script>
+      <script src="/chart.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>

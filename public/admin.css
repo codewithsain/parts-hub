@@ -1,222 +1,209 @@
-html{
+html {
   margin: 0;
   padding: 0;
 }
 
 body {
   background-color: #f1f1f1;
-  
 }
 
-
-
-
 main {
- width: 100%;
- margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
   grid-area: main;
   display: grid;
   min-height: calc(100vh - 75px - 120px);
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, min-content);
   grid-gap: 10px;
-  grid-template-areas: "breadcrumb breadcrumb breadcrumb"
-                        "cardUsers cardUsers cardFF"
-                        "reports reports reports"
+  grid-template-areas:
+    'breadcrumb breadcrumb breadcrumb'
+    'cardUsers cardUsers cardFF'
+    'charts charts reports';
 }
 
-
-
-
-
-
-@media screen and (max-width: 768px){
-  main{
-    grid-template-areas: "breadcrumb breadcrumb breadcrumb"
-                        "cardUsers cardUsers cardFF"
-                        "cardUsers cardUsers cardFF"
-    }
-  
+@media screen and (max-width: 768px) {
+  main {
+    grid-template-areas:
+      'breadcrumb breadcrumb breadcrumb'
+      'cardUsers cardUsers cardFF'
+      'cardUsers cardUsers cardFF';
+  }
 }
 
-@media screen and (max-width: 576px){
-    main{
-        grid-template-areas: "breadcrumb breadcrumb breadcrumb"
-                            "cardUsers cardUsers cardUsers"
-                            "cardFF cardFF cardFF"
-        }
-} 
-
+@media screen and (max-width: 576px) {
+  main {
+    grid-template-areas:
+      'breadcrumb breadcrumb breadcrumb'
+      'cardUsers cardUsers cardUsers'
+      'cardFF cardFF cardFF';
+  }
+}
 
 ul.breadcrumb {
-    padding: 10px 10px;
-    list-style: none;
-    background-color: inherit;
-    margin-bottom: 4px;
-    margin-left: 4px;
-    grid-area: breadcrumb;
- }
-  
- 
-  ul.breadcrumb li {
-    display: inline;
-    font-size: 18px;
-  }
-  
+  padding: 10px 10px;
+  list-style: none;
+  background-color: inherit;
+  margin-bottom: 4px;
+  margin-left: 4px;
+  grid-area: breadcrumb;
+}
 
-  ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
-  }
-  
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
 
-  ul.breadcrumb li a {
-    color: green;
-    text-decoration: none;
-    text-decoration: underline;
-  }
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: '/\00a0';
+}
 
-  ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
-  }
+ul.breadcrumb li a {
+  color: green;
+  text-decoration: none;
+  text-decoration: underline;
+}
 
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
 
-  .message-container-successAdmin {
-    background-color:  rgba(0, 255, 0, 0.233);
-    border-radius: 5px;
-    width: 100px;
-    grid-column: 2;
-    grid-row: 1;
-    height: 50%;
-    width: 50%;
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-    top: 0;
-    text-align: center;
-    display: grid;
-    justify-content:center;
-    place-self: center;
-  }
-  
-  .message-container-errorAdmin {
-    background-color: rgba(255, 0, 0, 0.5);
-    border-radius: 5px;
-    width: 100px;
-    grid-column: 2;
-    grid-row: 1;
-    height: 50%;
-    width: 50%;
-    position: relative;
-    align-items: center;
-    overflow: hidden;
-    top: 0;
-    text-align: center;
-    display: grid;
-    justify-content:center;
-    place-self: center;
-  }
-  
-  .message {
-    font-size: 14px;
-    font-weight: 700;
-    color: #5d6168;
-    text-align: center;
-  }
+.message-container-successAdmin {
+  background-color: rgba(0, 255, 0, 0.233);
+  border-radius: 5px;
+  width: 100px;
+  grid-column: 2;
+  grid-row: 1;
+  height: 50%;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  top: 0;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  place-self: center;
+}
 
-  .cardUsers{
-    background-color: WHITE;
-    padding: 10px;
-    box-shadow: 2px 2px 8px 4px #d3d3d3d1;
-    border-radius: 5px;
-    margin: 10px;
-    min-height: 300px;
-    max-height: 00px;
-    grid-area: cardUsers;
-    overflow-y: auto; 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 50px 1fr;
-    grid-gap: 10px;
-  }
+.message-container-errorAdmin {
+  background-color: rgba(255, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 100px;
+  grid-column: 2;
+  grid-row: 1;
+  height: 50%;
+  width: 50%;
+  position: relative;
+  align-items: center;
+  overflow: hidden;
+  top: 0;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  place-self: center;
+}
+
+.message {
+  font-size: 14px;
+  font-weight: 700;
+  color: #5d6168;
+  text-align: center;
+}
+
+.cardUsers {
+  background-color: WHITE;
+  padding: 10px;
+  box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+  border-radius: 5px;
+  margin: 10px;
+  min-height: 300px;
+  max-height: 00px;
+  grid-area: cardUsers;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 50px 1fr;
+  grid-gap: 10px;
+}
 
 .cardUsers h2 {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: left;
-    align-self: left;
-    margin: 8px
-  }
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: left;
+  align-self: left;
+  margin: 8px;
+}
 
-  .cardUsers table {
-    border-collapse: collapse; 
-    width: 100%;
-    grid-column: 1/4;
-    grid-row: 2;
-    align-self: self-start;
-  }
+.cardUsers table {
+  border-collapse: collapse;
+  width: 100%;
+  grid-column: 1/4;
+  grid-row: 2;
+  align-self: self-start;
+}
 
-  .cardUsers thead th {
-    position: sticky; 
-    top: -15px;
-    height: 50px;
-    border-bottom: 2px solid rgb(194, 193, 193);
-  }
-  
-  .cardUsers thead :hover{
-    background-color: #c9c9c9;
-  }
-  .cardUsers th, td {
-    padding: 8px 16px;
-    border-bottom: 1px solid rgb(194, 193, 193);
-  }
-  
-  .cardUsers th {
-    background: white;
-  }
-  
-  .cardUsers td{
-    text-align: center;
-  }
-  
+.cardUsers thead th {
+  position: sticky;
+  top: -15px;
+  height: 50px;
+  border-bottom: 2px solid rgb(194, 193, 193);
+}
 
-  .addBtn {
-    background-color: #ffd621;
-    color: black;
-    border: 0;
-    border-radius: 5px;
-    margin: 8px;
-    right: 0px;
-    width: 80px;
-    height: 30px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    opacity: 1;
-    visibility: visible;
-    margin-right: 16px;
-    -webkit-transition: all 0.3s ease;
-  }
-  
-  .addBtn:hover {
-    display: block;
-    transition: all 0.3s ease;
-    background-color: #e4c022;
-  }
-  
-  
-  .addBtn:active {
-    background-color: #666666;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+.cardUsers thead :hover {
+  background-color: #c9c9c9;
+}
+.cardUsers th,
+td {
+  padding: 8px 16px;
+  border-bottom: 1px solid rgb(194, 193, 193);
+}
 
-#addUserBtn{
+.cardUsers th {
+  background: white;
+}
+
+.cardUsers td {
+  text-align: center;
+}
+
+.addBtn {
+  background-color: #ffd621;
+  color: black;
+  border: 0;
+  border-radius: 5px;
+  margin: 8px;
+  right: 0px;
+  width: 80px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  margin-right: 16px;
+  -webkit-transition: all 0.3s ease;
+}
+
+.addBtn:hover {
+  display: block;
+  transition: all 0.3s ease;
+  background-color: #e4c022;
+}
+
+.addBtn:active {
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#addUserBtn {
   grid-column: 3;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: right;
   align-self: right;
 }
@@ -251,18 +238,17 @@ ul.breadcrumb {
   row-gap: 10px;
 }
 
-.addUserModal-content p{
+.addUserModal-content p {
   text-align: left;
   margin-left: 8px;
 }
 .addUserModal-content input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button{ 
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-
 }
 
-.addUserModal-content h3{
+.addUserModal-content h3 {
   text-align: center;
   grid-column: 2;
   grid-row: 1;
@@ -285,64 +271,61 @@ input::-webkit-inner-spin-button{
   color: black;
   text-decoration: none;
   cursor: pointer;
-} 
+}
 
-
-
-.addUserModal-content label{
+.addUserModal-content label {
   margin: 8px;
   position: relative;
   font-weight: 700;
 }
 
-.addUserModal-content input, select {
+.addUserModal-content input,
+select {
   display: block;
-  margin-top: 0px!important;
-  margin-left: 8px!important;
-  margin-right: 8px!important;
-  margin-bottom: 0px!important;
+  margin-top: 0px !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+  margin-bottom: 0px !important;
   border-radius: 8px;
   position: relative !important;
 }
 
-.addUserModal-content input{
+.addUserModal-content input {
   width: 150px;
   height: 21.33px;
 }
 
-.addUserModal-content  select{
+.addUserModal-content select {
   width: 150px;
   height: 27.33px;
 }
 
-
-
-.firstColumn{
+.firstColumn {
   display: flex;
   grid-column: 1;
   grid-row: 2;
   flex-direction: column;
 }
 
-.secondColumn{
+.secondColumn {
   display: flex;
   grid-column: 2;
   grid-row: 2;
   flex-direction: column;
 }
 
-.thirdColumn{
+.thirdColumn {
   display: flex;
   grid-column: 3;
   grid-row: 2;
   flex-direction: column;
 }
 
-.buttonContainer{
+.buttonContainer {
   display: flex;
   grid-column: 3;
   grid-row: 3;
-  position: sticky!important;
+  position: sticky !important;
 }
 
 .saveBtnAdmin {
@@ -403,15 +386,15 @@ input::-webkit-inner-spin-button{
   transform: translateY(4px);
 }
 
-.error{
+.error {
   color: red;
   font-size: smaller;
-  margin-top: 0px!important;
-  margin-bottom: 0px!important;
-  margin-left: 8px!important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  margin-left: 8px !important;
 }
 
-.loadingContainer{
+.loadingContainer {
   display: none;
   position: fixed;
   z-index: 2;
@@ -425,7 +408,7 @@ input::-webkit-inner-spin-button{
   grid-template-rows: repeat(3, 1fr);
 }
 
-.loading{
+.loading {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid green;
@@ -439,16 +422,24 @@ input::-webkit-inner-spin-button{
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.actionBtn{
+.actionBtn {
   background-color: #ffd621;
   color: black;
   border: 0;
@@ -463,14 +454,14 @@ input::-webkit-inner-spin-button{
 }
 
 .actionBtn:hover {
-    transition: all 0.3s ease;
-    background-color: #e4c022;
+  transition: all 0.3s ease;
+  background-color: #e4c022;
 }
-  
+
 .actionBtn:active {
-    background-color: #666666;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+  background-color: #666666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .deleteUserModal {
@@ -503,20 +494,20 @@ input::-webkit-inner-spin-button{
   row-gap: 10px;
 }
 
-.deleteConfirmation{
+.deleteConfirmation {
   grid-row: 2;
   grid-column: 1/4;
   place-self: center;
   font-size: 20px;
 }
 
-.buttonContainerDelete{
+.buttonContainerDelete {
   display: flex;
   align-items: end;
   justify-content: end;
   grid-column: 3;
   grid-row: 3;
-  position: sticky!important;
+  position: sticky !important;
 }
 
 .confirmUserDelete {
@@ -545,7 +536,6 @@ input::-webkit-inner-spin-button{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
 
 .updateUserModal {
   display: none;
@@ -577,52 +567,52 @@ input::-webkit-inner-spin-button{
   row-gap: 10px;
 }
 
-.updateUserModal-content p{
+.updateUserModal-content p {
   text-align: left;
   margin-left: 8px;
 }
 .updateUserModal-content input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button{ 
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-
 }
 
-.updateUserModal-content h3{
+.updateUserModal-content h3 {
   text-align: center;
   grid-column: 2;
   grid-row: 1;
 }
 
-.updateUserModal-content label{
+.updateUserModal-content label {
   margin: 8px;
   position: relative;
   font-weight: 700;
 }
 
-.updateUserModal-content input, select {
+.updateUserModal-content input,
+select {
   display: block;
-  margin-top: 0px!important;
-  margin-left: 8px!important;
-  margin-right: 8px!important;
-  margin-bottom: 0px!important;
+  margin-top: 0px !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+  margin-bottom: 0px !important;
   border-radius: 8px;
   position: relative !important;
 }
 
-.updateUserModal-content input{
+.updateUserModal-content input {
   width: 150px;
   height: 21.33px;
 }
 
-.updateUserModal-content  select{
+.updateUserModal-content select {
   width: 150px;
   height: 27.33px;
 }
 
 /*Card FF*/
 
-.cardFF{
+.cardFF {
   background-color: WHITE;
   padding: 10px;
   box-shadow: 2px 2px 8px 4px #d3d3d3d1;
@@ -631,16 +621,15 @@ input::-webkit-inner-spin-button{
   min-height: 300px;
   max-height: 00px;
   grid-area: cardFF;
-  overflow-y: auto; 
+  overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 50px 1fr;
   grid-gap: 10px;
-    
 }
 
 .cardFF table {
-  border-collapse: collapse; 
+  border-collapse: collapse;
   width: 100%;
   grid-column: 1/4;
   grid-row: 2;
@@ -648,16 +637,17 @@ input::-webkit-inner-spin-button{
 }
 
 .cardFF thead th {
-  position: sticky; 
+  position: sticky;
   top: -15px;
   height: 50px;
   border-bottom: 2px solid rgb(194, 193, 193);
 }
 
-.cardFF thead :hover{
+.cardFF thead :hover {
   background-color: #c9c9c9;
 }
-.cardFF th, td {
+.cardFF th,
+td {
   padding: 8px 16px;
   border-bottom: 1px solid rgb(194, 193, 193);
 }
@@ -666,7 +656,7 @@ input::-webkit-inner-spin-button{
   background: white;
 }
 
-.cardFF td{
+.cardFF td {
   text-align: center;
 }
 
@@ -675,13 +665,13 @@ input::-webkit-inner-spin-button{
   grid-row: 1;
   justify-self: left;
   align-self: left;
-  margin: 8px
+  margin: 8px;
 }
 
-#addFlagBtn{
+#addFlagBtn {
   grid-column: 3;
   grid-row: 1;
-  place-self: right!important;
+  place-self: right !important;
   justify-self: right;
   align-self: right;
 }
@@ -716,80 +706,76 @@ input::-webkit-inner-spin-button{
   row-gap: 10px;
 }
 
-.addFlagModal-content p{
+.addFlagModal-content p {
   text-align: left;
   margin-left: 8px;
 }
 .addFlagModal-content input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button{ 
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-
 }
 
-.addFlagModal-content h3{
+.addFlagModal-content h3 {
   text-align: center;
   grid-column: 2;
   grid-row: 1;
 }
 
-.addFlagModal-content label{
+.addFlagModal-content label {
   margin: 8px;
   position: relative;
   font-weight: 700;
 }
 
-.addFlagModal-content input, select {
+.addFlagModal-content input,
+select {
   display: block;
-  margin-top: 0px!important;
-  margin-left: 8px!important;
-  margin-right: 8px!important;
-  margin-bottom: 0px!important;
+  margin-top: 0px !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+  margin-bottom: 0px !important;
   border-radius: 8px;
   position: relative !important;
 }
 
-.addFlagModal-content input{
+.addFlagModal-content input {
   width: 150px;
   height: 21.33px;
 }
 
-.addFlagModal-content  select{
+.addFlagModal-content select {
   width: 150px;
   height: 27.33px;
 }
 
-.addFlagModal .firstColumn{
+.addFlagModal .firstColumn {
   display: flex;
   grid-column: 1;
   grid-row: 2;
   flex-direction: column;
 }
 
-.addFlagModal .secondColumn{
+.addFlagModal .secondColumn {
   display: flex;
   grid-column: 2;
   grid-row: 2;
   flex-direction: column;
 }
 
-.addFlagModal .thirdColumn{
+.addFlagModal .thirdColumn {
   display: flex;
   grid-column: 3;
   grid-row: 2;
   flex-direction: column;
 }
 
-.addFlagModal .buttonContainer{
+.addFlagModal .buttonContainer {
   display: flex;
   grid-column: 3;
   grid-row: 3;
-  position: sticky!important;
+  position: sticky !important;
 }
-
-
-
-
 
 .updateFlagModal {
   display: none;
@@ -821,85 +807,84 @@ input::-webkit-inner-spin-button{
   row-gap: 10px;
 }
 
-.updateFlagModal-content p{
+.updateFlagModal-content p {
   text-align: left;
   margin-left: 8px;
 }
 .updateFlagModal-content input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button{ 
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-
 }
 
-.updateFlagModal-content h3{
+.updateFlagModal-content h3 {
   text-align: center;
   grid-column: 2;
   grid-row: 1;
 }
 
-.updateFlagModal-content label{
+.updateFlagModal-content label {
   margin: 8px;
   position: relative;
   font-weight: 700;
 }
 
-.updateFlagModal-content input, select {
+.updateFlagModal-content input,
+select {
   display: block;
-  margin-top: 0px!important;
-  margin-left: 8px!important;
-  margin-right: 8px!important;
-  margin-bottom: 0px!important;
+  margin-top: 0px !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+  margin-bottom: 0px !important;
   border-radius: 8px;
   position: relative !important;
 }
 
-.updateFlagModal-content input{
+.updateFlagModal-content input {
   width: 150px;
   height: 21.33px;
 }
 
-.updateFlagModal-content  select{
+.updateFlagModal-content select {
   width: 150px;
   height: 27.33px;
 }
 
-.updateFlagModal .firstColumn{
+.updateFlagModal .firstColumn {
   display: flex;
   grid-column: 1;
   grid-row: 2;
   flex-direction: column;
 }
 
-#idFFU{
-  display: none
-}
-
-#idUserUpdate{
+#idFFU {
   display: none;
 }
 
-.updateFlagModal .secondColumn{
+#idUserUpdate {
+  display: none;
+}
+
+.updateFlagModal .secondColumn {
   display: flex;
   grid-column: 2;
   grid-row: 2;
   flex-direction: column;
 }
 
-.updateFlagModal .thirdColumn{
+.updateFlagModal .thirdColumn {
   display: flex;
   grid-column: 3;
   grid-row: 2;
   flex-direction: column;
 }
 
-.updateFlagModal .buttonContainer{
+.updateFlagModal .buttonContainer {
   display: flex;
   grid-column: 3;
   grid-row: 3;
-  position: sticky!important;
+  position: sticky !important;
 }
-
 
 .deleteFlagModal {
   display: none;
@@ -931,20 +916,20 @@ input::-webkit-inner-spin-button{
   row-gap: 10px;
 }
 
-.deleteFlagModal-content .deleteConfirmation{
+.deleteFlagModal-content .deleteConfirmation {
   grid-row: 2;
   grid-column: 1/4;
   place-self: center;
   font-size: 20px;
 }
 
-.deleteFlagModal-content .buttonContainerDelete{
+.deleteFlagModal-content .buttonContainerDelete {
   display: flex;
   align-items: end;
   justify-content: end;
   grid-column: 3;
   grid-row: 3;
-  position: sticky!important;
+  position: sticky !important;
 }
 
 .card {
@@ -977,14 +962,14 @@ input::-webkit-inner-spin-button{
   max-width: 320px;
 }
 
-#generateReports{
+#generateReports {
   grid-row: 2;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#completedParts{
+#completedParts {
   width: 160px;
   height: 30px;
   margin-left: 32px;
@@ -992,8 +977,53 @@ input::-webkit-inner-spin-button{
   margin-right: 16px;
 }
 
-#generateReport{
+#generateReport {
   height: 50px;
   place-self: end;
 }
 
+#cardCharts {
+  grid-area: charts;
+  min-height: 500px;
+  max-height: 500px;
+  display: grid;
+}
+
+#cardChartContent {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+}
+
+#selectSection {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#selectSection label {
+  margin: 8px;
+  position: relative;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+#selectSection select {
+  width: 160px;
+  height: 30px;
+  margin-bottom: 4px !important;
+  margin-right: 16px;
+}
+
+#generateChart {
+  margin-top: 32px;
+  height: 50px;
+  place-self: start;
+}
+
+#chartContent {
+  grid-column: 2;
+  border: 1px solid gray;
+  width: 950px;
+  height: 420px;
+}
