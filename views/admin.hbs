@@ -264,12 +264,17 @@
 
     <div class="card" id="cardReports">
       <h2>Reports</h2>
-      <div id="generateReports">
-        <select name="completedParts" id="completedParts">
+      <form id="generateReports">
+        <div class="firstColumn">
+          <select name="completedParts" id="completedParts">
           <option value="" disabled hidden selected>Please select a part</option>
         </select>
-        <button type="click" id="generateReport" class="addBtn">Generate Report</button>
-      </div>
+        </div>
+        <div class="secondColumn">
+          <button type="click" id="generateReport" class="addBtn">Generate Report</button>
+        </div>
+        
+      </form>
     </div>
 
     <div class="card" id="cardCharts">

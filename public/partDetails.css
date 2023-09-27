@@ -370,6 +370,7 @@ ul.breadcrumb li a:hover {
   height: 70px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  z-index: 2;
 }
 
 /*CARDS*/
@@ -522,7 +523,6 @@ ul.breadcrumb li a:hover {
   min-height: 400px;
   max-height: 900px;
   grid-template-rows: 50px 1fr 50px !important;
-  z-index: -2;
 }
 
 #tdTitle {
@@ -533,7 +533,7 @@ ul.breadcrumb li a:hover {
   grid-row: 2;
   grid-column: 1/4;
   margin-left: 12px;
-  z-index: -1;
+  z-index: 1;
 }
 
 #stepper-content span {
@@ -617,6 +617,7 @@ ul.breadcrumb li a:hover {
   grid-row: 3;
   grid-column: 2;
   width: 120px;
+
 }
 
 /*PROJECT MODULE */
@@ -1885,6 +1886,6 @@ td {
 #saveToolingBtn:disabled,
 #saveNotesBtn:disabled,
 #saveService:disabled,
-#signOffButton:disabled {
+#signOffButton:disabled{
   background-color: gray;
 }
