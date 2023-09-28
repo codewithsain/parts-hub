@@ -17,6 +17,7 @@ const whereUsedController = require('../controllers/whereUsedController')
 const comparePartsController = require('../controllers/comparePartsController')
 const taskDrawerController = require('../controllers/taskDrawerController')
 const reportsController = require('../controllers/reportsController')
+const chartController = require('../controllers/chartController')
 
 //AUTH ROUTES
 router.post("/auth", authController.logIn);
@@ -89,6 +90,7 @@ router.post("/getSimlarPartPrice", comparePartsController.getSimilarPartPrice)
 router.post("/getSimilarPartQuantities", comparePartsController.getSimilarQuantities)
 router.post("/getPartsCompleted", reportsController.getPartsCompleted)
 router.post("/getReport", reportsController.getReport)
+router.post("/getInfoForChart", chartController.getDataForChart)
 
 
 //INSERT DATA ROUTER
