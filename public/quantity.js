@@ -35,15 +35,18 @@ $(function () {
             rules:{
                 globalEstimation: {
                     required: true,
-                    number: true
+                    number: true,
+                    maxlength: 11
                 },
                 buyerEstimation: {
                     required: true,
-                    number: true
+                    number: true,
+                    maxlength: 11
                 },
                 quotedEstimation: {
                     required: true,
-                    number: true
+                    number: true,
+                    maxlength: 11
                 }
             },
             messages: {
