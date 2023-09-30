@@ -45,12 +45,12 @@ $(function () {
                 supTool: {
                     required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 },
                 deereToolExp: {
                      required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 },
                 invRep: {
                     required: true,
@@ -58,22 +58,22 @@ $(function () {
                 supToolExp: {
                      required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 },
                 returnCont: {
                      required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 },
                 expTool: {
                      required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 },
                 deereTool: {
                     required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 }
             },
             messages: {
@@ -83,12 +83,12 @@ $(function () {
                 supTool: {
                     required: "Please enter a value",
                     number: "Only numbers are allowed",
-                    maxlength: "Max length 10 numbers"
+                    maxlength: "Max length 12 numbers"
                 },
                 deereToolExp: {
                     required: "Please enter a value",
                     number: "Only numbers are allowed",
-                    maxlength: "Max length 10 numbers"
+                    maxlength: "Max length 12 numbers"
                 },
                 invRep: {
                     required: "Please select a investment report",
@@ -96,26 +96,25 @@ $(function () {
                 supToolExp: {
                     required: "Please enter a value",
                     number: "Only numbers are allowed",
-                    maxlength: "Max length 10 numbers"
+                    maxlength: "Max length 12 numbers"
                 },
                 returnCont: {
                     required: "Please enter a value",
                     number: "Only numbers are allowed",
-                    maxlength: "Max length 10 numbers"
+                    maxlength: "Max length 12 numbers"
                 },
                 expTool: {
                     required: "Please enter a value",
                     number: "Only numbers are allowed",
-                    maxlength: "Max length 10 numbers"
+                    maxlength: "Max length 12 numbers"
                 },
                 deereTool: {
                     required: "Please enter a value",
                     number: "Only numbers are allowed",
-                    maxlength: "Max length 10 numbers"
+                    maxlength: "Max length 12 numbers"
                 }
             },
             submitHandler: function(){
-                console.log("hgola 3")
                 $.ajax({
                     url: "/addTooling",
                     method: "POST",

@@ -28,35 +28,73 @@ $(function () {
     $("#saveBtnUser").on("click", function(){
         $("#addUserForm").validate({
             rules:{
-                newUser: "required",
+                newUser: {
+                    required: true,
+                    maxlength: 7,
+                    minlength: 7
+                },
                 role: "required",
                 confirmPassword: {
                     required: true,
-                    equalTo: "#password"
+                    equalTo: "#password",
+                    maxlength: 25,
+                    minlength: 12
                 },
-                name: "required",
+                name: {
+                    required: true,
+                    maxlength: 25,
+                    minlength: 2
+                },
                 position: "required",
-                lastName: "required",
-                password: "required",
+                lastName: {
+                    required: true,
+                    maxlength: 25,
+                    minlength: 2
+                },
+                password: {
+                    required: true,
+                    maxlength: 25,
+                    minlength: 12
+                },
                 email:{
                     required: true,
-                    email: true
+                    email: true,
+                    maxlength: 100,
                 }
             },
             messages:{
-                newUser: "Please enter a user ",
+                newUser: {
+                    required: "Please enter a valid user",
+                    maxlength: "Please enter a 7 character user",
+                    minlength: "Please enter a 7 character user"
+                },
                 role: "Please select a role",
                 confirmPassword: {
-                    required: "Please enter a confirm password",
-                    equalTo: "Passwords don't match"
+                    required: "Confirm password",
+                    equalTo: "Passwords don't match",
+                    maxlength: "25 characters max",
+                    minlength: "12 characters min"
                 },
-                name: "Please enter a name",
+                name: {
+                    required: "Please enter a name",
+                    maxlength: "25 characters max",
+                    minlength: "2 characters min"
+                },
                 position: "Please select a position",
-                lastName: "Please enter a last name",
-                password: "Please enter a password",
+                lastName: {
+                    required: "Please enter a last name",
+                    maxlength: "25 characters max",
+                    minlength: "2 characters min"
+                },
+                password: {
+                    required: "Please enter a password",
+                    maxlength: "25 characters max",
+                    minlength: "12 characters min"
+                },
                 email:{
                     required: "Please enter an email",
-                    email: "Please enter a valid email"
+                    email: "Please enter a valid email",
+                    maxlength: "100 characters max",
                 }
             },
             submitHandler: function(){
@@ -213,25 +251,73 @@ $(function () {
         $("#updateUserConfirmBtn").on('click', function(){
             $("#updateUserForm").validate({
                 rules:{
-                    newUser: "required",
+                    newUser: {
+                        required: true,
+                        maxlength: 7,
+                        minlength: 7
+                    },
                     role: "required",
-                    name: "required",
+                    confirmPassword: {
+                        required: true,
+                        equalTo: "#password",
+                        maxlength: 25,
+                        minlength: 12
+                    },
+                    name: {
+                        required: true,
+                        maxlength: 25,
+                        minlength: 2
+                    },
                     position: "required",
-                    lastName: "required",
+                    lastName: {
+                        required: true,
+                        maxlength: 25,
+                        minlength: 2
+                    },
+                    password: {
+                        required: true,
+                        maxlength: 25,
+                        minlength: 12
+                    },
                     email:{
                         required: true,
-                        email: true
+                        email: true,
+                        maxlength: 100,
                     }
                 },
                 messages:{
-                    newUser: "Please enter a user ",
+                    newUser: {
+                        required: "Please enter a valid user",
+                        maxlength: "Please enter a 7 character user",
+                        minlength: "Please enter a 7 character user"
+                    },
                     role: "Please select a role",
-                    name: "Please enter a name",
+                    confirmPassword: {
+                        required: "Confirm password",
+                        equalTo: "Passwords don't match",
+                        maxlength: "25 characters max",
+                        minlength: "12 characters min"
+                    },
+                    name: {
+                        required: "Please enter a name",
+                        maxlength: "25 characters max",
+                        minlength: "2 characters min"
+                    },
                     position: "Please select a position",
-                    lastName: "Please enter a last name",
+                    lastName: {
+                        required: "Please enter a last name",
+                        maxlength: "25 characters max",
+                        minlength: "2 characters min"
+                    },
+                    password: {
+                        required: "Please enter a password",
+                        maxlength: "25 characters max",
+                        minlength: "12 characters min"
+                    },
                     email:{
                         required: "Please enter an email",
-                        email: "Please enter a valid email"
+                        email: "Please enter a valid email",
+                        maxlength: "100 characters max",
                     }
                 },
                 submitHandler: function(){
@@ -317,14 +403,17 @@ $(function () {
     $("#saveFlagBtn").on("click", function(){
         $("#addFlagForm").validate({
             rules:{
-                nameFF: "required",
-                cookieFF: "required",
+                nameFF: {
+                    required: true,
+                    maxlength: 25,
+                    minlength: 2
+                },
+                cookieFF: {
+                    required: true,
+                    maxlength: 25,
+                    minlength: 2
+                },
                 valueFF:"required"
-            },
-            messages:{
-                nameFF: "Please enter a name",
-                cookieFF: "Please enter a cookie name",
-                valueFF:"Please select a value"
             },
             submitHandler: function(){
                 $.ajax({
@@ -453,14 +542,17 @@ $(function () {
               
                 $("#updateFlagForm").validate({
                     rules:{
-                        nameFFU: "required",
-                        cookieFFU: "required",
+                        nameFFU: {
+                            required: true,
+                            maxlength: 25,
+                            minlength: 2
+                        },
+                        cookieFFU: {
+                            required: true,
+                            maxlength: 25,
+                            minlength: 2
+                        },
                         valueFFU:"required"
-                    },
-                    messages:{
-                        nameFFU: "Please enter a name",
-                        cookieFFU: "Please enter a cookie name",
-                        valueFFU:"Please select a value"
                     },
                     submitHandler: function(){
                         $.ajax({

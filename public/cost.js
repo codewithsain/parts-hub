@@ -106,15 +106,20 @@ $(function () {
         },
         supplierQuote: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
         },
         experimentalSupplierQuote: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         },
         shouldCost: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         },
         shouldCostSourceSelect: {
           required: true
@@ -124,31 +129,45 @@ $(function () {
         },
         productionCost: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         },
         experimentalCost: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         },
         targetCost: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         },
         surcharge: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         },
         directMat: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         },
         dirOverhead: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         },
         perOverhead: {
           required: true,
-          number: true
+          number: true,
+          maxlength: 12
+
         }
       },
       messages: {

@@ -73,23 +73,23 @@ $(function () {
                 experimentalLT: {
                     required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 },
                 prodProcurementLT: {
                     required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 },
                 toolingLT: {
                     required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 }
                 ,
                 adminLT: {
                     required: true,
                     number: true,
-                    maxlength: 10
+                    maxlength: 12
                 }
             },
             messages: {

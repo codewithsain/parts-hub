@@ -144,39 +144,79 @@ $(document).ready(function (){
       
        $("#addPartForm").validate({
         rules: {
-            partNumberI: "required",
-            descI: "required",
+            partNumberI: {
+                required: true,
+                maxlength: 6,
+                minlength: 6
+            },
+            descI: {
+                required: true,
+                maxlength: 25,
+                minlength: 4
+            },
             similarPartS: "required",
             containerS: "required",
             netWeightI: {
                 required: true,
-                number: true
+                number: true,
+                maxlength: 10,
+                minlength: 1
             },
             grossWeightI: {
                 required: true,
-                number: true
+                number: true,
+                maxlength: 10,
+                minlength: 1
             },
-            termCodeI: "required",
-            termCodeDescI: "required",
+            termCodeI: {
+                required: true,
+                maxlength: 6,
+                minlength: 6
+            },
+            termCodeDescI: {
+                required: true,
+                maxlength: 25,
+                minlength: 4
+            },
             userS: "required",
             revisionS: "required",
             plantS: "required"
         },
         messages:{
-            partNumberI: 'Please enter a part number',
-            descI: "Please enter a description",
+            partNumberI: {
+                required: "Please enter a valid part number",
+                maxlength: "Please enter 6 characters",
+                minlength: "Please enter 6 characters"
+            },
+            descI: {
+                required: "Please enter a description",
+                maxlength: "25 characters max",
+                minlength: "Please enter at least 4 characters"
+            },
             similarPartS: "Please select a similar part",
             containerS: "Please select a container",
             netWeightI: {
-                required: "Please enter a net weigth",
-                number: "Only decimals numbers are allowed"
+                required: "Please enter a net weight",
+                number: "Only decimals numbers are allowed",
+                maxlength: "10 numbers max",
+                minlength: "Please enter at least 1 number"
             },
             grossWeightI: {
-                required: "Please enter a net weigth",
-                number: "Only decimals numbers are allowed"
+                required: "Please enter a gross weight",
+                number: "Only decimals numbers are allowed",
+                maxlength: "10 numbers max",
+                minlength: "Please enter at least 1 number"
             },
-            termCodeI: "Please enter a term code",
-            termCodeDescI: "Plese enter a description",
+            termCodeI: {
+                required: "Please enter a valid term code number",
+                maxlength: "Please enter 6 numbers",
+                minlength: "Please enter 6 numbers"
+            },
+            termCodeDescI: {
+                required: "Please enter a term code description",
+                maxlength: "25 characters max",
+                minlength: "Please enter at least 4 characters"
+            },
             userS: "Please select a user",
             revisionS: "Please select a revision",
             plantS: "Please select a plant"
@@ -416,39 +456,79 @@ $(document).ready(function (){
             $(".updateBtn").on("click", function(){
                 $("#updatePartForm").validate({
                     rules: {
-                        partNumberU: "required",
-                        descU: "required",
+                        partNumberU: {
+                            required: true,
+                            maxlength: 6,
+                            minlength: 6
+                        },
+                        descU: {
+                            required: true,
+                            maxlength: 25,
+                            minlength: 4
+                        },
                         similarPartU: "required",
                         containerU: "required",
                         netWeightU: {
                             required: true,
-                            number: true
+                            number: true,
+                            maxlength: 10,
+                            minlength: 1
                         },
                         grossWeightU: {
                             required: true,
-                            number: true
+                            number: true,
+                            maxlength: 10,
+                            minlength: 1
                         },
-                        termCodeU: "required",
-                        termCodeDescU: "required",
+                        termCodeU: {
+                            required: true,
+                            maxlength: 6,
+                            minlength: 6
+                        },
+                        termCodeDescU: {
+                            required: true,
+                            maxlength: 25,
+                            minlength: 4
+                        },
                         userU: "required",
                         revisionU: "required",
                         plantU: "required"
                     },
                     messages:{
-                        partNumberU: 'Please enter a part number',
-                        descU: "Please enter a description",
+                        partNumberU: {
+                            required: "Please enter a valid part number",
+                            maxlength: "Please enter 6 characters",
+                            minlength: "Please enter 6 characters"
+                        },
+                        descU: {
+                            required: "Please enter a description",
+                            maxlength: "25 characters max",
+                            minlength: "Please enter at least 4 characters"
+                        },
                         similarPartU: "Please select a similar part",
                         containerU: "Please select a container",
                         netWeightU: {
-                            required: "Please enter a net weigth",
-                            number: "Only decimals numbers are allowed"
+                            required: "Please enter a net weight",
+                            number: "Only decimals numbers are allowed",
+                            maxlength: "10 numbers max",
+                            minlength: "Please enter at least 1 number"
                         },
                         grossWeightU: {
-                            required: "Please enter a net weigth",
-                            number: "Only decimals numbers are allowed"
+                            required: "Please enter a gross weight",
+                            number: "Only decimals numbers are allowed",
+                            maxlength: "10 numbers max",
+                            minlength: "Please enter at least 1 number"
                         },
-                        termCodeU: "Please enter a term code",
-                        termCodeDescU: "Plese enter a description",
+                        termCodeU: {
+                            required: "Please enter a valid term code number",
+                            maxlength: "Please enter 6 numbers",
+                            minlength: "Please enter 6 numbers"
+                        },
+                        termCodeDescU: {
+                            required: "Please enter a term code description",
+                            maxlength: "25 characters max",
+                            minlength: "Please enter at least 4 characters"
+                        },
                         userU: "Please select a user",
                         revisionU: "Please select a revision",
                         plantU: "Please select a plant"
