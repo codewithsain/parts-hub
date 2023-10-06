@@ -251,6 +251,14 @@ exports.isLoggedIn = async (req, res, next) => {
       return next();
     }
   } else {
+    res.clearCookie("userID");
+    res.clearCookie("jwt");
+    res.clearCookie("name");
+    res.clearCookie("lastName");
+    res.clearCookie("position");
+    res.clearCookie("loggedIn");
+    res.clearCookie("isAdmin");
+    res.clearCookie("currentPart");
     res.status(400).redirect("/");
   }
 };
@@ -283,6 +291,14 @@ exports.isAdmin = async (req, res, next) =>{
       return next();
     }
   } else {
+    res.clearCookie("userID");
+    res.clearCookie("jwt");
+    res.clearCookie("name");
+    res.clearCookie("lastName");
+    res.clearCookie("position");
+    res.clearCookie("loggedIn");
+    res.clearCookie("isAdmin");
+    res.clearCookie("currentPart");
     res.status(400).redirect("/");
   }
   
@@ -320,6 +336,15 @@ exports.renderAdmin = async (req, res, next) =>{
       res.send(error);
     }
   } else {
+    res.clearCookie("userID");
+    res.clearCookie("jwt");
+    res.clearCookie("name");
+    res.clearCookie("lastName");
+    res.clearCookie("position");
+    res.clearCookie("loggedIn");
+    res.clearCookie("isAdmin");
+    res.clearCookie("currentPart");
+    
     res.status(400).redirect("/");
   }
 }
