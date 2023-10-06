@@ -90,7 +90,8 @@ $(function () {
     loadCostTable()
   })
 
-  $('#closeCostModal').on('click', function () {
+  $('#closeCostModal').on('click', function (e) {
+    e.preventDefault();
     $('#costSelectModal').css('display', 'none')
   })
 

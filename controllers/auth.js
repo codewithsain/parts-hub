@@ -325,15 +325,16 @@ exports.renderAdmin = async (req, res, next) =>{
 }
 
 exports.logout = async (req, res) => {
-  res.clearCookie("userID");
-  res.clearCookie("role");
-  res.clearCookie("jwt");
-  res.clearCookie("name");
-  res.clearCookie("lastName");
-  res.clearCookie("position");
-  res.clearCookie("loggedIn");
-  res.clearCookie("currentUser");
-  res.clearCookie("isAdmin");
-  res.clearCookie("currentPart");
-  res.status(200).redirect("/");
+  if(req.cookies.jwt){
+    res.clearCookie("userID");
+    res.clearCookie("jwt");
+    res.clearCookie("name");
+    res.clearCookie("lastName");
+    res.clearCookie("position");
+    res.clearCookie("loggedIn");
+    res.clearCookie("isAdmin");
+    res.clearCookie("currentPart");
+    res.status(200).redirect("/");
+  }
+ 
 };
