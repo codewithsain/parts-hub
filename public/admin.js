@@ -232,6 +232,7 @@ $(function () {
         
    
             id= row.find('.tableUserID').text();
+            console.log(id)
            user= row.find('.tableUser').text();
             name= row.find('.tableName').text();
             lastName= row.find('.tableLastName').text();
@@ -322,7 +323,7 @@ $(function () {
                 },
                 submitHandler: function(){
                     $.ajax({
-                        url:"/updateUser/" + $("#idUserUpdate").val(id),
+                        url:"/updateUser/" + $("#idUserUpdate").val(),
                         method: "PUT",
                         data:{
                             user: $("#newUserU").val(),
