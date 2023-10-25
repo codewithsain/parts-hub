@@ -24,7 +24,7 @@ exports.addNotes = (req, res) =>{
                         }
                     })
                 } catch (error) {
-                    return res.send();
+                    return res.send(error);
                 }
             }
         })

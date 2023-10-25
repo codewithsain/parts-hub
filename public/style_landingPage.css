@@ -256,7 +256,7 @@ background-color: WHITE;
 .addPartModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -270,7 +270,7 @@ background-color: WHITE;
 .addPartModalUpdate {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -401,7 +401,7 @@ input::-webkit-inner-spin-button{
 }
 
 .firstColumn input{
-  display: block;
+  display: block !important;
   width: 150px;
   height: 21.33px;
 }
@@ -432,7 +432,7 @@ input::-webkit-inner-spin-button{
 }
 
 .secondColumn input{
-  display: block;
+  display: block !important;
   width: 150px;
   height: 21.33px;
 }
@@ -443,14 +443,14 @@ input::-webkit-inner-spin-button{
 }
 
 .thirdColumn{
-  display: flex;
+  display: flex !important;
   grid-column: 3;
   grid-row: 2;
   flex-direction: column;
 }
 
 .thirdColumn input, select{
-  display: block;
+  display: block !important;
   margin-top: 0px!important;
   margin-left: 8px!important;
   margin-right: 8px!important;
@@ -697,7 +697,7 @@ input::-webkit-inner-spin-button{
 .deletePartModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -794,7 +794,7 @@ input::-webkit-inner-spin-button{
 }
 
 #idPart{
-  display: none;
+  display: none !important;
 }
 
 

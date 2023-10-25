@@ -7,7 +7,7 @@ $(document).ready(function () {
       partNumber: currPart
     },
     success: function (response) {
-      console.log(response)
+   
       $('#prodCostQualSelect').val(response[0].prodCostQual),
         $('#supplierQuote').val(response[0].supplierQuote),
         $('#experimentalSupplierQuote').val(response[0].expQuote),
@@ -248,7 +248,7 @@ $(function () {
             $('.loadingContainer').css('display', 'grid')
           },
           success: function (response) {
-            console.log(response)
+       
             if (response === 'ok') {
               $('.loadingContainer').css('display', 'none')
               $('.addUserModal').css('display', 'none')

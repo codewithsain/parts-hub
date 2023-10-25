@@ -42,7 +42,7 @@ exports.addTooling = (req, res) =>{
                         }
                     })
                 } catch (error) {
-                    return res.send();
+                    return res.send(error);
                 }
             }
         })
@@ -62,7 +62,10 @@ exports.getTooling = (req, res) =>{
             }else if(results){
                 let id = results[0].id;
                 try {
-                    dbConn.query("SELECT id, invQual, invRep, expTool, supTool, supToolExp, deereTool, deereToolExp, returnCont, convert_tz(createDate,'+00:00','-06:00') as createDate FROM tooling  WHERE partID = ? ORDER BY createDate DESC", [id] ,(error, results) =>{
+                    dbConn.query(`SELECT id, invQual, invRep, expTool,
+                     supTool, supToolExp, deereTool, deereToolExp, returnCont, convert_tz(createDate,'+00:00','-06:00') 
+                    as createDate FROM tooling  WHERE partID = ? ORDER BY createDate DESC`,
+                     [id] ,(error, results) =>{
                         if(error){
                             return res.send(error)
                         }else if(results){

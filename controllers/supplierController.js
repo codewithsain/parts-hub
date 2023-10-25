@@ -57,7 +57,7 @@ exports.getCurrentSupplier = (req, res) => {
 
 exports.saveSupplier = (req, res) => {
     const { partNumber, suppID } = req.body;
-    //ODO: HACER DIIFERENCIACION SI YA EXISTE UN REGISTRO CON ESA PARTE, SI EXISTE HACER UPDATE, SI NO, HACER UN INSERT
+    
     try {
         dbConn.query("SELECT id FROM part WHERE partNumber = ?", [partNumber], (error, results) => {
             if (error) {

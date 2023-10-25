@@ -7,7 +7,7 @@ $(document).ready(function () {
             partNumber: currPart
         },
         success: function (compareResponse) {
-            console.log(compareResponse)
+
             $("#partPlant").text(compareResponse[0].plant),
                 $("#partPartInfo").text(compareResponse[0].description),
                 $("#partTermCode").text(compareResponse[0].termCode),
@@ -32,7 +32,7 @@ $(document).ready(function () {
             partNumber: currPart
         },
         success: function (priceResults) {
-            console.log(priceResults)
+       
                 $("#partPrice").text(priceResults[0].tic)
         }
     })

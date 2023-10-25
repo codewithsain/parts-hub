@@ -24,7 +24,7 @@ console.log(__dirname);
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.use("/", require("./routes/pages"));
-// app.use("/auth", require("./routes/auth"));
+
 
 
 function handleDisconnect(){

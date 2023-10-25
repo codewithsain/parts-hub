@@ -8,7 +8,7 @@ $(document).ready(function (){
             partNumber: currPart
         },
         success: function(response) {
-            console.log(response[0].globalEAU)
+  
             $("#partNumber").text(response[0].partNumber),
             $("#revision").text(response[0].value),
             $("#partDesc").text(response[0].description),

@@ -4,7 +4,7 @@ $(document).ready(function (){
         var total = (parseInt($('#prodProcurementLT').val()) || 0 ) +
                     (parseInt($('#toolingLT').val()) || 0 ) +
                     (parseInt($("#adminLT").val()) || 0 );
-                    console.log(total)
+             
         $('#materialRelLT').text(total);
     };
     
@@ -28,7 +28,7 @@ $(document).ready(function (){
             partNumber: currPart
         },
         success: function(response){
-            console.log(response)
+   
              $('#selectPPBB').val(response[0].prodProcBB),
            $('#selectTNBB').val(response[0].toolNBB),
              $('#location').val(response[0].location),
@@ -144,7 +144,7 @@ $(function () {
                         $(".loadingContainer").css("display", "grid")
                     },
                     success: function (response) {
-                        console.log(response)
+               
                         if(response === 'ok'){
                             $(".loadingContainer").css("display", "none")
                             $(".message-container-successAdmin .message").text("Lead Time esimation added successfully");

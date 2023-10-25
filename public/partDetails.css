@@ -229,7 +229,7 @@ ul.breadcrumb li a:hover {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -285,7 +285,7 @@ ul.breadcrumb li a:hover {
 
 .error {
   color: red;
-  font-size: smaller;
+  font-size: 12px !important;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   margin-left: 8px !important;
@@ -1099,6 +1099,7 @@ td {
   margin-bottom: 32px;
   place-self: end;
   margin-right: 16px;
+  display: block !important;
 }
 
 .supplierInfo {
@@ -1172,6 +1173,7 @@ td {
   margin-bottom: 32px;
   place-self: end;
   margin-right: 16px;
+  display: block !important;
 }
 
 #saveService {
@@ -1183,8 +1185,8 @@ td {
 /*COST MODULE*/
 #cardCost {
   grid-area: cost;
-  min-height: 400px;
-  max-height: 400px;
+  min-height: 420px;
+  max-height: 420px;
 }
 
 #selectCostBtn {
@@ -1255,32 +1257,34 @@ td {
 
 .costCalculationFirstColumn label {
   margin-bottom: 28px !important;
+  margin-top: 0 !important;
 }
 
 .costCalculationSecondColumn input {
-  display: block;
+  display: block !important;
   align-self: end;
+  margin-bottom: 18px !important;
 }
 
+
 .costCalculationSecondColumn label {
-  text-align: end;
+  text-align: end ;
 }
 
 #cardCost label {
   margin-left: 8px;
   margin-right: 8px;
-  margin-top: 0;
+  margin-top: 12px;
   margin-bottom: 0px;
   font-size: 16px;
   font-weight: 700;
 }
 
 #cardCost input {
-  display: block;
+  display: block !important;
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
-  margin-bottom: 20px;
   font-size: 16px;
   text-align: right;
   width: 150px;
@@ -1288,11 +1292,10 @@ td {
 }
 
 #cardCost select {
-  display: block;
+  display: block !important;
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
-  margin-bottom: 20px;
   width: 160px;
   height: 30px;
 }
@@ -1335,7 +1338,7 @@ td {
 }
 
 #costTable th {
-  background: white;
+  background: white
 }
 
 #costTable td {
@@ -1344,7 +1347,10 @@ td {
 
 #costForm .error {
   font-size: 12px !important;
+  margin-bottom: 20px ;
 }
+
+
 
 #tic {
   place-self: end;
@@ -1405,7 +1411,7 @@ td {
 }
 
 #cardLeadTime select {
-  display: block;
+  display: block !important;
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
@@ -1562,9 +1568,9 @@ td {
 }
 
 #cardQuantities input {
-  display: block;
+  display: block !important;
   margin: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 32px !important;
   font-size: 16px;
   text-align: right;
   width: 100px;
@@ -1591,7 +1597,6 @@ td {
 
 #cardQuantities .secondColumn label {
   font-size: 12px;
-  margin-bottom: 32px !important;
 }
 
 #tableContent {
@@ -1681,17 +1686,22 @@ td {
 
 #toolingForm label {
   margin: 8px;
+  margin-top: 20px !important;
   margin-bottom: 0px;
   font-size: 16px;
   font-weight: 700;
 }
 
+#toolingForm  .error{
+  margin-top: 0px !important;
+}
+
 #toolingForm input {
-  display: block;
-  margin-top: 0;
+  display: block !important;
+  margin-top: 0px;
   margin-left: 8px;
   margin-right: 8px;
-  margin-bottom: 32px;
+
   font-size: 16px;
   text-align: right;
   width: 150px;
@@ -1699,14 +1709,14 @@ td {
 }
 
 #toolingForm select {
-  display: block;
+  display: block !important;
 
   margin-left: 8px;
   margin-right: 8px;
   margin-top: 0;
   width: 170px;
   height: 30px;
-  margin-bottom: 32px;
+
 }
 
 #toolingSelectModal-content {

@@ -7,7 +7,7 @@ $(document).ready(function (){
             partNumber: currPart
         },
         success: function(response){
-            console.log(response)
+       
             $('#invQual').val(response[0].invQual),
             $('#supTool').val(response[0].supTool),
              $('#supToolExp').val(response[0].supToolExp),
@@ -132,10 +132,10 @@ $(function () {
                     },
                     before: function (){
                         $(".loadingContainer").css("display", "grid")
-                        console.log("hgola 2")
+                    
                     },
                     success: function (response) {
-                        console.log(response)
+                       
                         if(response === 'ok'){
                             $(".loadingContainer").css("display", "none")
                             $(".message-container-successAdmin .message").text("Tooling estimation added successfully");

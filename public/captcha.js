@@ -9,7 +9,7 @@ $(function(){
                 captcha = captcha + chars[Math.floor(Math.random() * chars.length)];
                      }
              $('#captchaText').val(captcha);
-            console.log(captcha);
+
             }
         });
     

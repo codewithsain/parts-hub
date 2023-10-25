@@ -14,7 +14,9 @@ $(document).ready(function (){
 })
 
 $(function () {
-
+    var currPart = Cookies.get("currentPart")
+    var date = new Date
+    var dateTimestamp=  date.toISOString().slice(0, 19).replace('T', ' ')
     $("#serviceForm").validate({
         rules: {
             lsi: {
@@ -33,9 +35,7 @@ $(function () {
             }
         },
         submitHandler: function(){
-            var currPart = Cookies.get("currentPart")
-            var date = new Date
-            var dateTimestamp=  date.toISOString().slice(0, 19).replace('T', ' ')
+       
             $("#saveService").on("click", function() {
                 $.ajax({
                     url: "/saveService",

@@ -140,7 +140,7 @@ $(document).ready(function (){
 
     
 
-    $(".saveBtn").on('click', function () {
+    $("#savePartBtn").on('click', function () {
       
        $("#addPartForm").validate({
         rules: {
@@ -154,7 +154,6 @@ $(document).ready(function (){
                 maxlength: 25,
                 minlength: 4
             },
-            similarPartS: "required",
             containerS: "required",
             netWeightI: {
                 required: true,
@@ -179,7 +178,6 @@ $(document).ready(function (){
                 minlength: 4
             },
             userS: "required",
-            revisionS: "required",
             plantS: "required"
         },
         messages:{
@@ -193,7 +191,6 @@ $(document).ready(function (){
                 maxlength: "25 characters max",
                 minlength: "Please enter at least 4 characters"
             },
-            similarPartS: "Please select a similar part",
             containerS: "Please select a container",
             netWeightI: {
                 required: "Please enter a net weight",
@@ -218,32 +215,31 @@ $(document).ready(function (){
                 minlength: "Please enter at least 4 characters"
             },
             userS: "Please select a user",
-            revisionS: "Please select a revision",
             plantS: "Please select a plant"
         },
         submitHandler: function(){
+        
         $.ajax({
             url: "/addPart",
             method: 'POST',
             data: {
-                partNumber: $("#partNumberI").val().trim(),
-                description: $("#descI").val().trim(),
-                similarPart: $("#similarPartS").val().trim(),
-                container: $("#containerS").val().trim(),
-                netWeight: $("#netWeightI").val().trim(),
-                grossWeight: $("#grossWeightI").val().trim(),
-                termCode: $("#termCodeI").val().trim(),
-                termCodeDesc: $("#termCodeDescI").val().trim(),
-                user: $("#userS").val().trim(),
-                revision: $("#revisionS").val().trim(),
-                plant: $("#plantS").val().trim(),
-
+                partNumber: $("#partNumberI").val(),
+                description: $("#descI").val(),
+                similarPart: $("#similarPartS").val(),
+                container: $("#containerS").val(),
+                netWeight: $("#netWeightI").val(),
+                grossWeight: $("#grossWeightI").val(),
+                termCode: $("#termCodeI").val(),
+                termCodeDesc: $("#termCodeDescI").val(),
+                user: $("#userS").val(),
+                revision: $("#revisionS").val(),
+                plant: $("#plantS").val(),
             }, 
             beforeSend: function () { 
                 $(".loadingContainer").css("display", "grid")
             },
             success: function(response){
-                // console.log(response)
+                
                 if(response === "partExist"){
                     $(".partNumberI").after("<label class='error'>Part already exists</label>")
                     $(".loadingContainer").css("display", "none");
@@ -345,71 +341,72 @@ $(document).ready(function (){
 
     $("table").on("click", '#updateBtn', function(){
         var plants = "";
-            var users = "";
-            var revisions = "";
-            var containers= "";
-            var parts = "";
-            $.ajax({
-                url: '/getPlants',
-                method: 'POST',
-                success: function(response){
-                    $.each(response, function (key, val) { 
-                        plants += "<option value='" + val.id + "'>" + val.plant + "</option>";
-                     })
-    
-                     $(".plantS").html(plants);
-    
-                }
-            })
-            $.ajax({
-                url: '/getUsers',
-                method: 'POST',
-                success: function(response){
-                    $.each(response, function (key, val) { 
-                        users += "<option value='" + val.id + "'>" + val.user + "</option>";
-                     })
-    
-                     $(".userS").html(users);
-    
-                }
-            })
-            $.ajax({
-                url: '/getRevisions',
-                method: 'POST',
-                success: function(response){
-                    $.each(response, function (key, val) { 
-                        revisions += "<option value='" + val.id + "'>" + val.value + "</option>";
-                     })
-    
-                     $(".revisionS").html(revisions);
-                }
-            })
-            $.ajax({
-                url: '/getContainers',
-                method: 'POST',
-                success: function(response){
-                    $.each(response, function (key, val) { 
-                        containers += "<option value='" + val.id + "'>" + val.containerDesc + "</option>";
-                     })
-    
-                     $(".containerS").html(containers);
-    
-                }
-            })
-            $.ajax({
-                url: '/getParts',
-                method: 'POST',
-                success: function(response){
-                    // console.log(response);
-                    $.each(response, function (key, val) { 
-                        parts += "<option value='" + val.id + "'>" + val.partNumber + "</option>";
-                     })
-    
-                     $(".similarPartS").html(parts);
-    
-                }
-            })
+        var users = "";
+        var revisions = "";
+        var containers= "";
+        var parts = "";
+        $.ajax({
+            url: '/getPlants',
+            method: 'POST',
+            success: function(response){
+                $.each(response, function (key, val) { 
+                    plants += "<option value='" + val.id + "'>" + val.plant + "</option>";
+                 })
 
+                 $("#plantU").html(plants +  
+                    "<option value='' disabled selected hidden>Select a plant</option>");
+
+            }
+        })
+        $.ajax({
+            url: '/getUsers',
+            method: 'POST',
+            success: function(response){
+                $.each(response, function (key, val) { 
+                    users += "<option value='" + val.id + "'>" + val.user + "</option>";
+                 })
+
+                 $(".userS").html(users);
+
+            }
+        })
+        $.ajax({
+            url: '/getRevisions',
+            method: 'POST',
+            success: function(response){
+                $.each(response, function (key, val) { 
+                    revisions += "<option value='" + val.id + "'>" + val.value + "</option>";
+                 })
+
+                 $(".revisionS").html(revisions);
+            }
+        })
+        $.ajax({
+            url: '/getContainers',
+            method: 'POST',
+            success: function(response){
+                $.each(response, function (key, val) { 
+                    containers += "<option value='" + val.id + "'>" + val.containerDesc + "</option>";
+                 })
+
+                 $(".containerS").html(containers);
+
+            }
+        })
+        $.ajax({
+            url: '/getParts',
+            method: 'POST',
+            success: function(response){
+         
+                $.each(response, function (key, val) { 
+                    parts += "<option value='" + val.id + "'>" + val.partNumber + "</option>";
+                 })
+
+                 $(".similarPartS").html(parts);
+
+            }
+        })
+       
             $(".addPartModalUpdate").css("display", "grid");
 
             let row = $(this).closest('tr');
@@ -417,12 +414,8 @@ $(document).ready(function (){
             let id= row.find('.tableID').text();
 
             $("#idPart").val(id);
+
             
-            let similarPart= ""
-            let container = ""
-            let user = ""
-            let revision = ""
-            let plant = ""
 
             $.ajax({
                 url:"/getPartsForUpdate",
@@ -431,27 +424,31 @@ $(document).ready(function (){
                     id: id
                 },
                 success: function(response){
-                    console.log(response[0].partNumber);
+                    
                     $("#partNumberU").val(response[0].partNumber)
+                    
                     $("#descU").val(response[0].description)
-                     similarPart = response[0].similarPart;
-                    container = response[0].containerID;
+                     
+                     $("#similarPartU").val(response[0].similarPart)
+                 
+                     $("#containerU").val(response[0].container)
+                    
                     $("#netWeightU").val(response[0].netWeight)
                     $("#grossWeightU").val(response[0].grossWeight)
                     $("#termCodeU").val(response[0].termCode)
                     $("#termCodeDescU").val(response[0].termCodeDesc)
-                     user = response[0].userID
-                    revision = response[0].revisionID;
-                    plant = response[0].plantID
-
+                
+                    $("#userU").val( response[0].userID)
+                    $("#revisionU").val(response[0].revisionID)
+                    $("#plantU").val( response[0].plantID)
+                   
                 }
             })
 
-            $("#similarPartU").val(similarPart)
-            $("#containerU").val(container)
-            $("#userU").val(user)
-            $("#revisionU").val(revision)
-            $("#plantU").val(plant)
+
+           
+
+         
 
             $(".updateBtn").on("click", function(){
                 $("#updatePartForm").validate({
@@ -466,7 +463,7 @@ $(document).ready(function (){
                             maxlength: 25,
                             minlength: 4
                         },
-                        similarPartU: "required",
+                        
                         containerU: "required",
                         netWeightU: {
                             required: true,
@@ -505,7 +502,7 @@ $(document).ready(function (){
                             maxlength: "25 characters max",
                             minlength: "Please enter at least 4 characters"
                         },
-                        similarPartU: "Please select a similar part",
+                       
                         containerU: "Please select a container",
                         netWeightU: {
                             required: "Please enter a net weight",
@@ -539,23 +536,23 @@ $(document).ready(function (){
                         method: 'POST',
                         data: {
                             id: $("#idPart").val(),
-                            partNumber: $("#partNumberU").val().trim(),
-                            description: $("#descU").val().trim(),
-                            similarPart: $("#similarPartU").val().trim(),
-                            container: $("#containerU").val().trim(),
-                            netWeight: $("#netWeightU").val().trim(),
-                            grossWeight: $("#grossWeightU").val().trim(),
-                            termCode: $("#termCodeU").val().trim(),
-                            termCodeDesc: $("#termCodeDescU").val().trim(),
-                            user: $("#userU").val().trim(),
-                            revision: $("#revisionU").val().trim(),
-                            plant: $("#plantU").val().trim(),
+                            partNumber: $("#partNumberU").val(),
+                            description: $("#descU").val(),
+                            similarPart: $("#similarPartU").val(),
+                            container: $("#containerU").val(),
+                            netWeight: $("#netWeightU").val(),
+                            grossWeight: $("#grossWeightU").val(),
+                            termCode: $("#termCodeU").val(),
+                            termCodeDesc: $("#termCodeDescU").val(),
+                            user: $("#userU").val(),
+                            revision: $("#revisionU").val(),
+                            plant: $("#plantU").val(),
                         }, 
                         beforeSend: function () { 
                             $(".loadingContainer").css("display", "grid")
                         },
                         success: function(response){
-                            // console.log(response)
+                     
                              if(response === undefined || response != 'ok'){
                                 $(".loadingContainer").css("display", "none")
                             $(".addPartModal").css("display", "none");
@@ -606,9 +603,9 @@ $(document).ready(function (){
        
         if($("#searchedPart").val() === ""){
             loadTable();
-            console.log("sin parte")
+    
         }else{
-            console.log("con parte")
+         
             $.ajax({
                 url: "/getSpecificPart",
                 method: 'POST',
@@ -616,7 +613,7 @@ $(document).ready(function (){
                     partNumber: $("#searchedPart").val()
                 },
                 success: function(response){
-                    console.log(response.length)
+                
                     var tableResults = "";
                     if(response.length <= 0){
                         $(".message-container-noParts").css("display", "grid");
@@ -668,7 +665,7 @@ function loadTable() {
             userID: Cookies.get('userID')
         },
         success: function (response){
-           console.log(response)
+         
          if(Cookies.get("isAdmin") === "true"){
                 $('#partsTable tr').not(':first').remove();
                 $.each(response, function (key, val) { 
@@ -698,7 +695,7 @@ function loadTable() {
             $("#numberOfParts").text("Loading...")
         },
         success: function (response) { 
-            console.log(response)
+     
             if(response.status === 'ok'){
                 var numberOfParts = response.numberOfParts[0].numberOfParts;
                 var partQuant = $("#numberOfParts").text(numberOfParts)

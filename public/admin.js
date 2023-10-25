@@ -232,7 +232,7 @@ $(function () {
         
    
             id= row.find('.tableUserID').text();
-            console.log(id)
+
            user= row.find('.tableUser').text();
             name= row.find('.tableName').text();
             lastName= row.find('.tableLastName').text();
@@ -335,10 +335,10 @@ $(function () {
                         },
                         beforeSend: function(){
                             $(".loadingContainer").css("display", "grid")
-                            console.log(id);
+                           
                         },
                         success: function (response) {     
-                            console.log(response)            
+                                  
                             if(response === "userExist"){
                                 $("#newUserU").after("<label class='error'>User ID exists</label>")
                                 $(".loadingContainer").css("display", "none");
@@ -585,9 +585,9 @@ $(function () {
                                     setTimeout(function () { 
                                         $(".message-container-successAdmin").css("display", "none");
                                      },4000)
-                                     console.log("valor despues de mandarse pero antes de haber cargado la tabla", $("#idFlag").val(id))
+                          
                                     loadFlagTable();
-                                    console.log("valor despues de mandar y haber cargado la tabla", $("#idFlag").val(id))
+                                   
                                     
                                 }
                              }
