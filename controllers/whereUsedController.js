@@ -1,6 +1,7 @@
 const dbConn = require("../dbConnection");
 
 exports.getWhereUsed = (req, res) => {
+
     try {
         dbConn.query(`select
         distinct plant.plant,

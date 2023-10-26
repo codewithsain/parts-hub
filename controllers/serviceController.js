@@ -10,7 +10,8 @@ exports.getService = (req, res) =>{
             }else if(results){
                 let id = results[0].id;
                 try {
-                    dbConn.query("SELECT lsi, gsi, convert_tz(createDate,'+00:00','-06:00') as createDate FROM service  WHERE partID = ? ORDER BY createDate DESC", [id] ,(error, results) =>{
+                    dbConn.query(`SELECT lsi, gsi, convert_tz(createDate,'+00:00','-06:00') as createDate 
+                    FROM service  WHERE partID = ? ORDER BY createDate DESC`, [id] ,(error, results) =>{
                         if(error){
                             return res.send(error)
                         }else if(results){

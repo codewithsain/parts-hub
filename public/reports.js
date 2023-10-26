@@ -4,7 +4,7 @@ $(document).ready(function (){
         url: "/getPartsCompleted",
         method: "POST",
         success: function(response){
-            console.log(response)
+       
             if(response){
                 $.each(response, function (key, val) { 
                     parts += "<option value='" + val.partNumber + "'>" + val.partNumber + "</option>";

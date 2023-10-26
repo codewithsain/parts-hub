@@ -7,7 +7,7 @@ $(document).ready(function () {
       partNumber: currPart
     },
     success: function (response) {
-      console.log(response)
+   
       $('#prodCostQualSelect').val(response[0].prodCostQual),
         $('#supplierQuote').val(response[0].supplierQuote),
         $('#experimentalSupplierQuote').val(response[0].expQuote),
@@ -245,13 +245,13 @@ $(function () {
             partNumber: currPart
           },
           before: function () {
-            $('.loadingContainer').css('display', 'grid')
+    
           },
           success: function (response) {
-            console.log(response)
+            
             if (response === 'ok') {
-              $('.loadingContainer').css('display', 'none')
-              $('.addUserModal').css('display', 'none')
+             
+           
               $('.message-container-successAdmin .message').text(
                 'Cost esimation added successfully'
               )
@@ -260,7 +260,7 @@ $(function () {
                 $('.message-container-successAdmin').css('display', 'none')
               }, 6000)
             } else {
-              $('.loadingContainer').css('display', 'none')
+            
               $('.addUserModal').css('display', 'none')
               $('.message-container-errorAdmin .message').text(
                 'An error has ocurred'
@@ -299,11 +299,11 @@ $(function () {
           id: id
         },
         beforeSend: function () {
-          $('.loadingContainer').css('display', 'grid')
+        
         },
         success: function (response) {
           if (response === 'ok') {
-            $('.loadingContainer').css('display', 'none')
+    
             $('.deleteUserModal').css('display', 'none')
             $('.message-container-successAdmin .message').text(
               'Cost estimation deleted successfully'
@@ -315,7 +315,7 @@ $(function () {
               $('.message-container-successAdmin').css('display', 'none')
             }, 6000)
           } else {
-            $('.loadingContainer').css('display', 'none')
+        
             $('.deleteUserModal').css('display', 'grid')
             $('.message-container-errorAdmin .message').text(
               'An error has occurred'

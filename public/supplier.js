@@ -59,50 +59,54 @@ $(function () {
 
 $(function () {
 
-    $("#supplierForm").validate({
-        rules: {
-            supplier: {
-                required: true
-            }
-        },
-        messages: {
-            supplier: {
-                required: "Please select a supplier"
-            }
-        },
-        submitHandler: function(){
-            var currPart = Cookies.get("currentPart")
-            $("#saveSupplier").on("click", function() {
-                $.ajax({
-                    url: "/saveSupplier",
-                    method: "POST",
-                    data:{
-                        partNumber: currPart,
-                        suppID: $("#supplier").val()
-                    },
-                    success: function (response) { 
-                        if(response === 'ok'){
-                            $(".message-container-successAdmin .message").text("Supplier updated successfully");
-                            $(".message-container-successAdmin").css("display", "grid");
+    $("#saveSupplier").on("click", function() {
+        $("#supplierForm").validate({
+            rules: {
+                supplier: {
+                    required: true
+                }
+            },
+            messages: {
+                supplier: {
+                    required: "Please select a supplier"
+                }
+            },
+            submitHandler: function(){
+                var currPart = Cookies.get("currentPart")
+               
+                    $.ajax({
+                        url: "/saveSupplier",
+                        method: "POST",
+                        data:{
+                            partNumber: currPart,
+                            suppID: $("#supplier").val()
+                        },
+                        success: function (response) { 
+                            if(response === 'ok'){
+                                $(".message-container-successAdmin .message").text("Supplier updated successfully");
+                                $(".message-container-successAdmin").css("display", "grid");
+                                setTimeout(function () { 
+                                    $(".message-container-successAdmin").css("display", "none");
+                                 },6000)
+                            }else{
+                            $(".message-container-errorAdmin .message").text("An error has ocurred");
+                            $(".message-container-errorAdmin").css("display", "grid");
                             setTimeout(function () { 
-                                $(".message-container-successAdmin").css("display", "none");
+                                $(".message-container-error").css("display", "none");
                              },6000)
-                        }else{
-                        $(".message-container-errorAdmin .message").text("An error has ocurred");
-                        $(".message-container-errorAdmin").css("display", "grid");
-                        setTimeout(function () { 
-                            $(".message-container-error").css("display", "none");
-                         },6000)
-                        }
-                     }
-                })
-            })
-
-            $("#addLeadTimeBtn").prop("disabled", false)
-            $("#supplierStep").css("background-color", "#367c2b")
-            $("#supplierStep").css("border", " 3px solid #367c2b")
-        }
-        
+                            }
+                         }
+                    })
+                
+    
+                $("#addLeadTimeBtn").prop("disabled", false)
+                $("#supplierStep").css("background-color", "#367c2b")
+                $("#supplierStep").css("border", " 3px solid #367c2b")
+            }
+            
+        })
     })
+
+    
    
 })

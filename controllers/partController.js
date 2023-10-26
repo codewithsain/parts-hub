@@ -85,9 +85,9 @@ exports.getContainers = (req, res) =>{
 exports.addPart = (req, res) =>{
 
     const {partNumber, description, similarPart, container, netWeight, grossWeight, termCode, termCodeDesc, user, revision, plant} = req.body;
+    console.log(req.body)
     try {
         dbConn.query("SELECT * FROM part WHERE partNumber = ?", [partNumber], (error, part) =>{
-            console.log(part.length);
             if(part.length >= 1){
                return  res.send("partExist");
             }else{
@@ -107,14 +107,16 @@ exports.addPart = (req, res) =>{
                                   plantID: parseInt(plant)
                                 }, (error, results) =>{
                                     if(results){
+                                        console.log(results)
                                         return res.send("ok");
                                     }else if(error){
+                                        console.log(error)
                                         return res.send(error);
                                     }
                                 })
                 } catch (error) {
                     res.send(error);
-                    console.log(error);
+       
                 }
             }
         })
@@ -184,7 +186,7 @@ exports.deletePart = (req, res) =>{
 exports.getPartsForUpdate = (req, res) =>{
     const {id} = req.body;
     try {
-        dbConn.query("SELECT id, partNumber, description, termCode, termCodeDesc, netWeight, grossWeight FROM part WHERE id = ?", [id], 
+        dbConn.query("SELECT id, partNumber, description, termCode, termCodeDesc, netWeight, grossWeight, similarPart, containerID, plantID, userID, revisionID FROM part WHERE id = ?", [id], 
         (error, results) =>{
             if(results){
                 return res.send(results)

@@ -50,18 +50,18 @@ $(function () {
                         partNumber: currPart
                     },
                     before: function (){
-                        $(".loadingContainer").css("display", "grid")
+                        
                     },
                     success: function (response) {
                         if(response === 'ok'){
-                            $(".loadingContainer").css("display", "none")
+                            
                             $(".message-container-successAdmin .message").text("Note added successfully");
                             $(".message-container-successAdmin").css("display", "grid");
                             setTimeout(function () { 
                                 $(".message-container-successAdmin").css("display", "none");
                              },6000)
                         }else{
-                        $(".loadingContainer").css("display", "none")
+                        
                         $(".message-container-errorAdmin .message").text("An error has ocurred");
                         $(".message-container-errorAdmin").css("display", "grid");
                         setTimeout(function () { 
@@ -95,11 +95,11 @@ $(function () {
                     id: id
                 },
                 beforeSend: function(){
-                    $(".loadingContainer").css("display", "grid")
+                    
                 },
                 success: function(response) {
                     if(response === 'ok'){
-                        $(".loadingContainer").css("display", "none")
+                        
                         $(".message-container-successAdmin .message").text("Note deleted successfully");
                         $(".message-container-successAdmin").css("display", "grid");
                         $('#notesSelectModal').css("display", "none");
@@ -108,7 +108,7 @@ $(function () {
                             $(".message-container-successAdmin").css("display", "none");
                          },6000)
                     }else{
-                        $(".loadingContainer").css("display", "none")
+                        
                         $(".deleteUserModal").css('display', 'grid')
                         $(".message-container-errorAdmin .message").text("An error has occurred");
                         $(".message-container-errorAdmin").css("display", "grid");

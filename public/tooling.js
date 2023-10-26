@@ -7,7 +7,7 @@ $(document).ready(function (){
             partNumber: currPart
         },
         success: function(response){
-            console.log(response)
+       
             $('#invQual').val(response[0].invQual),
             $('#supTool').val(response[0].supTool),
              $('#supToolExp').val(response[0].supToolExp),
@@ -131,20 +131,20 @@ $(function () {
                         partNumber: currPart
                     },
                     before: function (){
-                        $(".loadingContainer").css("display", "grid")
-                        console.log("hgola 2")
+                       
+                    
                     },
                     success: function (response) {
-                        console.log(response)
+                       
                         if(response === 'ok'){
-                            $(".loadingContainer").css("display", "none")
+                            
                             $(".message-container-successAdmin .message").text("Tooling estimation added successfully");
                             $(".message-container-successAdmin").css("display", "grid");
                             setTimeout(function () { 
                                 $(".message-container-successAdmin").css("display", "none");
                              },6000)
                         }else{
-                        $(".loadingContainer").css("display", "none")
+                        
                         $(".addUserModal").css("display", "none");
                         $(".message-container-errorAdmin .message").text("An error has ocurred");
                         $(".message-container-errorAdmin").css("display", "grid");
@@ -178,11 +178,11 @@ $(function () {
                     id: id
                 },
                 beforeSend: function(){
-                    $(".loadingContainer").css("display", "grid")
+                   
                 },
                 success: function(response) {
                     if(response === 'ok'){
-                        $(".loadingContainer").css("display", "none")
+                        
                         $(".message-container-successAdmin .message").text("Tooling estimation deleted successfully");
                         $(".message-container-successAdmin").css("display", "grid");
                         $('#toolingSelectModal').css("display", "none");
@@ -191,7 +191,7 @@ $(function () {
                             $(".message-container-successAdmin").css("display", "none");
                          },6000)
                     }else{
-                        $(".loadingContainer").css("display", "none")
+                        
                         $(".message-container-errorAdmin .message").text("An error has occurred");
                         $(".message-container-errorAdmin").css("display", "grid");
                         $('#deleteToolingModal').css("display", "grid");

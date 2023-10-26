@@ -25,18 +25,22 @@ main {
 @media screen and (max-width: 768px) {
   main {
     grid-template-areas:
-      'breadcrumb breadcrumb breadcrumb'
-      'cardUsers cardUsers cardFF'
-      'cardUsers cardUsers cardFF';
+    'breadcrumb breadcrumb breadcrumb'
+    'cardUsers cardUsers cardUsers'
+    'cardFF cardFF cardFF'
+    'charts charts charts'
+    'reports reports reports';
   }
 }
 
 @media screen and (max-width: 576px) {
   main {
     grid-template-areas:
-      'breadcrumb breadcrumb breadcrumb'
-      'cardUsers cardUsers cardUsers'
-      'cardFF cardFF cardFF';
+    'breadcrumb breadcrumb breadcrumb'
+    'cardUsers cardUsers cardUsers'
+    'cardFF cardFF cardFF'
+    'charts charts charts'
+    'reports reports reports';
   }
 }
 
@@ -211,7 +215,7 @@ td {
 .addUserModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -397,7 +401,7 @@ select {
 .loadingContainer {
   display: none;
   position: fixed;
-  z-index: 2;
+  z-index: 6;
   left: 0;
   top: 0;
   width: 100%;
@@ -467,7 +471,7 @@ select {
 .deleteUserModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -540,7 +544,7 @@ select {
 .updateUserModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -679,7 +683,7 @@ td {
 .addFlagModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -780,7 +784,7 @@ select {
 .updateFlagModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;
@@ -889,7 +893,7 @@ select {
 .deleteFlagModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   width: 100%;

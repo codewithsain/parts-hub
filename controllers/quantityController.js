@@ -12,7 +12,11 @@ exports.addQuantity = (req, res) =>{
             }else if(results){
                 let id = results[0].id;
                 try {
-                    dbConn.query("INSERT INTO quantity SET ?", {globalEstimation: globalEstimation, buyerEstimation: buyerEstimation, quotedEstimation: quotedEstimation, createDate: createDate, partID: id},
+                    dbConn.query("INSERT INTO quantity SET ?", 
+                    {globalEstimation: globalEstimation, 
+                        buyerEstimation: buyerEstimation, 
+                        quotedEstimation: quotedEstimation, 
+                        createDate: createDate, partID: id},
                     (error, results) =>{
                         if(error){
                             return res.send(error)
@@ -55,7 +59,9 @@ exports.getQuantity = (req, res) =>{
             }else if(results){
                 let id = results[0].id;
                 try {
-                    dbConn.query("SELECT id, globalEstimation, buyerEstimation, quotedEstimation, convert_tz(createDate,'+00:00','-06:00') as createDate FROM quantity  WHERE partID = ? ORDER BY createDate DESC", [id] ,(error, results) =>{
+                    dbConn.query(`SELECT id, globalEstimation, buyerEstimation, quotedEstimation, 
+                    convert_tz(createDate,'+00:00','-06:00') as createDate FROM quantity  
+                    WHERE partID = ? ORDER BY createDate DESC`, [id] ,(error, results) =>{
                         if(error){
                             return res.send(error)
                         }else if(results){
