@@ -20,42 +20,45 @@ main {
     'notBar notBar notBar notBar'
     'partOverview partOverview partOverview taskDrawer'
     'project project project taskDrawer'
-    'where where where where'
-    'compare compare compare compare'
-    'cost cost cost supplier'
-    'lead lead lead quantities'
-    'tooling tooling notes service';
+    'where where where taskDrawer'
+    'compare compare compare taskDrawer'
+    'cost cost supplier taskDrawer '
+    'lead lead  lead taskDrawer'
+    'quantities tooling tooling taskDrawer'
+    'notes service service taskDrawer';
 }
 
 @media screen and (max-width: 768px) {
   main {
     grid-template-areas:
-      'notBar notBar notBar notBar'
-      'partOverview partOverview taskDrawer taskDrawer'
-      'project project taskDrawer taskDrawer'
-      'where where where where'
-      'compare compare compare compare'
-      'cost cost cost cost'
-      'supplier supplier quantities quantities'
-      'lead lead lead lead'
-      'tooling tooling tooling tooling'
-      'notes notes service service';
+    'notBar notBar notBar notBar'
+    'partOverview taskDrawer taskDrawer taskDrawer'
+    'project project taskDrawer taskDrawer'
+    'where where taskDrawer taskDrawer'
+    'compare compare taskDrawer taskDrawer'
+    'cost cost taskDrawer taskDrawer'
+    'supplier supplier taskDrawer taskDrawer'
+    'lead lead  taskDrawer taskDrawer'
+    'quantities quantities taskDrawer taskDrawer'
+    'tooling tooling  taskDrawer taskDrawer'
+     'notes service  taskDrawer taskDrawer';
   }
 }
 
 @media screen and (max-width: 576px) {
   main {
     grid-template-areas:
-      'notBar notBar notBar notBar'
-      'partOverview partOverview taskDrawer taskDrawer'
-      'project project taskDrawer taskDrawer'
-      'where where where where'
-      'compare compare compare compare'
-      'cost cost cost cost'
-      'supplier supplier quantities quantities'
-      'lead lead lead lead'
-      'tooling tooling tooling tooling'
-      'notes notes service service';
+    'notBar notBar notBar notBar'
+    'partOverview taskDrawer taskDrawer taskDrawer'
+    'project project taskDrawer taskDrawer'
+    'where where taskDrawer taskDrawer'
+    'compare compare taskDrawer taskDrawer'
+    'cost cost taskDrawer taskDrawer'
+    'supplier supplier taskDrawer taskDrawer'
+    'lead lead  taskDrawer taskDrawer'
+    'quantities quantities taskDrawer taskDrawer'
+    'tooling tooling  taskDrawer taskDrawer'
+     'notes service  taskDrawer taskDrawer';
   }
 }
 
@@ -92,6 +95,52 @@ ul.breadcrumb li a:hover {
 }
 
 /*UTILS*/
+
+.loadingContainer {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.loading {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid green;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  grid-column: 2;
+  grid-row: 2;
+  place-self: center;
+  display: block;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .message-container-successAdmin {
   background-color: rgba(0, 255, 0, 0.233);
@@ -401,7 +450,7 @@ ul.breadcrumb li a:hover {
   grid-area: partOverview;
   min-height: 270px;
   max-height: 270px;
-  display: grid;
+  display: none;
   grid-template-columns: 300px 1fr;
 }
 
@@ -519,10 +568,13 @@ ul.breadcrumb li a:hover {
 
 /*TASK DRAWER MODULE */
 #cardTaskDrawer {
+  display: none;
   grid-area: taskDrawer;
-  min-height: 400px;
-  max-height: 900px;
+  min-height: 500px;
+  max-height: 500px;
   grid-template-rows: 50px 1fr 50px !important;
+  position: sticky !important;
+  top: 150px !important;
 }
 
 #tdTitle {
@@ -631,6 +683,7 @@ ul.breadcrumb li a:hover {
   align-items: center;
   justify-content: center;
   place-items: center;
+  display: none;
 }
 
 #cardProject label {
@@ -694,6 +747,7 @@ ul.breadcrumb li a:hover {
   min-height: 400px;
   max-height: 400px;
   z-index: -1;
+  display: none;
 }
 
 #whereUsedTable {
@@ -735,6 +789,7 @@ td {
   grid-area: compare;
   min-height: 1310px;
   max-height: 1310px;
+  display: none;
 }
 
 .compareParts-content{
@@ -1050,7 +1105,7 @@ td {
   grid-area: supplier;
   min-height: 400px;
   max-height: 400px;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 50px 1fr;
   overflow: hidden;
@@ -1124,7 +1179,7 @@ td {
   min-height: 200px;
   max-height: 250px;
   max-width: 600px;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 50px 1fr;
   overflow: hidden;
@@ -1164,6 +1219,7 @@ td {
   font-size: x-small;
   margin-left: 12px !important;
   margin-bottom: 8px !important;
+  place-self: center;
 }
 
 #serviceForm select {
@@ -1187,6 +1243,7 @@ td {
   grid-area: cost;
   min-height: 420px;
   max-height: 420px;
+  display: none;
 }
 
 #selectCostBtn {
@@ -1241,6 +1298,7 @@ td {
   min-height: 250px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  width: 400px;
 }
 
 .costCalculationFirstColumn {
@@ -1361,6 +1419,7 @@ td {
   grid-area: lead;
   min-height: 500px;
   max-height: 500px;
+  display: none;
 }
 
 #selectLeadTimeBtn {
@@ -1530,8 +1589,9 @@ td {
 /* QUANTITY MODULE */
 #cardQuantities {
   grid-area: quantities;
-  min-height: 300px;
-  max-height: 300px;
+  min-height: 350px;
+  max-height: 350px;
+  display: none;
 }
 
 #quantityBtnContainer {
@@ -1649,6 +1709,7 @@ td {
   grid-area: tooling;
   min-height: 350px;
   max-height: 350px;
+  display: none;
 }
 
 #toolingBtnContainer {
@@ -1799,9 +1860,10 @@ td {
 /*NOTES*/
 #cardNotes {
   grid-area: notes;
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 250px;
+  max-height: 250px;
   max-width: 600px;
+  display: none;
 }
 
 #notesBtnContainer {

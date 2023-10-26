@@ -549,6 +549,7 @@ $(document).ready(function (){
                             plant: $("#plantU").val(),
                         }, 
                         beforeSend: function () { 
+                            
                             $(".loadingContainer").css("display", "grid")
                         },
                         success: function(response){
